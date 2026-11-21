@@ -10,33 +10,180 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as AiProductionRouteImport } from './routes/ai-production'
+import { Route as BrandsRouteImport } from './routes/brands'
+import { Route as CavinkareRouteImport } from './routes/cavinkare'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as ExperienceRouteImport } from './routes/experience'
+import { Route as ProcessRouteImport } from './routes/process'
+import { Route as CaseStudiesIndexRouteImport } from './routes/case-studies.index'
+import { Route as CaseStudiesSlugRouteImport } from './routes/case-studies.$slug'
+import { Route as WorkIndexRouteImport } from './routes/work.index'
+import { Route as WorkSlugRouteImport } from './routes/work.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AiProductionRoute = AiProductionRouteImport.update({
+  id: '/ai-production',
+  path: '/ai-production',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BrandsRoute = BrandsRouteImport.update({
+  id: '/brands',
+  path: '/brands',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CavinkareRoute = CavinkareRouteImport.update({
+  id: '/cavinkare',
+  path: '/cavinkare',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExperienceRoute = ExperienceRouteImport.update({
+  id: '/experience',
+  path: '/experience',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProcessRoute = ProcessRouteImport.update({
+  id: '/process',
+  path: '/process',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CaseStudiesIndexRoute = CaseStudiesIndexRouteImport.update({
+  id: '/case-studies/',
+  path: '/case-studies/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CaseStudiesSlugRoute = CaseStudiesSlugRouteImport.update({
+  id: '/case-studies/$slug',
+  path: '/case-studies/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WorkIndexRoute = WorkIndexRouteImport.update({
+  id: '/work/',
+  path: '/work/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WorkSlugRoute = WorkSlugRouteImport.update({
+  id: '/work/$slug',
+  path: '/work/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/ai-production': typeof AiProductionRoute
+  '/brands': typeof BrandsRoute
+  '/cavinkare': typeof CavinkareRoute
+  '/contact': typeof ContactRoute
+  '/experience': typeof ExperienceRoute
+  '/process': typeof ProcessRoute
+  '/case-studies/$slug': typeof CaseStudiesSlugRoute
+  '/work/$slug': typeof WorkSlugRoute
+  '/case-studies/': typeof CaseStudiesIndexRoute
+  '/work/': typeof WorkIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/ai-production': typeof AiProductionRoute
+  '/brands': typeof BrandsRoute
+  '/cavinkare': typeof CavinkareRoute
+  '/contact': typeof ContactRoute
+  '/experience': typeof ExperienceRoute
+  '/process': typeof ProcessRoute
+  '/case-studies/$slug': typeof CaseStudiesSlugRoute
+  '/work/$slug': typeof WorkSlugRoute
+  '/case-studies': typeof CaseStudiesIndexRoute
+  '/work': typeof WorkIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/ai-production': typeof AiProductionRoute
+  '/brands': typeof BrandsRoute
+  '/cavinkare': typeof CavinkareRoute
+  '/contact': typeof ContactRoute
+  '/experience': typeof ExperienceRoute
+  '/process': typeof ProcessRoute
+  '/case-studies/$slug': typeof CaseStudiesSlugRoute
+  '/work/$slug': typeof WorkSlugRoute
+  '/case-studies/': typeof CaseStudiesIndexRoute
+  '/work/': typeof WorkIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/ai-production'
+    | '/brands'
+    | '/cavinkare'
+    | '/contact'
+    | '/experience'
+    | '/process'
+    | '/case-studies/$slug'
+    | '/work/$slug'
+    | '/case-studies/'
+    | '/work/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/ai-production'
+    | '/brands'
+    | '/cavinkare'
+    | '/contact'
+    | '/experience'
+    | '/process'
+    | '/case-studies/$slug'
+    | '/work/$slug'
+    | '/case-studies'
+    | '/work'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/ai-production'
+    | '/brands'
+    | '/cavinkare'
+    | '/contact'
+    | '/experience'
+    | '/process'
+    | '/case-studies/$slug'
+    | '/work/$slug'
+    | '/case-studies/'
+    | '/work/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  AiProductionRoute: typeof AiProductionRoute
+  BrandsRoute: typeof BrandsRoute
+  CavinkareRoute: typeof CavinkareRoute
+  ContactRoute: typeof ContactRoute
+  ExperienceRoute: typeof ExperienceRoute
+  ProcessRoute: typeof ProcessRoute
+  CaseStudiesSlugRoute: typeof CaseStudiesSlugRoute
+  WorkSlugRoute: typeof WorkSlugRoute
+  CaseStudiesIndexRoute: typeof CaseStudiesIndexRoute
+  WorkIndexRoute: typeof WorkIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +195,99 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ai-production': {
+      id: '/ai-production'
+      path: '/ai-production'
+      fullPath: '/ai-production'
+      preLoaderRoute: typeof AiProductionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/brands': {
+      id: '/brands'
+      path: '/brands'
+      fullPath: '/brands'
+      preLoaderRoute: typeof BrandsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cavinkare': {
+      id: '/cavinkare'
+      path: '/cavinkare'
+      fullPath: '/cavinkare'
+      preLoaderRoute: typeof CavinkareRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/experience': {
+      id: '/experience'
+      path: '/experience'
+      fullPath: '/experience'
+      preLoaderRoute: typeof ExperienceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/process': {
+      id: '/process'
+      path: '/process'
+      fullPath: '/process'
+      preLoaderRoute: typeof ProcessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/case-studies/': {
+      id: '/case-studies/'
+      path: '/case-studies'
+      fullPath: '/case-studies/'
+      preLoaderRoute: typeof CaseStudiesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/case-studies/$slug': {
+      id: '/case-studies/$slug'
+      path: '/case-studies/$slug'
+      fullPath: '/case-studies/$slug'
+      preLoaderRoute: typeof CaseStudiesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/work/': {
+      id: '/work/'
+      path: '/work'
+      fullPath: '/work/'
+      preLoaderRoute: typeof WorkIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/work/$slug': {
+      id: '/work/$slug'
+      path: '/work/$slug'
+      fullPath: '/work/$slug'
+      preLoaderRoute: typeof WorkSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  AiProductionRoute: AiProductionRoute,
+  BrandsRoute: BrandsRoute,
+  CavinkareRoute: CavinkareRoute,
+  ContactRoute: ContactRoute,
+  ExperienceRoute: ExperienceRoute,
+  ProcessRoute: ProcessRoute,
+  CaseStudiesSlugRoute: CaseStudiesSlugRoute,
+  WorkSlugRoute: WorkSlugRoute,
+  CaseStudiesIndexRoute: CaseStudiesIndexRoute,
+  WorkIndexRoute: WorkIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -28,3 +28,11 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+
+- All portfolio copy and figures live in `src/data/*.ts` (profile, experience, brands, content, caseStudies, skills); pages only render that data — so new pieces, brands or case studies are added by editing data, not pages.
+- Missing facts are `null` in data and render through `Pending` ("… to be added") — the portfolio is used in real interviews, so nothing is invented.
+- Content pieces get their own page at `/work/$slug`; case studies at `/case-studies/$slug` — each piece needs a shareable URL.
+- Colors, fonts and editorial utilities (eyebrow, display-*, placeholder-hatch) are tokens in `src/styles.css`; components use semantic classes only.
+- `src/test/portfolio-data.test.ts` guards the key verified figures; update it when those facts change.
