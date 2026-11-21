@@ -1,53 +1,44 @@
 export const skillGroups: { title: string; items: string[] }[] = [
   {
     title: "Social Media",
-    items: [
-      "Social Media Management",
-      "Content Strategy",
-      "Content Calendar Planning",
-      "Platform-Specific Optimisation",
-      "Short-Form Video Strategy",
-      "Community Engagement",
-      "Brand Voice Adaptation",
-      "Trend-Based Content Planning",
-    ],
+    items: ["Social media strategy", "Content planning and calendars", "Platform-specific content", "Short-form video", "Community growth", "Brand voice", "Trend-based content"],
   },
   {
     title: "Performance Marketing",
-    items: ["Meta Ads", "Google Ads", "Lead Generation", "Audience Targeting", "Campaign Optimisation", "A/B Testing", "Conversion Tracking"],
+    items: ["Meta Ads", "Google Ads", "Lead generation", "Audience targeting", "Campaign optimisation", "A/B and creative testing", "Budget planning (CBO, lifetime budgets)"],
   },
   {
-    title: "SEO",
-    items: ["Search Engine Optimisation", "Keyword Research", "Google Keyword Planner", "Google Trends", "Google Search Console", "Website Content Optimisation"],
+    title: "SEO & Content",
+    items: ["Keyword research and search intent", "On-page, off-page and technical SEO", "AEO and GEO content", "Blog writing", "Copywriting", "Website content"],
   },
   {
     title: "Analytics",
-    items: ["Google Analytics 4", "Campaign Performance Analysis", "Reach & Engagement Analysis", "Lead Generation Reporting"],
+    items: ["Google Analytics and GA4", "Google Search Console", "Google Tag Manager", "Campaign reporting", "Funnel and conversion tracking"],
   },
   {
-    title: "AI & Content Production",
-    items: ["Prompt Engineering", "NotebookLM", "AI-Assisted Educational Video Production", "Content Research", "Perplexity"],
+    title: "AI Marketing",
+    items: ["Prompt engineering", "NotebookLM video production", "AI-assisted content creation", "Marketing research", "Workflow automation"],
   },
 ];
 
-export const tools = [
-  "Meta Ads Manager",
-  "Google Ads",
-  "GA4",
-  "Google Search Console",
-  "Google Keyword Planner",
-  "Google Trends",
-  "WordPress",
-  "NotebookLM",
-  "Perplexity",
-  "Viral Dashboard",
+export const tools: { group: string; items: string[] }[] = [
+  { group: "AI", items: ["NotebookLM", "Claude", "ChatGPT", "Perplexity", "Gemini", "Grok", "Midjourney"] },
+  { group: "Advertising", items: ["Meta Ads Manager", "Meta Business Suite", "Google Ads"] },
+  { group: "Analytics", items: ["GA4", "Google Search Console", "Google Tag Manager"] },
+  { group: "SEO", items: ["Google Keyword Planner", "Google Trends", "Semrush", "Ahrefs", "WordPress"] },
+  { group: "Design", items: ["Canva", "CapCut"] },
 ];
 
 export const education: { title: string; institution: string | null; status: string; year: string }[] = [
-  { title: "Bachelor of Business Administration (BBA)", institution: "Distance education (DDE)", status: "Currently pursuing", year: "Expected 2027" },
-  { title: "Diploma in Civil Engineering", institution: null, status: "Completed", year: "2020" },
+  { title: "Bachelor of Business Administration (BBA)", institution: "Alagappa University, distance education (DDE)", status: "Currently pursuing", year: "2024 to 2027 (expected)" },
+  { title: "Diploma in Civil Engineering", institution: "Government Polytechnic College", status: "Completed", year: "2017 to 2020" },
 ];
 
 export const certifications = [
-  { title: "Google Digital Marketing & E-commerce Professional Certificate", issuer: "Google / Coursera", status: "Completed" },
+  {
+    title: "Google Digital Marketing & E-commerce Professional Certificate",
+    issuer: "Google / Coursera",
+    status: "Completed",
+    topics: ["SEO", "SEM", "Google Ads", "Meta Ads", "Content Marketing", "Email Marketing", "Digital Marketing Strategy"],
+  },
 ];

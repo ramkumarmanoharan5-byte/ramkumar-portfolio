@@ -1,11 +1,9 @@
 import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Pending } from "./Pending";
 
-export function OriginalLink({ url, label = "View Original Content", size = "default" }: { url: string | null; label?: string; size?: "default" | "sm" | "lg" }) {
-  if (!url) return <Pending>Original content link to be added.</Pending>;
+export function OriginalLink({ url, label = "View Original Content", size = "default", variant = "default" }: { url: string; label?: string; size?: "default" | "sm" | "lg"; variant?: "default" | "outline" }) {
   return (
-    <Button asChild size={size}>
+    <Button asChild size={size} variant={variant}>
       <a href={url} target="_blank" rel="noopener noreferrer">
         {label} <ArrowUpRight />
       </a>

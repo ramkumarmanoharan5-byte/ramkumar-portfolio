@@ -1,21 +1,18 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { ArrowRight } from "lucide-react";
-import { Link } from "@tanstack/react-router";
 import { PageIntro } from "@/components/site/PageIntro";
 import { ContentCard } from "@/components/site/ContentCard";
-import { ContentDetail } from "@/components/site/ContentDetail";
-import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
-import { contentItems, displayTitle, type ContentItem } from "@/data/content";
+import { ContentDialog } from "@/components/site/ContentDialog";
+import { contentItems, type ContentItem } from "@/data/content";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/work/")({
   head: () => ({
     meta: [
-      { title: "My Work — Every Content Piece Has a Story | Ramkumar M." },
-      { name: "description", content: "Individual content pieces — YouTube Shorts, Reels, LinkedIn posts and campaign creatives — each with its objective, audience insight, execution, results and original link." },
+      { title: "My Work: Every Content Piece Has a Story | Ramkumar M." },
+      { name: "description", content: "Individual Reels, Shorts, posts, lesson pages and articles for TopAll, VVT Coaching, The Artist Mode and more, each with its objective, idea, my contribution and the original link." },
       { property: "og:title", content: "Every Content Piece Has a Story" },
-      { property: "og:description", content: "Filter by brand, platform, format and category. Open any piece to see the thinking behind it." },
+      { property: "og:description", content: "Filter by brand, platform, format and category. Open any piece to see the thinking behind it and the original." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -73,8 +70,6 @@ function WorkIndex() {
       (format === "All" || c.format === format) &&
       (category === "All" || c.categories.includes(category as ContentItem["categories"][number])),
   );
-  const published = filtered.filter((c) => c.status === "published");
-  const pending = filtered.filter((c) => c.status !== "published");
   const reset = () => { setBrand("All"); setPlatform("All"); setFormat("All"); setCategory("All"); };
 
   return (
@@ -82,7 +77,7 @@ function WorkIndex() {
       <PageIntro
         eyebrow="My Work"
         title="Every Content Piece Has a Story"
-        lede="Not a gallery — a set of individual pieces, each with the objective, the audience insight behind it, the creative approach, my contribution, verified results and a link to the original."
+        lede="Each piece here is a real creative with its own link. Open one to see what it was for, who it was for, the idea behind it, what I did and, where I have them, the real numbers."
       />
 
       <section className="sticky top-16 z-30 border-y border-line bg-ivory/95 backdrop-blur-md">
@@ -102,53 +97,21 @@ function WorkIndex() {
       </section>
 
       <section className="mx-auto max-w-7xl px-5 py-16 md:px-10">
-        {filtered.length === 0 && (
+        {filtered.length === 0 ? (
           <div className="py-20 text-center">
-            <p className="font-display text-3xl text-primary">Nothing matches those filters yet.</p>
+            <p className="font-display text-3xl text-primary">Nothing matches those filters.</p>
             <button type="button" onClick={reset} className="mt-4 text-sm font-semibold text-primary underline">Clear filters</button>
           </div>
-        )}
-        {published.length > 0 && (
-          <>
-            <h2 className="eyebrow mb-8">Published pieces · with original links</h2>
-            <div className="grid grid-cols-2 gap-x-5 gap-y-12 md:grid-cols-3 lg:grid-cols-4">
-              {published.map((item, i) => (
-                <ContentCard key={item.slug} item={item} index={i} onOpen={() => setActive(item)} />
-              ))}
-            </div>
-          </>
-        )}
-        {pending.length > 0 && (
-          <div className={published.length ? "mt-24" : ""}>
-            <div className="mb-8 flex flex-col gap-2 border-t border-line pt-8 md:flex-row md:items-baseline md:justify-between">
-              <h2 className="eyebrow">Client &amp; employer pieces · awaiting creatives</h2>
-              <p className="text-sm italic text-rose">Each entry is ready for its real creative, title and link.</p>
-            </div>
-            <div className="grid grid-cols-2 gap-x-5 gap-y-12 md:grid-cols-3 lg:grid-cols-4">
-              {pending.map((item, i) => (
-                <ContentCard key={item.slug} item={item} index={published.length + i} onOpen={() => setActive(item)} />
-              ))}
-            </div>
+        ) : (
+          <div className="grid grid-cols-2 gap-x-5 gap-y-12 md:grid-cols-3 lg:grid-cols-4">
+            {filtered.map((item, i) => (
+              <ContentCard key={item.slug} item={item} index={i} onOpen={() => setActive(item)} />
+            ))}
           </div>
         )}
       </section>
 
-      <Dialog open={!!active} onOpenChange={(o) => !o && setActive(null)}>
-        <DialogContent className="max-h-[92vh] max-w-6xl overflow-y-auto border-line bg-ivory p-6 sm:rounded-sm md:p-10">
-          {active && (
-            <>
-              <DialogTitle className="sr-only">{displayTitle(active)}</DialogTitle>
-              <DialogDescription className="sr-only">Details for {displayTitle(active)} by {active.brand}</DialogDescription>
-              <ContentDetail item={active} compact />
-              <div className="mt-8 flex justify-end border-t border-line pt-5">
-                <Link to="/work/$slug" params={{ slug: active.slug }} className="inline-flex items-center gap-2 text-sm font-semibold text-primary">
-                  Open as a full page <ArrowRight className="h-4 w-4" />
-                </Link>
-              </div>
-            </>
-          )}
-        </DialogContent>
-      </Dialog>
+      <ContentDialog item={active} onClose={() => setActive(null)} />
     </>
   );
 }
