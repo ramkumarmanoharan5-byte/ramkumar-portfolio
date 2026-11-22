@@ -1,12 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowUpRight, Mail, Phone, Linkedin, Youtube } from "lucide-react";
-import { Pending } from "@/components/site/Pending";
 import { profile } from "@/data/profile";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact Ramkumar M. — Social Media & Content Strategist" },
+      { title: "Contact Ramkumar M. | Social Media & Content Strategist" },
       { name: "description", content: "Get in touch with Ramkumar M. about content, creative strategy, social media and digital growth." },
       { property: "og:title", content: "Contact Ramkumar M." },
       { property: "og:description", content: "Have a brand, story, or idea worth bringing to life?" },
@@ -22,7 +21,7 @@ function Contact() {
   const rows = [
     { icon: Mail, label: "Email", value: c.email, href: c.email ? `mailto:${c.email}` : null },
     { icon: Phone, label: "Phone", value: c.phone, href: c.phone ? `tel:${c.phone.replace(/\s/g, "")}` : null },
-    { icon: Linkedin, label: "LinkedIn", value: c.linkedin ? "View profile" : null, href: c.linkedin },
+    { icon: Linkedin, label: "LinkedIn", value: c.linkedin ? "Ramkumar M." : null, href: c.linkedin },
     { icon: Youtube, label: "YouTube", value: "The Artist Mode", href: c.youtube },
   ];
   return (
@@ -38,23 +37,15 @@ function Contact() {
         <ul className="border-t border-line">
           {rows.map((r) => (
             <li key={r.label} className="border-b border-line">
-              {r.href && r.value ? (
+              {r.href && r.value && (
                 <a href={r.href} target={r.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" className="group flex items-center gap-5 py-6">
                   <r.icon className="h-5 w-5 text-primary" />
                   <span className="flex-1">
                     <span className="eyebrow block">{r.label}</span>
-                    <span className="mt-1 block font-display text-2xl transition-colors group-hover:text-primary">{r.value}</span>
+                    <span className="mt-1 block break-all font-display text-xl transition-colors group-hover:text-primary sm:text-2xl">{r.value}</span>
                   </span>
                   <ArrowUpRight className="h-5 w-5 text-primary transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </a>
-              ) : (
-                <div className="flex items-center gap-5 py-6">
-                  <r.icon className="h-5 w-5 text-rose" />
-                  <span className="flex-1">
-                    <span className="eyebrow block">{r.label}</span>
-                    <Pending className="mt-2">{r.label} to be added</Pending>
-                  </span>
-                </div>
               )}
             </li>
           ))}

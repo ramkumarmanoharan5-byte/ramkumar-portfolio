@@ -7,7 +7,7 @@ import { skillGroups, tools, education, certifications } from "@/data/skills";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About Ramkumar M. — Social Media & Content Strategist" },
+      { title: "About Ramkumar M. | Social Media & Content Strategist" },
       { name: "description", content: "Background, career journey, skills, tools and education of Ramkumar M., a social media and content strategist with nearly 3 years of digital marketing experience." },
       { property: "og:title", content: "About Ramkumar M." },
       { property: "og:description", content: "Career journey, philosophy, skills and education." },
@@ -19,12 +19,12 @@ export const Route = createFileRoute("/about")({
 });
 
 const journey = [
-  { k: "Foundation", t: "Diploma in Civil Engineering", d: "Completed in 2020." },
-  { k: "Certification", t: "Google Digital Marketing & E-commerce", d: "Professional Certificate through Google / Coursera." },
-  { k: "Personal brand", t: "The Artist Mode", d: "Built a faceless YouTube brand; one Short passed 19M views." },
-  { k: "Education marketing", t: "VVT Solutions Pvt. Ltd.", d: "Digital Marketing Specialist — content calendars, SEO and education brands." },
-  { k: "B2B social", t: "Colan Infotech", d: "Digital Marketing Executive — LinkedIn strategy and organic B2B lead generation." },
-  { k: "In progress", t: "BBA (distance education)", d: "Currently pursuing; expected completion 2027." },
+  { k: "2017 to 2020", t: "Diploma in Civil Engineering", d: "Government Polytechnic College." },
+  { k: "Certification", t: "Google Digital Marketing & E-commerce", d: "Professional Certificate through Google and Coursera." },
+  { k: "Personal brand", t: "The Artist Mode", d: "Built a faceless YouTube channel to 3.9Cr lifetime views. One Short passed 19M." },
+  { k: "Feb 2024 to Jan 2025", t: "Colan Infotech", d: "Digital Marketing Executive. LinkedIn strategy and 300+ organic B2B leads." },
+  { k: "Feb 2025 to now", t: "VVT Solutions Pvt. Ltd.", d: "Digital Marketing Specialist. TopAll, VVT Coaching, Meta Ads and SEO." },
+  { k: "2024 to 2027", t: "BBA, Alagappa University", d: "Currently pursuing through distance education." },
 ];
 
 function About() {
@@ -34,18 +34,27 @@ function About() {
 
       <section className="mx-auto grid max-w-7xl gap-12 px-5 pb-24 md:px-10 lg:grid-cols-12">
         <div className="lg:col-span-4">
-          <div className="flex aspect-square max-w-xs items-center justify-center bg-primary">
-            <span className="font-display text-[8rem] leading-none text-primary-foreground">{profile.monogram}</span>
-          </div>
-          <p className="mt-4 text-sm font-semibold">{profile.name}</p>
+          <figure className="relative max-w-sm">
+            <div className="absolute -bottom-3 -right-3 h-full w-full bg-primary" aria-hidden />
+            <img src={profile.portrait.src} alt={profile.portrait.alt} className="relative aspect-[4/5] w-full object-cover object-top" />
+          </figure>
+          <p className="mt-8 text-sm font-semibold">{profile.name}</p>
           <p className="text-sm text-foreground/70">{profile.title}</p>
+          <ul className="mt-6 space-y-2 text-sm">
+            <li><a className="font-semibold text-primary hover:underline" href={`tel:${profile.contact.phone?.replace(/\s/g, "")}`}>{profile.contact.phone}</a></li>
+            <li><a className="font-semibold text-primary hover:underline" href={`mailto:${profile.contact.email}`}>{profile.contact.email}</a></li>
+            <li className="flex gap-4">
+              {profile.contact.linkedin && <a className="font-semibold text-primary hover:underline" href={profile.contact.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>}
+              <a className="font-semibold text-primary hover:underline" href={profile.contact.youtube} target="_blank" rel="noopener noreferrer">YouTube</a>
+            </li>
+          </ul>
         </div>
         <div className="space-y-6 lg:col-span-7 lg:col-start-6">
           {profile.intro.map((p) => (
             <p key={p} className="text-lg leading-relaxed text-foreground/85">{p}</p>
           ))}
           <blockquote className="border-l-2 border-primary pl-6 font-display text-2xl leading-snug text-primary">
-            “I'm not just someone who manages social media accounts. I understand content, creative strategy, audience behaviour, brand communication and marketing performance.”
+            “I don't stop at posting. I want to know who the content is for, why they'd care, and what they did after they saw it.”
           </blockquote>
         </div>
       </section>
@@ -53,8 +62,7 @@ function About() {
       <section className="bg-cream">
         <div className="mx-auto max-w-7xl px-5 py-24 md:px-10">
           <SectionHead number="01" eyebrow="Career journey" title="Milestones" />
-          <p className="mt-3 text-xs italic text-rose">Grouped by theme — not in date order.</p>
-          <ol className="mt-12 grid gap-px bg-line md:grid-cols-3">
+                    <ol className="mt-12 grid gap-px bg-line md:grid-cols-3">
             {journey.map((j) => (
               <li key={j.t} className="bg-cream p-7">
                 <p className="text-xs font-semibold tracking-[0.2em] text-rose">{j.k}</p>
@@ -84,11 +92,16 @@ function About() {
           ))}
           <div>
             <h3 className="border-b border-primary pb-3 font-display text-2xl text-primary">Tools &amp; Platforms</h3>
-            <ul className="mt-4 flex flex-wrap gap-2">
-              {tools.map((t) => (
-                <li key={t} className="border border-line bg-cream px-3 py-1.5 text-sm">{t}</li>
+            <div className="mt-4 space-y-4">
+              {tools.map((g) => (
+                <div key={g.group}>
+                  <p className="eyebrow mb-2">{g.group}</p>
+                  <ul className="flex flex-wrap gap-2">
+                    {g.items.map((t) => <li key={t} className="border border-line bg-cream px-3 py-1.5 text-sm">{t}</li>)}
+                  </ul>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
         </div>
       </section>

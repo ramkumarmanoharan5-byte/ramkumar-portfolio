@@ -1,17 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, MapPin } from "lucide-react";
 import { PageIntro } from "@/components/site/PageIntro";
-import { Pending } from "@/components/site/Pending";
 import { ContactBand } from "@/components/site/ContactBand";
 import { employment } from "@/data/experience";
 
 export const Route = createFileRoute("/experience")({
   head: () => ({
     meta: [
-      { title: "Experience — Ramkumar M. | Colan Infotech & VVT Solutions" },
-      { name: "description", content: "Professional experience in B2B social media at Colan Infotech and education marketing at VVT Solutions Pvt. Ltd." },
-      { property: "og:title", content: "Experience — Ramkumar M." },
-      { property: "og:description", content: "B2B social media, LinkedIn strategy, education marketing and SEO content." },
+      { title: "Experience: VVT Solutions and Colan Infotech | Ramkumar M." },
+      { name: "description", content: "Digital Marketing Specialist at VVT Solutions since Feb 2025, and Digital Marketing Executive at Colan Infotech from Feb 2024 to Jan 2025." },
+      { property: "og:title", content: "Experience | Ramkumar M." },
+      { property: "og:description", content: "Product marketing, social media, Meta Ads, SEO and B2B LinkedIn lead generation." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -25,7 +24,7 @@ function Experience() {
       <PageIntro
         eyebrow="Experience"
         title="Where I've put the work in."
-        lede="Two roles that shaped how I think about content: one in B2B technology, one in education. Different audiences, the same discipline — plan it, publish it, learn from it."
+        lede="Two roles, most recent first. One in education and EdTech, one in B2B technology. Different audiences, same habit: plan it, publish it, then learn from the numbers."
       />
       <section className="mx-auto max-w-7xl px-5 pb-24 md:px-10">
         <ol className="relative border-l border-primary/40 md:ml-[8.5rem]">
@@ -39,15 +38,24 @@ function Experience() {
               <h2 className="display-md mt-3 text-primary">{job.company}</h2>
               <p className="mt-2 text-lg font-semibold">{job.role}</p>
               <div className="mt-3 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-foreground/70">
-                {job.location ? (
+                {job.location && (
                   <span className="inline-flex items-center gap-1.5"><MapPin className="h-3.5 w-3.5" />{job.location}</span>
-                ) : (
-                  <Pending>Location to be added</Pending>
                 )}
-                {job.start ? <span>{job.start} — {job.end ?? "Present"}</span> : <Pending>Dates to be added</Pending>}
+                {job.start && <span>{job.start} to {job.end ?? "Present"}</span>}
               </div>
               <p className="mt-6 inline-block bg-cream px-3 py-1.5 text-sm font-medium text-primary">{job.positioning}</p>
               <p className="prose-editorial mt-6 text-foreground/85">{job.summary}</p>
+              {job.highlights.length > 0 && (
+                <dl className="mt-8 grid grid-cols-2 gap-px bg-line md:grid-cols-4">
+                  {job.highlights.map((h) => (
+                    <div key={h.label} className="bg-ivory p-5">
+                      <dd className="font-display text-3xl leading-none text-primary md:text-4xl">{h.value}</dd>
+                      <dt className="mt-2 text-xs leading-snug text-foreground/70">{h.label}</dt>
+                    </div>
+                  ))}
+                </dl>
+              )}
+              {job.highlights.length > 0 && <p className="mt-2 text-xs text-muted-foreground">From my resume.</p>}
 
               <div className="mt-10 grid gap-10 lg:grid-cols-2">
                 <div>
@@ -71,10 +79,14 @@ function Experience() {
                   ))}
                 </div>
               </div>
-              {job.caseStudy && (
-                <Link to="/case-studies/$slug" params={{ slug: job.caseStudy }} className="link-draw mt-10 inline-flex items-center gap-2 font-semibold text-primary">
-                  Related case study <ArrowRight className="h-4 w-4" />
-                </Link>
+              {job.caseStudies.length > 0 && (
+                <div className="mt-10 flex flex-wrap gap-x-8 gap-y-3">
+                  {job.caseStudies.map((c) => (
+                    <Link key={c.slug} to="/case-studies/$slug" params={{ slug: c.slug }} className="link-draw inline-flex items-center gap-2 font-semibold text-primary">
+                      {c.label} <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  ))}
+                </div>
               )}
             </li>
           ))}

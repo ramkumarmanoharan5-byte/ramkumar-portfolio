@@ -83,14 +83,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Ramkumar M. — Social Media & Content Strategist" },
+      { title: "Ramkumar M. | Social Media & Content Strategist" },
       {
         name: "description",
         content: "Portfolio of Ramkumar M.: social media, content strategy, short-form video and Meta Ads work, with individual content pieces and case studies.",
       },
       { name: "author", content: "Ramkumar M." },
       { name: "theme-color", content: "#6E0202" },
-      { property: "og:title", content: "Ramkumar M. — Social Media & Content Strategist" },
+      { property: "og:title", content: "Ramkumar M. | Social Media & Content Strategist" },
       { property: "og:description", content: "Content that captures attention, builds brands and drives meaningful results." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

@@ -10,7 +10,7 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-ivory/90 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-6 px-5 md:px-10">
-        <Link to="/" className="group flex items-center gap-3" aria-label={`${profile.name} — home`}>
+        <Link to="/" className="group flex items-center gap-3" aria-label={`${profile.name}, home`}>
           <span className="flex h-9 w-9 items-center justify-center bg-primary font-display text-base text-primary-foreground transition-colors group-hover:bg-primary-deep">
             {profile.monogram}
           </span>

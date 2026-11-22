@@ -1,7 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { profile } from "@/data/profile";
 import { navItems } from "./nav";
-import { Pending } from "./Pending";
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
@@ -32,24 +31,26 @@ export function SiteFooter() {
             <ul className="space-y-2 text-sm">
               <li>
                 <a href={profile.contact.youtube} target="_blank" rel="noopener noreferrer" className="text-cream/80 hover:text-cream">
-                  YouTube — The Artist Mode
+                  YouTube: The Artist Mode
                 </a>
               </li>
-              <li>
-                {profile.contact.linkedin ? (
-                  <a href={profile.contact.linkedin} target="_blank" rel="noopener noreferrer" className="text-cream/80 hover:text-cream">
-                    LinkedIn
-                  </a>
-                ) : (
-                  <Pending>LinkedIn to be added</Pending>
-                )}
-              </li>
+              {profile.contact.linkedin && (
+                <li>
+                  <a href={profile.contact.linkedin} target="_blank" rel="noopener noreferrer" className="text-cream/80 hover:text-cream">LinkedIn</a>
+                </li>
+              )}
+              {profile.contact.email && (
+                <li><a href={`mailto:${profile.contact.email}`} className="text-cream/80 hover:text-cream">{profile.contact.email}</a></li>
+              )}
+              {profile.contact.phone && (
+                <li><a href={`tel:${profile.contact.phone.replace(/\s/g, "")}`} className="text-cream/80 hover:text-cream">{profile.contact.phone}</a></li>
+              )}
             </ul>
           </div>
         </div>
         <div className="mt-16 flex flex-col justify-between gap-3 border-t border-cream/15 pt-6 text-xs text-cream/60 md:flex-row">
           <p>© {year} {profile.name} All rights reserved.</p>
-          <p>Brand names and figures belong to their respective owners. Account figures are snapshots, not growth claims.</p>
+          <p>Brand names belong to their owners. Account figures are snapshots, not growth claims.</p>
         </div>
       </div>
     </footer>

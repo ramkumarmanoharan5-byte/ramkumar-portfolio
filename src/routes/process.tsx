@@ -5,9 +5,9 @@ import { ContactBand } from "@/components/site/ContactBand";
 export const Route = createFileRoute("/process")({
   head: () => ({
     meta: [
-      { title: "My Creative Process — Research to Analysis | Ramkumar M." },
+      { title: "My Creative Process: Research to Analysis | Ramkumar M." },
       { name: "description", content: "A seven-stage content creation process: research, strategy, ideation, creation, distribution, engagement and analysis." },
-      { property: "og:title", content: "My Creative Process — Ramkumar M." },
+      { property: "og:title", content: "My Creative Process | Ramkumar M." },
       { property: "og:description", content: "Seven stages, from understanding the audience to learning from the results." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -23,7 +23,7 @@ const stages = [
   { n: "04", t: "Creation", q: "How do we make it real?", d: "Creative briefs, captions, scripts, Reels, static posts and visual concepts." },
   { n: "05", t: "Distribution", q: "Where does it belong?", d: "Adapt content for Instagram, Facebook, YouTube, LinkedIn and other relevant platforms." },
   { n: "06", t: "Engagement", q: "What are people saying?", d: "Monitor comments, messages, mentions and audience reactions." },
-  { n: "07", t: "Analysis", q: "What do we do next?", d: "Review reach, engagement and content performance, and find opportunities to keep improving." },
+  { n: "07", t: "Analysis", q: "What do we do next?", d: "Look past reach to clicks, enquiries and sign-ups, and decide what to make next." },
 ];
 
 function Process() {
@@ -32,7 +32,7 @@ function Process() {
       <PageIntro
         eyebrow="My Process"
         title="My Creative Process"
-        lede="Seven stages I move through for every brand. Each one starts with a question — and the last one feeds straight back into the first."
+        lede="Seven stages I move through for every brand. Each one starts with a question, and the last one feeds straight back into the first."
       />
       <section className="mx-auto max-w-7xl px-5 pb-24 md:px-10">
         <ol>

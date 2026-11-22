@@ -13,7 +13,6 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AiProductionRouteImport } from './routes/ai-production'
 import { Route as BrandsRouteImport } from './routes/brands'
-import { Route as CavinkareRouteImport } from './routes/cavinkare'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ExperienceRouteImport } from './routes/experience'
 import { Route as ProcessRouteImport } from './routes/process'
@@ -40,11 +39,6 @@ const AiProductionRoute = AiProductionRouteImport.update({
 const BrandsRoute = BrandsRouteImport.update({
   id: '/brands',
   path: '/brands',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CavinkareRoute = CavinkareRouteImport.update({
-  id: '/cavinkare',
-  path: '/cavinkare',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -88,7 +82,6 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/ai-production': typeof AiProductionRoute
   '/brands': typeof BrandsRoute
-  '/cavinkare': typeof CavinkareRoute
   '/contact': typeof ContactRoute
   '/experience': typeof ExperienceRoute
   '/process': typeof ProcessRoute
@@ -102,7 +95,6 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/ai-production': typeof AiProductionRoute
   '/brands': typeof BrandsRoute
-  '/cavinkare': typeof CavinkareRoute
   '/contact': typeof ContactRoute
   '/experience': typeof ExperienceRoute
   '/process': typeof ProcessRoute
@@ -117,7 +109,6 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/ai-production': typeof AiProductionRoute
   '/brands': typeof BrandsRoute
-  '/cavinkare': typeof CavinkareRoute
   '/contact': typeof ContactRoute
   '/experience': typeof ExperienceRoute
   '/process': typeof ProcessRoute
@@ -133,7 +124,6 @@ export interface FileRouteTypes {
     | '/about'
     | '/ai-production'
     | '/brands'
-    | '/cavinkare'
     | '/contact'
     | '/experience'
     | '/process'
@@ -147,7 +137,6 @@ export interface FileRouteTypes {
     | '/about'
     | '/ai-production'
     | '/brands'
-    | '/cavinkare'
     | '/contact'
     | '/experience'
     | '/process'
@@ -161,7 +150,6 @@ export interface FileRouteTypes {
     | '/about'
     | '/ai-production'
     | '/brands'
-    | '/cavinkare'
     | '/contact'
     | '/experience'
     | '/process'
@@ -176,7 +164,6 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AiProductionRoute: typeof AiProductionRoute
   BrandsRoute: typeof BrandsRoute
-  CavinkareRoute: typeof CavinkareRoute
   ContactRoute: typeof ContactRoute
   ExperienceRoute: typeof ExperienceRoute
   ProcessRoute: typeof ProcessRoute
@@ -214,13 +201,6 @@ declare module '@tanstack/react-router' {
       path: '/brands'
       fullPath: '/brands'
       preLoaderRoute: typeof BrandsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/cavinkare': {
-      id: '/cavinkare'
-      path: '/cavinkare'
-      fullPath: '/cavinkare'
-      preLoaderRoute: typeof CavinkareRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -280,7 +260,6 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AiProductionRoute: AiProductionRoute,
   BrandsRoute: BrandsRoute,
-  CavinkareRoute: CavinkareRoute,
   ContactRoute: ContactRoute,
   ExperienceRoute: ExperienceRoute,
   ProcessRoute: ProcessRoute,

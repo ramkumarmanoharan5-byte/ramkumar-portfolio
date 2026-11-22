@@ -2,19 +2,18 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { PageIntro } from "@/components/site/PageIntro";
 import { MediaFrame } from "@/components/site/MediaFrame";
-import { Pending } from "@/components/site/Pending";
 import { TextLink } from "@/components/site/OriginalLink";
 import { ContactBand } from "@/components/site/ContactBand";
 import { brands } from "@/data/brands";
-import { contentItems, displayTitle } from "@/data/content";
+import { contentItems } from "@/data/content";
 
 export const Route = createFileRoute("/brands")({
   head: () => ({
     meta: [
-      { title: "Brands — Style 365, Sofa 42 & Shoutout Campus | Ramkumar M." },
-      { name: "description", content: "Brand showcases for Style 365 Studio Salon, Sofa 42 Furniture and Shoutout Campus — audiences, content areas and approach." },
+      { title: "Brands: Style 365, Sofa 42 and Shoutout Campus | Ramkumar M." },
+      { name: "description", content: "Brand showcases for Style 365 Studio Salon, Sofa 42 Furniture and Shoutout Campus: their audiences, content areas and approach." },
       { property: "og:title", content: "Brands, Audiences & Content Experiences" },
-      { property: "og:description", content: "Salon, furniture and influencer-marketing brands — each with its own audience and content approach." },
+      { property: "og:description", content: "Salon, furniture and influencer marketing brands, each with its own audience and content approach." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -71,33 +70,36 @@ function Brands() {
                   <h2 className="display-lg mt-4 text-primary">{b.displayName}</h2>
                   <p className="prose-editorial mt-6 text-foreground/85">{b.overview}</p>
                   <dl className="mt-8 space-y-3 text-sm">
+                    {b.instagramUrl && b.instagramHandle && (
+                      <div className="flex flex-wrap gap-2">
+                        <dt className="w-24 shrink-0 font-semibold">Instagram</dt>
+                        <dd><TextLink url={b.instagramUrl}>{b.instagramHandle}</TextLink></dd>
+                      </div>
+                    )}
+                    {b.website && (
+                      <div className="flex flex-wrap gap-2">
+                        <dt className="w-24 shrink-0 font-semibold">Website</dt>
+                        <dd><TextLink url={b.website}>{b.website.replace(/^https?:\/\//, "").replace(/\/$/, "")}</TextLink></dd>
+                      </div>
+                    )}
                     <div className="flex flex-wrap gap-2">
-                      <dt className="w-24 shrink-0 font-semibold">Instagram</dt>
-                      <dd>{b.instagramUrl && b.instagramHandle ? <TextLink url={b.instagramUrl}>{b.instagramHandle}</TextLink> : <Pending>Profile link to be added</Pending>}</dd>
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                      <dt className="w-24 shrink-0 font-semibold">Website</dt>
-                      <dd>{b.website ? <TextLink url={b.website}>{b.website.replace(/^https?:\/\//, "").replace(/\/$/, "")}</TextLink> : <Pending>Website to be added</Pending>}</dd>
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                      <dt className="w-24 shrink-0 font-semibold">My role</dt>
-                      <dd>{b.myRole ?? <Pending>Role on this account to be added</Pending>}</dd>
+                      <dt className="w-24 shrink-0 font-semibold">Account</dt>
+                      <dd>{b.snapshot.posts} posts, {b.snapshot.followers} followers, {b.snapshot.following} following</dd>
                     </div>
                   </dl>
                 </div>
                 <div className="space-y-6 lg:col-span-7">
-                  {b.images.length > 0 ? (
-                    b.images.map((img) => <MediaFrame key={img.src} src={img.src} alt={img.alt} caption={img.caption} aspect="aspect-[16/9]" />)
-                  ) : (
-                    <MediaFrame alt={`${b.name} visual`} aspect="aspect-[16/9]" placeholderLabel="Brand visuals to be added" />
+                  {b.images.map((img) => <MediaFrame key={img.src} src={img.src} alt={img.alt} caption={img.caption} aspect="aspect-[16/9]" />)}
+                  {b.images.length === 0 && (
+                    <div className="grid h-full content-center gap-px bg-line sm:grid-cols-3">
+                      {[["Posts", b.snapshot.posts], ["Followers", b.snapshot.followers], ["Following", b.snapshot.following]].map(([k, v]) => (
+                        <div key={k} className="bg-ivory p-8 text-center">
+                          <p className="font-display text-5xl text-primary">{v}</p>
+                          <p className="mt-2 text-xs uppercase tracking-[0.16em] text-foreground/60">{k}</p>
+                        </div>
+                      ))}
+                    </div>
                   )}
-                  <MediaFrame
-                    src={b.profileScreenshot?.src}
-                    alt={b.profileScreenshot?.alt ?? `${b.name} Instagram profile`}
-                    aspect="aspect-[16/7]"
-                    placeholderLabel="Instagram profile screenshot to be added"
-                    caption={`Account snapshot: ${b.snapshot.posts} posts · ${b.snapshot.followers} followers · ${b.snapshot.following} following`}
-                  />
                 </div>
               </div>
 
@@ -121,23 +123,21 @@ function Brands() {
                 </div>
               </div>
 
+              {(pieces.length > 0 || b.caseStudy) && (
               <div className="mt-16 flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-line pt-8">
-                <span className="eyebrow">Content pieces</span>
-                {pieces.length ? (
-                  pieces.map((p) => (
-                    <Link key={p.slug} to="/work/$slug" params={{ slug: p.slug }} className="link-draw text-sm font-semibold text-primary">
-                      {displayTitle(p)} →
-                    </Link>
-                  ))
-                ) : (
-                  <Pending>Individual content pieces to be added</Pending>
-                )}
+                {pieces.length > 0 && <span className="eyebrow">Content pieces</span>}
+                {pieces.map((p) => (
+                  <Link key={p.slug} to="/work/$slug" params={{ slug: p.slug }} className="link-draw text-sm font-semibold text-primary">
+                    {p.title} →
+                  </Link>
+                ))}
                 {b.caseStudy && (
                   <Link to="/case-studies/$slug" params={{ slug: b.caseStudy }} className="ml-auto inline-flex items-center gap-2 text-sm font-semibold text-primary">
                     Full case study <ArrowRight className="h-4 w-4" />
                   </Link>
                 )}
               </div>
+              )}
             </div>
           </section>
         );

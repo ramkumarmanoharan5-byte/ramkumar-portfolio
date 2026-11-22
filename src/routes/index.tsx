@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { profile, headlineStat } from "@/data/profile";
-import { contentItems, displayTitle } from "@/data/content";
+import { contentItems } from "@/data/content";
 import { brands } from "@/data/brands";
 import { caseStudyBySlug } from "@/data/caseStudies";
 import { ContactBand } from "@/components/site/ContactBand";
@@ -10,13 +10,13 @@ import { ContactBand } from "@/components/site/ContactBand";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Ramkumar M. — Social Media & Content Strategist Portfolio" },
+      { title: "Ramkumar M. | Social Media & Content Strategist Portfolio" },
       {
         name: "description",
         content:
-          "Social media, content strategy and performance marketing portfolio of Ramkumar M. — including a 19M+ view YouTube Short and a 2,461-lead Meta Ads campaign.",
+          "Portfolio of Ramkumar M.: TopAll product marketing, VVT Coaching social media, a 19M view YouTube Short, 3.9Cr channel views and a 2,461 lead Meta Ads campaign.",
       },
-      { property: "og:title", content: "Ramkumar M. — Social Media & Content Strategist" },
+      { property: "og:title", content: "Ramkumar M. | Social Media & Content Strategist" },
       { property: "og:description", content: "Creating content that captures attention, builds brands, and drives meaningful results." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -37,9 +37,10 @@ const disciplines = [
 ];
 
 function Home() {
-  const shorts = contentItems.filter((c) => c.brand === "The Artist Mode").slice(0, 4);
+  const shorts = contentItems.filter((c) => c.viral).slice(0, 4);
   const hero = shorts[0];
   const anna = caseStudyBySlug("anna-adarsh-womens-college");
+  const topall = caseStudyBySlug("topall");
 
   return (
     <>
@@ -81,7 +82,7 @@ function Home() {
               <p className="mt-4 font-display text-[6.5rem] leading-[0.85] md:text-[8.5rem]">{headlineStat.value}</p>
               <p className="mt-3 max-w-xs font-display text-2xl leading-tight">{headlineStat.label}</p>
               <div className="mt-8 flex items-end gap-5">
-                {hero?.image && (
+                {hero && (
                   <a href={headlineStat.url} target="_blank" rel="noopener noreferrer" className="group block w-28 shrink-0 overflow-hidden md:w-32">
                     <img src={hero.image.src} alt={hero.image.alt} className="aspect-[9/16] w-full object-cover transition-transform duration-700 group-hover:scale-105" />
                   </a>
@@ -91,7 +92,7 @@ function Home() {
                   <a href={headlineStat.url} target="_blank" rel="noopener noreferrer" className="link-draw mt-3 inline-flex items-center gap-1 text-sm font-semibold">
                     Watch the Short <ArrowUpRight className="h-4 w-4" />
                   </a>
-                  <p className="mt-3 text-[0.7rem] text-primary-foreground/60">One Short — not total channel views.</p>
+                  <p className="mt-3 text-[0.7rem] text-primary-foreground/60">One Short. The whole channel has 3.9Cr lifetime views.</p>
                 </div>
               </div>
             </div>
@@ -124,7 +125,7 @@ function Home() {
           <dl className="grid grid-cols-1 gap-px bg-line pt-px sm:grid-cols-3">
             {[
               { k: "Experience", v: "Nearly 3 years" },
-              { k: "Industries", v: "Tech, education, real estate, salon, furniture, influencer marketing" },
+              { k: "Industries", v: "EdTech, education, real estate, salon, B2B tech" },
               { k: "Platforms", v: "Instagram, YouTube, Facebook, LinkedIn" },
             ].map((f) => (
               <div key={f.k} className="bg-ivory py-5 sm:pr-5">
@@ -139,15 +140,52 @@ function Home() {
         </div>
       </section>
 
-      {/* FEATURED — THE ARTIST MODE */}
+      {/* MAIN PROJECT: TOPALL */}
+      {topall && (
+        <section className="border-t border-line bg-cream">
+          <div className="mx-auto grid max-w-7xl gap-12 px-5 py-24 md:px-10 lg:grid-cols-12 lg:items-center">
+            <div className="lg:col-span-5">
+              <p className="eyebrow">Project 01 · Main project · What I'm working on now</p>
+              <h2 className="display-lg mt-5 text-primary">TopAll</h2>
+              <p className="mt-4 font-display text-2xl leading-snug">{topall.headline}</p>
+              <p className="mt-5 leading-relaxed text-foreground/80">
+                A NEET and JEE preparation product with a free practice portal and an upgraded AI-powered app. I work on the content and marketing that bring students in for free and give them a reason to go further.
+              </p>
+              <ol className="mt-8 space-y-2 text-sm">
+                {(topall.journey?.steps ?? []).map((s, i) => (
+                  <li key={s.title} className="flex items-baseline gap-4 border-b border-line pb-2">
+                    <span className="font-display text-xl text-primary/50">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="font-medium">{s.title}</span>
+                  </li>
+                ))}
+              </ol>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Button asChild size="lg">
+                  <Link to="/case-studies/$slug" params={{ slug: "topall" }}>Read the case study <ArrowRight /></Link>
+                </Button>
+                <Button asChild size="lg" variant="outline">
+                  <a href="https://prep.topall.app/" target="_blank" rel="noopener noreferrer">Explore free resources <ArrowUpRight /></a>
+                </Button>
+              </div>
+            </div>
+            <div className="lg:col-span-7">
+              {topall.images[0] && (
+                <img src={topall.images[0].src} alt={topall.images[0].alt} loading="lazy" className="w-full border border-line object-cover shadow-sm" />
+              )}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* FEATURED: THE ARTIST MODE */}
       <section className="bg-primary text-primary-foreground">
         <div className="mx-auto max-w-7xl px-5 py-24 md:px-10">
           <div className="grid gap-10 lg:grid-cols-12">
             <div className="lg:col-span-5">
-              <p className="text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-primary-foreground/70">Featured case study · Personal project</p>
+              <p className="text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-primary-foreground/70">Project 03 · Personal project</p>
               <h2 className="display-lg mt-5">Building a faceless brand. Reaching millions.</h2>
               <p className="mt-6 max-w-md leading-relaxed text-primary-foreground/80">
-                The Artist Mode is my own faceless YouTube channel for men's style, grooming and self-improvement — and the place I learned what makes short-form content travel.
+                The Artist Mode is my own faceless YouTube channel for men's style, grooming and self-improvement. It has 3.9Cr lifetime views, 32,905 subscribers and six Shorts past a million views each.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Button asChild variant="onDark" size="lg">
@@ -162,10 +200,10 @@ function Home() {
               {shorts.map((s, i) => (
                 <Link key={s.slug} to="/work/$slug" params={{ slug: s.slug }} className={`group block ${i % 2 === 1 ? "sm:mt-10" : ""}`}>
                   <div className="aspect-[9/16] overflow-hidden bg-primary-deep">
-                    {s.image && <img src={s.image.src} alt={s.image.alt} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />}
+                    <img src={s.image.src} alt={s.image.alt} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
                   </div>
                   <p className="mt-3 font-display text-3xl leading-none">{s.metrics[0]?.value}</p>
-                  <p className="mt-1 line-clamp-2 text-xs text-primary-foreground/75">{displayTitle(s)}</p>
+                  <p className="mt-1 line-clamp-2 text-xs text-primary-foreground/75">{s.title}</p>
                 </Link>
               ))}
             </div>
@@ -174,19 +212,19 @@ function Home() {
       </section>
 
       {/* ANNA ADARSH NUMBERS */}
-      {anna?.dashboard && (
+      {anna?.results && (
         <section className="mx-auto max-w-7xl px-5 py-24 md:px-10">
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <div>
               <p className="eyebrow">Case study · Meta Ads</p>
-              <h2 className="display-md mt-4 max-w-2xl text-primary">Anna Adarsh Women's College — admission lead generation</h2>
+              <h2 className="display-md mt-4 max-w-2xl text-primary">Anna Adarsh Women's College: admission lead generation</h2>
             </div>
             <Link to="/case-studies/$slug" params={{ slug: anna.slug }} className="link-draw inline-flex items-center gap-2 font-semibold text-primary">
               See how it was run <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
           <dl className="mt-12 grid grid-cols-2 border-t border-line md:grid-cols-5">
-            {anna.dashboard.map((m) => (
+            {anna.results.metrics.map((m) => (
               <div key={m.label} className="border-b border-line py-8 pr-4 md:border-b-0 md:border-r md:px-5 md:first:pl-0 md:last:border-r-0">
                 <dd className="font-display text-5xl leading-none text-primary md:text-6xl">{m.value}</dd>
                 <dt className="mt-3 text-xs uppercase tracking-[0.16em] text-foreground/70">{m.label}</dt>
@@ -200,7 +238,7 @@ function Home() {
       {/* BRANDS */}
       <section className="bg-cream">
         <div className="mx-auto max-w-7xl px-5 py-24 md:px-10">
-          <p className="eyebrow">Brands, audiences &amp; content experiences</p>
+          <p className="eyebrow">Brands and audiences</p>
           <h2 className="display-md mt-4 max-w-3xl text-primary">Three brands, three very different audiences.</h2>
           <div className="mt-14 grid gap-px bg-line md:grid-cols-3">
             {brands.map((b) => (
@@ -212,7 +250,7 @@ function Home() {
                   <span><strong className="font-display text-2xl font-normal text-foreground">{b.snapshot.followers}</strong> followers</span>
                   <span><strong className="font-display text-2xl font-normal text-foreground">{b.snapshot.posts}</strong> posts</span>
                 </div>
-                <p className="mt-2 text-[0.7rem] italic text-rose">Account snapshot from profile screenshot</p>
+                <p className="mt-2 text-[0.7rem] italic text-rose">Account snapshot, not a growth claim</p>
                 <span className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-primary">
                   View showcase <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </span>
@@ -228,10 +266,9 @@ function Home() {
         <ul className="mt-8 border-t border-line">
           {[
             { to: "/work" as const, n: "01", t: "Every content piece has a story", d: "Individual creatives, the thinking behind them and their original links." },
-            { to: "/experience" as const, n: "02", t: "Experience", d: "Colan Infotech and VVT Solutions." },
-            { to: "/ai-production" as const, n: "03", t: "AI educational video production", d: "Research, prompt engineering and NotebookLM." },
+            { to: "/experience" as const, n: "02", t: "Experience", d: "VVT Solutions and Colan Infotech." },
+            { to: "/ai-production" as const, n: "03", t: "AI educational video production", d: "How I turn an NCERT chapter into videos with NotebookLM." },
             { to: "/process" as const, n: "04", t: "My creative process", d: "Seven stages from research to analysis." },
-            { to: "/cavinkare" as const, n: "05", t: "How I'd approach social at CavinKare", d: "A proposed approach for the Social Media Marketing role." },
           ].map((row) => (
             <li key={row.to} className="border-b border-line">
               <Link to={row.to} className="group grid items-baseline gap-2 py-7 md:grid-cols-12 md:gap-6">

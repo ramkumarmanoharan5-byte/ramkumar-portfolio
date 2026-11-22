@@ -15,16 +15,12 @@ export interface Brand {
   instagramHandle: string | null;
   instagramUrl: string | null;
   website: string | null;
-  /** Figures transcribed from a profile screenshot — a snapshot, not growth results. */
+  /** Figures transcribed from a profile screenshot. A snapshot, not growth results. */
   snapshot: BrandSnapshot;
   overview: string;
   contentAreas: string[];
   approach: { title: string; body: string }[];
-  /** Your role on this account — null until confirmed. */
-  myRole: string | null;
   images: { src: string; alt: string; caption: string }[];
-  /** Slots for the profile screenshot you supply. */
-  profileScreenshot: { src: string; alt: string } | null;
   caseStudy?: string;
 }
 
@@ -34,7 +30,7 @@ export const brands: Brand[] = [
     number: "01",
     name: "Style 365",
     displayName: "Style 365 Studio Salon",
-    industry: "Beauty, grooming & salon services",
+    industry: "Beauty, grooming and salon services",
     instagramHandle: "@style365official",
     instagramUrl: "https://www.instagram.com/style365official/",
     website: "https://style365.one/",
@@ -57,30 +53,28 @@ export const brands: Brand[] = [
       },
       {
         title: "Lead with the service",
-        body: "Service-led creatives make it easy to understand what's on offer and who it's for, so the next step — enquiring or booking — feels obvious.",
+        body: "Service-led creatives make it easy to understand what's on offer and who it's for, so the next step, enquiring or booking, feels obvious.",
       },
       {
         title: "Speak locally",
         body: "Salons are chosen close to home, so the communication stays rooted in the local audience and the neighbourhood the salon serves.",
       },
     ],
-    myRole: null,
     images: [
       {
         src: style365Website.url,
-        alt: "Style 365 Studio Salon website homepage — Leading Unisex Salon in Bangalore",
-        caption: "style365.one — homepage",
+        alt: "Style 365 Studio Salon website homepage: Leading Unisex Salon in Bangalore",
+        caption: "style365.one, homepage",
       },
     ],
-    profileScreenshot: null,
     caseStudy: "style-365",
   },
   {
     slug: "sofa-42",
     number: "02",
     name: "Sofa 42",
-    displayName: "Sofa 42 Furniture — Bengaluru",
-    industry: "Furniture & home interiors",
+    displayName: "Sofa 42 Furniture, Bengaluru",
+    industry: "Furniture and home interiors",
     instagramHandle: null,
     instagramUrl: null,
     website: null,
@@ -98,7 +92,7 @@ export const brands: Brand[] = [
     approach: [
       {
         title: "Product first",
-        body: "Clear, product-focused creatives that show shape, fabric and finish — the details people zoom in on before visiting a showroom.",
+        body: "Clear, product-focused creatives that show shape, fabric and finish: the details people zoom in on before visiting a showroom.",
       },
       {
         title: "Room, not catalogue",
@@ -109,16 +103,14 @@ export const brands: Brand[] = [
         body: "Showroom content gives people a reason to visit in person and makes the collection feel real.",
       },
     ],
-    myRole: null,
     images: [],
-    profileScreenshot: null,
   },
   {
     slug: "shoutout-campus",
     number: "03",
     name: "Shoutout Campus",
     displayName: "Shoutout Campus",
-    industry: "Influencer marketing & social media promotions",
+    industry: "Influencer marketing and social media promotions",
     instagramHandle: "@shoutout_campus",
     instagramUrl: "https://www.instagram.com/shoutout_campus/",
     website: null,
@@ -136,7 +128,7 @@ export const brands: Brand[] = [
     approach: [
       {
         title: "Creator-native",
-        body: "Promotional messages work best when they sound like the creator, not an advert — so the content follows the creator's voice.",
+        body: "Promotional messages work best when they sound like the creator, not an advert. So the content follows the creator's voice.",
       },
       {
         title: "Show the campaign",
@@ -147,9 +139,7 @@ export const brands: Brand[] = [
         body: "Even playful promotions need a clear message and a clear next step for the audience.",
       },
     ],
-    myRole: null,
     images: [],
-    profileScreenshot: null,
   },
 ];
 
