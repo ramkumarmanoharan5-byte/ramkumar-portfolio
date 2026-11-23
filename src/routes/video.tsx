@@ -98,14 +98,14 @@ function VideoShowcase() {
 
           <div className="p-6 text-center md:p-8">
             <span className="eyebrow block">Million-View Tier</span>
-            <span className="mt-2 block font-display text-4xl text-primary md:text-5xl">6+</span>
+            <span className="mt-2 block font-display text-4xl text-primary md:text-5xl">6</span>
             <span className="mt-1 block text-xs text-foreground/70">Million-View Shorts</span>
           </div>
 
           <div className="p-6 text-center md:p-8">
             <span className="eyebrow block">Subscriber Base</span>
-            <span className="mt-2 block font-display text-4xl text-primary md:text-5xl">82.9K</span>
-            <span className="mt-1 block text-xs text-foreground/70">Subscribers Scaled</span>
+            <span className="mt-2 block font-display text-4xl text-primary md:text-5xl">32,905</span>
+            <span className="mt-1 block text-xs text-foreground/70">Subscribers (YouTube Studio)</span>
           </div>
         </div>
       </section>
@@ -183,7 +183,7 @@ function VideoShowcase() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 border border-line bg-paper px-5 py-3.5 text-xs font-semibold uppercase tracking-wider text-foreground hover:border-primary hover:text-primary transition-colors cursor-pointer"
                   >
-                    <span>Visit YouTube Channel (82.9K Subs)</span>
+                    <span>Visit YouTube Channel (32.9K Subs)</span>
                     <ArrowUpRight className="h-4 w-4" />
                   </a>
                 </div>

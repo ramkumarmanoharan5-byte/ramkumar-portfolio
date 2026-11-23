@@ -205,7 +205,7 @@ export const employment: Employment[] = [
         },
         {
           label: "Main LinkedIn Page",
-          url: "https://in.linkedin.com/company/colan-infotech-private-limited",
+          url: "https://www.linkedin.com/company/colan-infotech-private-limited/home/",
           platform: "LinkedIn",
         },
         {

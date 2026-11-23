@@ -17,7 +17,11 @@ export const Route = createFileRoute("/")({
           "Portfolio of Ramkumar M.: TopAll product marketing, VVT Coaching, a 19M view YouTube Short, 3.9Cr channel views, Meta Ads admission campaigns and B2B growth.",
       },
       { property: "og:title", content: "Ramkumar M. | Social Media & Content Strategist" },
-      { property: "og:description", content: "Creating content that captures attention, builds brands, and drives meaningful results." },
+      {
+        property: "og:description",
+        content:
+          "Creating content that captures attention, builds brands, and drives meaningful results.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -36,11 +40,21 @@ const disciplines = [
   "AI-Assisted Content",
 ];
 
+const countWord = (n: number) =>
+  ["Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten"][n] ??
+  String(n);
+
 function Home() {
   const shorts = contentItems.filter((c) => c.viral).slice(0, 4);
   const hero = shorts[0];
   const anna = caseStudyBySlug("anna-adarsh-womens-college");
   const topall = caseStudyBySlug("topall");
+  const vvt = caseStudyBySlug("vvt-coaching");
+  const artist = caseStudyBySlug("the-artist-mode");
+  const vvtPieces = contentItems
+    .filter((c) => c.brand === "VVT Coaching" && c.image.orientation === "portrait")
+    .slice(0, 3);
+  const annaReel = anna?.links.find((l) => l.url.includes("instagram.com"));
 
   return (
     <>
@@ -51,8 +65,7 @@ function Home() {
             <p className="eyebrow rise">Portfolio · Social Media &amp; Content</p>
             <h1 className="display-xl rise mt-6 text-primary">
               Ramkumar
-              <br />
-              M<span className="text-rose">.</span>
+              <br />M<span className="text-rose">.</span>
             </h1>
             <p className="rise mt-6 text-sm font-semibold uppercase tracking-[0.2em] text-foreground">
               {profile.title}
@@ -65,7 +78,9 @@ function Home() {
             <p className="prose-editorial rise mt-6 text-foreground/75">{profile.supporting}</p>
             <div className="rise mt-10 flex flex-wrap gap-3">
               <Button asChild size="lg">
-                <Link to="/work">Explore My Work <ArrowRight /></Link>
+                <Link to="/work">
+                  Explore My Work <ArrowRight />
+                </Link>
               </Button>
               <Button asChild size="lg" variant="outline">
                 <Link to="/case-studies">View Projects</Link>
@@ -81,21 +96,43 @@ function Home() {
 
           <aside className="relative lg:col-span-5">
             <div className="relative bg-primary p-7 text-primary-foreground md:p-9">
-              <p className="text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-primary-foreground/70">Key achievement</p>
-              <p className="mt-4 font-display text-[6.5rem] leading-[0.85] md:text-[8.5rem]">{headlineStat.value}</p>
-              <p className="mt-3 max-w-xs font-display text-2xl leading-tight">{headlineStat.label}</p>
+              <p className="text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-primary-foreground/70">
+                Key achievement
+              </p>
+              <p className="mt-4 font-display text-[6.5rem] leading-[0.85] md:text-[8.5rem]">
+                {headlineStat.value}
+              </p>
+              <p className="mt-3 max-w-xs font-display text-2xl leading-tight">
+                {headlineStat.label}
+              </p>
               <div className="mt-8 flex items-end gap-5">
                 {hero && (
-                  <a href={headlineStat.url} target="_blank" rel="noopener noreferrer" className="group block w-28 shrink-0 overflow-hidden md:w-32">
-                    <img src={hero.image.src} alt={hero.image.alt} className="aspect-[9/16] w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <a
+                    href={headlineStat.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group block w-28 shrink-0 overflow-hidden md:w-32"
+                  >
+                    <img
+                      src={hero.image.src}
+                      alt={hero.image.alt}
+                      className="aspect-[9/16] w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
                   </a>
                 )}
                 <div>
                   <p className="text-sm text-primary-foreground/80">{headlineStat.detail}</p>
-                  <a href={headlineStat.url} target="_blank" rel="noopener noreferrer" className="link-draw mt-3 inline-flex items-center gap-1 text-sm font-semibold">
+                  <a
+                    href={headlineStat.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="link-draw mt-3 inline-flex items-center gap-1 text-sm font-semibold"
+                  >
                     Watch the Short <ArrowUpRight className="h-4 w-4" />
                   </a>
-                  <p className="mt-3 text-[0.7rem] text-primary-foreground/60">One Short. The whole channel has 3.9Cr lifetime views.</p>
+                  <p className="mt-3 text-[0.7rem] text-primary-foreground/60">
+                    One Short. The whole channel has 3.9Cr lifetime views.
+                  </p>
                 </div>
               </div>
             </div>
@@ -107,7 +144,10 @@ function Home() {
       <div className="overflow-hidden border-y border-line bg-cream py-5" aria-hidden>
         <div className="marquee flex w-max gap-10 whitespace-nowrap">
           {[...disciplines, ...disciplines].map((d, i) => (
-            <span key={i} className="flex items-center gap-10 font-display text-2xl text-foreground/80">
+            <span
+              key={i}
+              className="flex items-center gap-10 font-display text-2xl text-foreground/80"
+            >
               {d}
               <span className="text-primary">✦</span>
             </span>
@@ -123,7 +163,9 @@ function Home() {
         </div>
         <div className="space-y-5 lg:col-span-7">
           {profile.intro.map((p) => (
-            <p key={p} className="text-lg leading-relaxed text-foreground/85">{p}</p>
+            <p key={p} className="text-lg leading-relaxed text-foreground/85">
+              {p}
+            </p>
           ))}
           <dl className="grid grid-cols-1 gap-px bg-line pt-px sm:grid-cols-3">
             {[
@@ -137,7 +179,10 @@ function Home() {
               </div>
             ))}
           </dl>
-          <Link to="/about" className="link-draw inline-flex items-center gap-2 pt-2 font-semibold text-primary">
+          <Link
+            to="/about"
+            className="link-draw inline-flex items-center gap-2 pt-2 font-semibold text-primary"
+          >
             More about me <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
@@ -148,34 +193,111 @@ function Home() {
         <section className="border-t border-line bg-cream">
           <div className="mx-auto grid max-w-7xl gap-12 px-5 py-24 md:px-10 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-5">
-              <p className="eyebrow">Project 01 · Main project · What I'm working on now</p>
+              <p className="eyebrow">
+                Project {topall.number} · Main project · What I'm working on now
+              </p>
               <h2 className="display-lg mt-5 text-primary">TopAll</h2>
               <p className="mt-4 font-display text-2xl leading-snug">{topall.headline}</p>
               <p className="mt-5 leading-relaxed text-foreground/80">
-                A NEET and JEE preparation product with a free practice portal and an upgraded AI-powered app. I work on the content and marketing that bring students in for free and give them a reason to go further.
+                A NEET and JEE preparation product with a free practice portal and an upgraded
+                AI-powered app. I work on the content and marketing that bring students in for free
+                and give them a reason to go further.
               </p>
               <ol className="mt-8 space-y-2 text-sm">
                 {(topall.journey?.steps ?? []).map((s, i) => (
                   <li key={s.title} className="flex items-baseline gap-4 border-b border-line pb-2">
-                    <span className="font-display text-xl text-primary/50">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="font-display text-xl text-primary/50">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
                     <span className="font-medium">{s.title}</span>
                   </li>
                 ))}
               </ol>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Button asChild size="lg">
-                  <Link to="/case-studies/$slug" params={{ slug: "topall" }}>Read the case study <ArrowRight /></Link>
+                  <Link to="/case-studies/$slug" params={{ slug: "topall" }}>
+                    Read the case study <ArrowRight />
+                  </Link>
                 </Button>
                 <Button asChild size="lg" variant="outline">
-                  <a href="https://prep.topall.app/" target="_blank" rel="noopener noreferrer">Explore free resources <ArrowUpRight /></a>
+                  <a href="https://prep.topall.app/" target="_blank" rel="noopener noreferrer">
+                    Explore free resources <ArrowUpRight />
+                  </a>
                 </Button>
               </div>
             </div>
             <div className="lg:col-span-7">
               {topall.images[0] && (
-                <img src={topall.images[0].src} alt={topall.images[0].alt} loading="lazy" className="w-full border border-line object-cover shadow-sm" />
+                <img
+                  src={topall.images[0].src}
+                  alt={topall.images[0].alt}
+                  loading="lazy"
+                  className="w-full border border-line object-cover shadow-sm"
+                />
               )}
             </div>
+          </div>
+        </section>
+      )}
+
+      {/* PROJECT 02: VVT COACHING */}
+      {vvt && (
+        <section className="mx-auto grid max-w-7xl gap-12 px-5 py-24 md:px-10 lg:grid-cols-12 lg:items-center">
+          <div className="lg:col-span-5">
+            <p className="eyebrow">
+              Project {vvt.number} · {vvt.kind} · {vvt.industry}
+            </p>
+            <h2 className="display-lg mt-5 text-primary">{vvt.title}</h2>
+            <p className="mt-4 font-display text-2xl leading-snug">{vvt.headline}</p>
+            {vvt.highlight && (
+              <p className="mt-8 flex items-baseline gap-3 border-y border-line py-5">
+                <span className="font-display text-6xl leading-none text-primary">
+                  {vvt.highlight.value}
+                </span>
+                <span className="text-sm text-foreground/75">{vvt.highlight.label}</span>
+              </p>
+            )}
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Button asChild size="lg">
+                <Link to="/case-studies/$slug" params={{ slug: vvt.slug }}>
+                  Read the case study <ArrowRight />
+                </Link>
+              </Button>
+              {vvt.ctas?.[0] && (
+                <Button asChild size="lg" variant="outline">
+                  <a href={vvt.ctas[0].url} target="_blank" rel="noopener noreferrer">
+                    {vvt.ctas[0].label} <ArrowUpRight />
+                  </a>
+                </Button>
+              )}
+            </div>
+          </div>
+          <div className="grid grid-cols-3 gap-3 sm:gap-5 lg:col-span-7">
+            {vvtPieces.map((p, i) => (
+              <Link
+                key={p.slug}
+                to="/work/$slug"
+                params={{ slug: p.slug }}
+                className={`group block ${i === 1 ? "mt-8" : ""}`}
+              >
+                <div className="aspect-[9/16] overflow-hidden border border-line bg-paper">
+                  <img
+                    src={p.image.src}
+                    alt={p.image.alt}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </div>
+                <p className="mt-3 line-clamp-2 text-xs font-medium text-foreground/80 group-hover:text-primary">
+                  {p.title}
+                </p>
+                {p.metrics[0] && (
+                  <p className="font-display text-xl text-primary">
+                    {p.metrics[0].value} {p.metrics[0].label.toLowerCase()}
+                  </p>
+                )}
+              </Link>
+            ))}
           </div>
         </section>
       )}
@@ -185,28 +307,48 @@ function Home() {
         <div className="mx-auto max-w-7xl px-5 py-24 md:px-10">
           <div className="grid gap-10 lg:grid-cols-12">
             <div className="lg:col-span-5">
-              <p className="text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-primary-foreground/70">Project 03 · Personal project</p>
+              <p className="text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-primary-foreground/70">
+                Project {artist?.number ?? "03"} · Personal project
+              </p>
               <h2 className="display-lg mt-5">Building a faceless brand. Reaching millions.</h2>
               <p className="mt-6 max-w-md leading-relaxed text-primary-foreground/80">
-                The Artist Mode is my own faceless YouTube channel for men's style, grooming and self-improvement. It has 3.9Cr lifetime views, 32,905 subscribers and six Shorts past a million views each.
+                The Artist Mode is my own faceless YouTube channel for men's style, grooming and
+                self-improvement. It has 3.9Cr lifetime views, 32,905 subscribers and six Shorts
+                past a million views each.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Button asChild variant="onDark" size="lg">
-                  <Link to="/case-studies/$slug" params={{ slug: "the-artist-mode" }}>Read the case study <ArrowRight /></Link>
+                  <Link to="/case-studies/$slug" params={{ slug: "the-artist-mode" }}>
+                    Read the case study <ArrowRight />
+                  </Link>
                 </Button>
                 <Button asChild variant="outlineOnDark" size="lg">
-                  <Link to="/video">Watch in Video Studio <ArrowRight /></Link>
+                  <Link to="/video">
+                    Watch in Video Studio <ArrowRight />
+                  </Link>
                 </Button>
                 <Button asChild variant="outlineOnDark" size="lg">
-                  <a href={profile.contact.youtube} target="_blank" rel="noopener noreferrer">Visit channel <ArrowUpRight /></a>
+                  <a href={profile.contact.youtube} target="_blank" rel="noopener noreferrer">
+                    Visit channel <ArrowUpRight />
+                  </a>
                 </Button>
               </div>
             </div>
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:col-span-7">
               {shorts.map((s, i) => (
-                <Link key={s.slug} to="/work/$slug" params={{ slug: s.slug }} className={`group block ${i % 2 === 1 ? "sm:mt-10" : ""}`}>
+                <Link
+                  key={s.slug}
+                  to="/work/$slug"
+                  params={{ slug: s.slug }}
+                  className={`group block ${i % 2 === 1 ? "sm:mt-10" : ""}`}
+                >
                   <div className="aspect-[9/16] overflow-hidden bg-primary-deep">
-                    <img src={s.image.src} alt={s.image.alt} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                    <img
+                      src={s.image.src}
+                      alt={s.image.alt}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
                   </div>
                   <p className="mt-3 font-display text-3xl leading-none">{s.metrics[0]?.value}</p>
                   <p className="mt-1 line-clamp-2 text-xs text-primary-foreground/75">{s.title}</p>
@@ -217,50 +359,132 @@ function Home() {
         </div>
       </section>
 
-      {/* ANNA ADARSH NUMBERS */}
+      {/* PROJECT 04: ANNA ADARSH NUMBERS */}
       {anna?.results && (
-        <section className="mx-auto max-w-7xl px-5 py-24 md:px-10">
-          <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-            <div>
-              <p className="eyebrow">Case study · Meta Ads</p>
-              <h2 className="display-md mt-4 max-w-2xl text-primary">Anna Adarsh Women's College: admission lead generation</h2>
-            </div>
-            <Link to="/case-studies/$slug" params={{ slug: anna.slug }} className="link-draw inline-flex items-center gap-2 font-semibold text-primary">
-              See how it was run <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
-          <dl className="mt-12 grid grid-cols-1 border-t border-line sm:grid-cols-3">
-            {anna.results.metrics.map((m) => (
-              <div key={m.label} className="border-b border-line py-8 pr-4 sm:border-b-0 sm:border-r sm:px-5 sm:first:pl-0 sm:last:border-r-0">
-                <dd className="font-display text-5xl leading-none text-primary md:text-6xl">{m.value}</dd>
-                <dt className="mt-3 text-xs uppercase tracking-[0.16em] text-foreground/70">{m.label}</dt>
-                {m.note && <p className="mt-1 text-[0.7rem] text-rose">{m.note}</p>}
+        <section className="border-b border-line bg-paper">
+          <div className="mx-auto max-w-7xl px-5 py-24 md:px-10">
+            <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
+              <div className="lg:col-span-8">
+                <p className="eyebrow">
+                  Project {anna.number} · {anna.kind} · Meta Ads
+                </p>
+                <h2 className="display-lg mt-5 text-primary">{anna.title}</h2>
+                <p className="mt-4 max-w-2xl font-display text-2xl leading-snug">
+                  Admission lead generation that kept the cost per lead at{" "}
+                  {anna.highlight?.value ?? "₹160"}.
+                </p>
               </div>
-            ))}
-          </dl>
-          <p className="mt-6 text-xs text-muted-foreground">{anna.results.note}</p>
+              <div className="flex flex-wrap gap-3 lg:col-span-5 lg:justify-end">
+                <Button asChild size="lg">
+                  <Link to="/case-studies/$slug" params={{ slug: anna.slug }}>
+                    See how it was run <ArrowRight />
+                  </Link>
+                </Button>
+                {annaReel && (
+                  <Button asChild size="lg" variant="outline">
+                    <a href={annaReel.url} target="_blank" rel="noopener noreferrer">
+                      Watch the Reel <ArrowUpRight />
+                    </a>
+                  </Button>
+                )}
+              </div>
+            </div>
+            <dl className="mt-14 grid gap-5 sm:grid-cols-3">
+              {anna.results.metrics.map((m) => (
+                <div
+                  key={m.label}
+                  className="border-t-4 border-primary bg-cream p-7 shadow-[var(--shadow-print)]"
+                >
+                  <dd className="font-display text-6xl leading-none text-primary md:text-7xl">
+                    {m.value}
+                  </dd>
+                  <dt className="mt-4 text-xs font-semibold uppercase tracking-[0.16em] text-foreground">
+                    {m.label}
+                  </dt>
+                  {m.note && <p className="mt-1 text-xs text-foreground/65">{m.note}</p>}
+                </div>
+              ))}
+            </dl>
+            <p className="mt-6 text-xs text-muted-foreground">{anna.results.note}</p>
+          </div>
         </section>
       )}
 
       {/* BRANDS */}
       <section className="bg-cream">
         <div className="mx-auto max-w-7xl px-5 py-24 md:px-10">
-          <p className="eyebrow">Brands and audiences</p>
-          <h2 className="display-md mt-4 max-w-3xl text-primary">Two brands, two very different audiences.</h2>
-          <div className="mt-14 grid gap-px bg-line md:grid-cols-2">
+          <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+            <div>
+              <p className="eyebrow">Brands and audiences</p>
+              <h2 className="display-lg mt-4 max-w-3xl text-primary">
+                {countWord(brands.length)} brands, {countWord(brands.length).toLowerCase()} very
+                different audiences.
+              </h2>
+            </div>
+            <Link
+              to="/brands"
+              className="link-draw inline-flex items-center gap-2 font-semibold text-primary"
+            >
+              All brand showcases <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {brands.map((b) => (
-              <Link key={b.slug} to="/brands" hash={b.slug} className="group bg-cream p-8 transition-colors hover:bg-paper">
-                <p className="font-display text-sm text-rose">{b.number}</p>
-                <h3 className="mt-6 font-display text-3xl text-primary">{b.name}</h3>
-                <p className="mt-2 text-sm text-foreground/70">{b.industry}</p>
-                <div className="mt-8 flex gap-6 text-sm">
-                  <span><strong className="font-display text-2xl font-normal text-foreground">{b.snapshot.followers}</strong> followers</span>
-                  <span><strong className="font-display text-2xl font-normal text-foreground">{b.snapshot.posts}</strong> posts</span>
+              <Link
+                key={b.slug}
+                to="/brands"
+                hash={b.slug}
+                className="group flex flex-col border border-line bg-paper shadow-[var(--shadow-print)] transition-all hover:-translate-y-1 hover:border-primary"
+              >
+                <div className="relative aspect-[4/3] overflow-hidden bg-ivory">
+                  {b.images[0] ? (
+                    <img
+                      src={b.images[0].src}
+                      alt={b.images[0].alt}
+                      loading="lazy"
+                      className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                    />
+                  ) : (
+                    <div className="flex h-full items-center justify-center bg-primary font-display text-5xl text-primary-foreground">
+                      {b.name}
+                    </div>
+                  )}
+                  <span className="absolute left-3 top-3 bg-primary px-2 py-0.5 font-display text-sm text-primary-foreground">
+                    {b.number}
+                  </span>
                 </div>
-                <p className="mt-2 text-[0.7rem] italic text-rose">Account snapshot, not a growth claim</p>
-                <span className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-primary">
-                  View showcase <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </span>
+                <div className="flex flex-1 flex-col p-6">
+                  <h3 className="font-display text-3xl text-primary">{b.name}</h3>
+                  <p className="mt-1 text-sm text-foreground/70">{b.industry}</p>
+                  <div className="mt-6 border-t border-line pt-4">
+                    {b.snapshot.followers ? (
+                      <>
+                        <p className="text-sm">
+                          <strong className="font-display text-3xl font-normal text-foreground">
+                            {b.snapshot.followers}
+                          </strong>{" "}
+                          followers
+                        </p>
+                        <p className="mt-1 text-[0.7rem] italic text-rose">
+                          Account snapshot, not a growth claim
+                        </p>
+                      </>
+                    ) : b.keyStat ? (
+                      <p className="text-sm">
+                        <strong className="font-display text-3xl font-normal text-foreground">
+                          {b.keyStat.value}
+                        </strong>{" "}
+                        {b.keyStat.label}
+                      </p>
+                    ) : (
+                      <p className="text-sm text-foreground/70">Pre-launch teaser campaign</p>
+                    )}
+                  </div>
+                  <span className="mt-auto inline-flex items-center gap-2 pt-6 text-sm font-semibold text-primary">
+                    View showcase{" "}
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </span>
+                </div>
               </Link>
             ))}
           </div>
@@ -272,16 +496,48 @@ function Home() {
         <p className="eyebrow">Continue exploring</p>
         <ul className="mt-8 border-t border-line">
           {[
-            { to: "/work" as const, n: "01", t: "Work, organised by brand", d: "Twelve company and brand project folders with deliverables and case studies." },
-            { to: "/video" as const, n: "02", t: "Made to Move: Video Studio", d: "Vertical Shorts and Reels with over 3.9 Crore views and retention hooks." },
-            { to: "/experience" as const, n: "03", t: "Professional Experience", d: "VVT Solutions Pvt. Ltd. and Colan Infotech with verified links." },
-            { to: "/ai-production" as const, n: "04", t: "AI educational video production", d: "How I turn an NCERT chapter into videos with NotebookLM." },
-            { to: "/process" as const, n: "05", t: "My creative process", d: "Seven stages from research to distribution and analysis." },
+            {
+              to: "/work" as const,
+              n: "01",
+              t: "Work, organised by brand",
+              d: "Twelve company and brand project folders with deliverables and case studies.",
+            },
+            {
+              to: "/video" as const,
+              n: "02",
+              t: "Made to Move: Video Studio",
+              d: "Vertical Shorts and Reels with over 3.9 Crore views and retention hooks.",
+            },
+            {
+              to: "/experience" as const,
+              n: "03",
+              t: "Professional Experience",
+              d: "VVT Solutions Pvt. Ltd. and Colan Infotech with verified links.",
+            },
+            {
+              to: "/ai-production" as const,
+              n: "04",
+              t: "AI educational video production",
+              d: "How I turn an NCERT chapter into videos with NotebookLM.",
+            },
+            {
+              to: "/process" as const,
+              n: "05",
+              t: "My creative process",
+              d: "Seven stages from research to distribution and analysis.",
+            },
           ].map((row) => (
             <li key={row.to} className="border-b border-line">
-              <Link to={row.to} className="group grid items-baseline gap-2 py-7 md:grid-cols-12 md:gap-6">
-                <span className="text-xs font-semibold tracking-[0.2em] text-rose md:col-span-1">{row.n}</span>
-                <span className="font-display text-3xl text-foreground transition-colors group-hover:text-primary md:col-span-6 md:text-4xl">{row.t}</span>
+              <Link
+                to={row.to}
+                className="group grid items-baseline gap-2 py-7 md:grid-cols-12 md:gap-6"
+              >
+                <span className="text-xs font-semibold tracking-[0.2em] text-rose md:col-span-1">
+                  {row.n}
+                </span>
+                <span className="font-display text-3xl text-foreground transition-colors group-hover:text-primary md:col-span-6 md:text-4xl">
+                  {row.t}
+                </span>
                 <span className="text-sm text-foreground/70 md:col-span-4">{row.d}</span>
                 <ArrowRight className="hidden h-5 w-5 text-primary transition-transform group-hover:translate-x-1 md:col-span-1 md:block md:justify-self-end" />
               </Link>

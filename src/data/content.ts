@@ -397,7 +397,7 @@ export const contentItems: ContentItem[] = [
     contribution: ["Instagram content", "Publishing"],
     metrics: [{ label: "Views", value: "11.3K" }],
     metricsSource: "View count as shown in the Instagram screenshot.",
-    url: "https://www.instagram.com/reel/DdY2cFKztu4/",
+    url: "https://www.instagram.com/p/DdY2cFKztu4/",
     ctaLabel: "View Original Reel",
     image: { src: drVikramReel.url, alt: "Students sitting on campus steps looking at their phones in an Instagram Reel", orientation: "portrait" },
   },

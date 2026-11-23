@@ -1,5 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { Pending } from "@/components/site/Pending";
+import type { Brand } from "@/data/brands";
 import { PageIntro } from "@/components/site/PageIntro";
 import { MediaFrame } from "@/components/site/MediaFrame";
 import { TextLink } from "@/components/site/OriginalLink";
@@ -10,10 +12,18 @@ import { contentItems } from "@/data/content";
 export const Route = createFileRoute("/brands")({
   head: () => ({
     meta: [
-      { title: "Brands: Style 365 and Sofa 42 | Ramkumar M." },
-      { name: "description", content: "Brand showcases for Style 365 Studio Salon and Sofa 42 Furniture: their audiences, content areas and approach." },
+      { title: "Brands: Style 365, Sofa 42, Asta Properties, Ambrig Homes | Ramkumar M." },
+      {
+        name: "description",
+        content:
+          "Brand showcases for Style 365 Studio Salon, Sofa 42 Furniture, Asta Properties and Ambrig Homes: their audiences, content areas and approach.",
+      },
       { property: "og:title", content: "Brands, Audiences & Content Experiences" },
-      { property: "og:description", content: "Salon and furniture brands, each with its own audience and content approach." },
+      {
+        property: "og:description",
+        content:
+          "Salon, furniture and real estate brands, each with its own audience and content approach.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -21,40 +31,64 @@ export const Route = createFileRoute("/brands")({
   component: Brands,
 });
 
+const stats = (b: Brand) =>
+  [
+    ["Posts", b.snapshot.posts],
+    ["Followers", b.snapshot.followers],
+    ["Following", b.snapshot.following],
+  ] as const;
+
+const hasSnapshot = (b: Brand) => stats(b).some(([, v]) => v !== null);
+
 function Brands() {
   return (
     <>
       <PageIntro
         eyebrow="Brands"
         title="Brands, Audiences & Content Experiences"
-        lede="A salon and a furniture showroom. Each needed content shaped around a different audience and a different reason to engage."
+        lede="A salon, a furniture showroom and two real estate brands. Each needed content shaped around a different audience and a different reason to engage."
       />
 
       {/* Overview */}
       <section className="mx-auto max-w-7xl px-5 md:px-10">
-        <div className="grid gap-px bg-line md:grid-cols-2">
+        <div className="grid gap-px bg-line sm:grid-cols-2 xl:grid-cols-4">
           {brands.map((b) => (
-            <a key={b.slug} href={`#${b.slug}`} className="group bg-ivory p-8 transition-colors hover:bg-cream">
+            <a
+              key={b.slug}
+              href={`#${b.slug}`}
+              className="group bg-ivory p-8 transition-colors hover:bg-cream"
+            >
               <p className="font-display text-6xl text-primary/25">{b.number}</p>
               <h2 className="mt-4 font-display text-3xl text-primary">{b.name}</h2>
               <p className="mt-1 text-sm text-foreground/70">{b.industry}</p>
-              <dl className="mt-6 grid grid-cols-3 gap-2 border-t border-line pt-4 text-center">
-                {[
-                  ["Posts", b.snapshot.posts],
-                  ["Followers", b.snapshot.followers],
-                  ["Following", b.snapshot.following],
-                ].map(([k, v]) => (
-                  <div key={k}>
-                    <dd className="font-display text-2xl">{v}</dd>
-                    <dt className="text-[0.65rem] uppercase tracking-[0.16em] text-foreground/60">{k}</dt>
-                  </div>
-                ))}
-              </dl>
+              {hasSnapshot(b) ? (
+                <dl className="mt-6 grid grid-cols-3 gap-2 border-t border-line pt-4 text-center">
+                  {stats(b).map(([k, v]) => (
+                    <div key={k}>
+                      <dd className="font-display text-2xl">{v ?? "–"}</dd>
+                      <dt className="text-[0.65rem] uppercase tracking-[0.16em] text-foreground/60">
+                        {k}
+                      </dt>
+                    </div>
+                  ))}
+                </dl>
+              ) : (
+                <div className="mt-6 border-t border-line pt-4">
+                  {b.keyStat && (
+                    <p>
+                      <span className="font-display text-2xl text-primary">{b.keyStat.value}</span>{" "}
+                      <span className="text-xs text-foreground/70">{b.keyStat.label}</span>
+                    </p>
+                  )}
+                  <Pending className="mt-2 text-xs">Account figures to be added</Pending>
+                </div>
+              )}
             </a>
           ))}
         </div>
         <p className="mt-4 text-xs italic text-rose">
-          Figures are transcribed from profile screenshots as account snapshots. They are not current verified figures and do not represent growth I generated.
+          Posts, followers and following are transcribed from profile screenshots as account
+          snapshots. They are not current verified figures and do not represent growth I generated.
         </p>
       </section>
 
@@ -62,40 +96,88 @@ function Brands() {
       {brands.map((b, i) => {
         const pieces = contentItems.filter((c) => c.brand === b.displayName || c.brand === b.name);
         return (
-          <section key={b.slug} id={b.slug} className={`scroll-mt-20 ${i % 2 === 0 ? "bg-cream" : ""} mt-24`}>
+          <section
+            key={b.slug}
+            id={b.slug}
+            className={`scroll-mt-20 ${i % 2 === 0 ? "bg-cream" : ""} mt-24`}
+          >
             <div className="mx-auto max-w-7xl px-5 py-24 md:px-10">
               <div className="grid gap-12 lg:grid-cols-12">
                 <div className="lg:col-span-5">
-                  <p className="eyebrow">Brand {b.number} · {b.industry}</p>
+                  <p className="eyebrow">
+                    Brand {b.number} · {b.industry}
+                  </p>
                   <h2 className="display-lg mt-4 text-primary">{b.displayName}</h2>
                   <p className="prose-editorial mt-6 text-foreground/85">{b.overview}</p>
                   <dl className="mt-8 space-y-3 text-sm">
                     {b.instagramUrl && b.instagramHandle && (
                       <div className="flex flex-wrap gap-2">
                         <dt className="w-24 shrink-0 font-semibold">Instagram</dt>
-                        <dd><TextLink url={b.instagramUrl}>{b.instagramHandle}</TextLink></dd>
+                        <dd>
+                          <TextLink url={b.instagramUrl}>{b.instagramHandle}</TextLink>
+                        </dd>
                       </div>
                     )}
                     {b.website && (
                       <div className="flex flex-wrap gap-2">
                         <dt className="w-24 shrink-0 font-semibold">Website</dt>
-                        <dd><TextLink url={b.website}>{b.website.replace(/^https?:\/\//, "").replace(/\/$/, "")}</TextLink></dd>
+                        <dd>
+                          <TextLink url={b.website}>
+                            {b.website.replace(/^https?:\/\//, "").replace(/\/$/, "")}
+                          </TextLink>
+                        </dd>
                       </div>
                     )}
                     <div className="flex flex-wrap gap-2">
                       <dt className="w-24 shrink-0 font-semibold">Account</dt>
-                      <dd>{b.snapshot.posts} posts, {b.snapshot.followers} followers, {b.snapshot.following} following</dd>
+                      <dd>
+                        {hasSnapshot(b) ? (
+                          `${b.snapshot.posts ?? "–"} posts, ${b.snapshot.followers ?? "–"} followers, ${b.snapshot.following ?? "–"} following`
+                        ) : (
+                          <Pending>Account figures to be added</Pending>
+                        )}
+                      </dd>
                     </div>
+                    {b.keyStat && (
+                      <div className="flex flex-wrap gap-2">
+                        <dt className="w-24 shrink-0 font-semibold">Key figure</dt>
+                        <dd>
+                          <span className="font-semibold text-primary">{b.keyStat.value}</span>{" "}
+                          {b.keyStat.label}
+                        </dd>
+                      </div>
+                    )}
                   </dl>
+                  {b.featuredLink && (
+                    <a
+                      href={b.featuredLink.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-8 inline-flex items-center gap-2 bg-primary px-5 py-3 text-xs font-semibold uppercase tracking-[0.15em] text-primary-foreground transition-colors hover:bg-primary-deep"
+                    >
+                      {b.featuredLink.label} <ArrowUpRight className="h-4 w-4" />
+                    </a>
+                  )}
                 </div>
                 <div className="space-y-6 lg:col-span-7">
-                  {b.images.map((img) => <MediaFrame key={img.src} src={img.src} alt={img.alt} caption={img.caption} aspect="aspect-[16/9]" />)}
-                  {b.images.length === 0 && (
+                  {b.images.map((img) => (
+                    <MediaFrame
+                      key={img.src}
+                      src={img.src}
+                      alt={img.alt}
+                      caption={img.caption}
+                      aspect={img.aspect ?? "aspect-[16/9]"}
+                      {...(img.frameClass ? { className: img.frameClass } : {})}
+                    />
+                  ))}
+                  {b.images.length === 0 && hasSnapshot(b) && (
                     <div className="grid h-full content-center gap-px bg-line sm:grid-cols-3">
-                      {[["Posts", b.snapshot.posts], ["Followers", b.snapshot.followers], ["Following", b.snapshot.following]].map(([k, v]) => (
+                      {stats(b).map(([k, v]) => (
                         <div key={k} className="bg-ivory p-8 text-center">
                           <p className="font-display text-5xl text-primary">{v}</p>
-                          <p className="mt-2 text-xs uppercase tracking-[0.16em] text-foreground/60">{k}</p>
+                          <p className="mt-2 text-xs uppercase tracking-[0.16em] text-foreground/60">
+                            {k}
+                          </p>
                         </div>
                       ))}
                     </div>
@@ -108,14 +190,19 @@ function Brands() {
                   <h3 className="eyebrow mb-5">Content areas</h3>
                   <ul className="space-y-2">
                     {b.contentAreas.map((a) => (
-                      <li key={a} className="flex items-baseline gap-3 border-b border-line pb-2"><span className="text-xs text-primary">✦</span>{a}</li>
+                      <li key={a} className="flex items-baseline gap-3 border-b border-line pb-2">
+                        <span className="text-xs text-primary">✦</span>
+                        {a}
+                      </li>
                     ))}
                   </ul>
                 </div>
                 <div className="grid gap-8 md:grid-cols-3 lg:col-span-8">
                   {b.approach.map((ap, n) => (
                     <div key={ap.title}>
-                      <p className="font-display text-4xl text-primary/30">{String(n + 1).padStart(2, "0")}</p>
+                      <p className="font-display text-4xl text-primary/30">
+                        {String(n + 1).padStart(2, "0")}
+                      </p>
                       <h4 className="mt-2 font-display text-2xl text-primary">{ap.title}</h4>
                       <p className="mt-3 text-sm leading-relaxed text-foreground/80">{ap.body}</p>
                     </div>
@@ -124,19 +211,28 @@ function Brands() {
               </div>
 
               {(pieces.length > 0 || b.caseStudy) && (
-              <div className="mt-16 flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-line pt-8">
-                {pieces.length > 0 && <span className="eyebrow">Content pieces</span>}
-                {pieces.map((p) => (
-                  <Link key={p.slug} to="/work/$slug" params={{ slug: p.slug }} className="link-draw text-sm font-semibold text-primary">
-                    {p.title} →
-                  </Link>
-                ))}
-                {b.caseStudy && (
-                  <Link to="/case-studies/$slug" params={{ slug: b.caseStudy }} className="ml-auto inline-flex items-center gap-2 text-sm font-semibold text-primary">
-                    Full case study <ArrowRight className="h-4 w-4" />
-                  </Link>
-                )}
-              </div>
+                <div className="mt-16 flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-line pt-8">
+                  {pieces.length > 0 && <span className="eyebrow">Content pieces</span>}
+                  {pieces.map((p) => (
+                    <Link
+                      key={p.slug}
+                      to="/work/$slug"
+                      params={{ slug: p.slug }}
+                      className="link-draw text-sm font-semibold text-primary"
+                    >
+                      {p.title} →
+                    </Link>
+                  ))}
+                  {b.caseStudy && (
+                    <Link
+                      to="/case-studies/$slug"
+                      params={{ slug: b.caseStudy }}
+                      className="ml-auto inline-flex items-center gap-2 text-sm font-semibold text-primary"
+                    >
+                      Full case study <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  )}
+                </div>
               )}
             </div>
           </section>

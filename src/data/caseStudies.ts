@@ -208,6 +208,7 @@ export const caseStudies: CaseStudy[] = [
     client: "VVT Coaching Centre, NEET coaching in Chennai",
     kind: "Employer work",
     industry: "NEET coaching",
+    highlight: { value: "5,671", label: "views on Girls NEET Campus Reel" },
     headline: "Audience engagement, campaign marketing and CRM lead management for a premier coaching institute.",
     summary:
       "VVT Coaching Centre is a leading NEET coaching institute in Chennai, operated by my employer VVT Solutions Pvt. Ltd. I manage VVT Coaching's Instagram channel, social media campaigns, educational content, blog publishing, and on-page SEO. My role also encompasses critical admission marketing, including the Repeaters Course admission campaign, VVTSAT scholarship promotions, crash course marketing, and end-to-end CRM setup and lead-management workflows.",
@@ -534,7 +535,7 @@ export const caseStudies: CaseStudy[] = [
       "In higher education marketing, keeping enquiry forms short significantly reduces form drop-off and lowers CPL.",
       "Daily budget monitoring and creative pruning are critical to preventing ad fatigue during peak admission season.",
     ],
-    links: [],
+    links: [{ label: "Admission campaign Reel on Instagram", url: "https://www.instagram.com/reel/DZ-OjGvJict/" }],
   },
 
   /* 05 ------------------------------------------------------------------ */
@@ -545,6 +546,7 @@ export const caseStudies: CaseStudy[] = [
     client: "Anna Adarsh Group of Schools",
     kind: "Client project",
     industry: "School education",
+    highlight: { value: "5", label: "schools in one admission campaign" },
     headline: "Parent-focused admission campaigns across five distinct schools.",
     summary:
       "Education marketing and admission campaigns for a group of five schools. Because parents are the primary decision-makers, communication prioritized school values, academic care, and student safety while driving local admission enquiries.",
@@ -577,7 +579,7 @@ export const caseStudies: CaseStudy[] = [
       "When marketing to parents, institutional reputation and student safety outweigh flashy creative concepts.",
       "A group brand still requires hyper-localized messaging for each individual campus.",
     ],
-    links: [],
+    links: [{ label: "School campaign Reel on Instagram", url: "https://www.instagram.com/reel/DeGySo9Nswi/" }],
   },
 
   /* 06 ------------------------------------------------------------------ */
@@ -625,7 +627,7 @@ export const caseStudies: CaseStudy[] = [
       "Students engage deeply with social content that looks and feels like authentic daily campus life.",
       "Setting up proper tracking early provides clear insight into which creative concepts generate genuine interest.",
     ],
-    links: [],
+    links: [{ label: "Campus Reel on Instagram (11.3K views)", url: "https://www.instagram.com/p/DdY2cFKztu4/" }],
   },
 
   /* 07 ------------------------------------------------------------------ */
@@ -696,6 +698,7 @@ export const caseStudies: CaseStudy[] = [
       "Showing real transformation outcomes is the single most effective creative angle for beauty services.",
     ],
     links: [
+      { label: "Salon Reel on Instagram", url: "https://www.instagram.com/reel/DZfDErthSCj/" },
       { label: "Website", url: "https://style365.one/" },
       { label: "Instagram @style365official", url: "https://www.instagram.com/style365official/" },
     ],
@@ -800,6 +803,7 @@ export const caseStudies: CaseStudy[] = [
     client: "Sofa 42 Furniture, Bengaluru",
     kind: "Client project",
     industry: "Furniture and home interiors",
+    highlight: { value: "1,448", label: "Instagram followers (account snapshot)" },
     headline: "Lifestyle-led presentation, SEO and paid advertising for custom furniture.",
     summary:
       "Content strategy, SEO, paid advertising campaigns, and social media planning for Sofa 42 Furniture in Bengaluru. The approach shifted focus from generic furniture catalogues to lived-in lifestyle presentation, helping buyers picture handcrafted sofas in their own homes and driving showroom visits.",
@@ -847,7 +851,7 @@ export const caseStudies: CaseStudy[] = [
       "Furniture buyers make significant purchase decisions visually; room context and material details convert better than plain studio cutouts.",
       "Showroom content bridges the gap between digital discovery and physical in-store purchases.",
     ],
-    links: [],
+    links: [{ label: "Sofa 42 Reel on Instagram", url: "https://www.instagram.com/reel/DeTfw_NR7IK/" }],
   },
 
   /* 11 ------------------------------------------------------------------ */
@@ -979,7 +983,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     links: [
       { label: "Official website", url: "https://www.colaninfotech.com/" },
-      { label: "Main LinkedIn page", url: "https://in.linkedin.com/company/colan-infotech-private-limited" },
+      { label: "Main LinkedIn page", url: "https://www.linkedin.com/company/colan-infotech-private-limited/home/" },
       { label: "Facebook page", url: "https://www.facebook.com/ColanInfotechPvtLtd" },
       { label: "Instagram page", url: "https://www.instagram.com/colaninfotechpvtltd/" },
       { label: "Madurai Showcase", url: "https://in.linkedin.com/showcase/colan-infotech-pvt-ltd-madurai/" },

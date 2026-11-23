@@ -254,7 +254,7 @@ export const brandFolders: BrandFolder[] = [
     caseStudySlug: "the-artist-mode",
     websiteUrl: "https://www.youtube.com/@TheArtistMode/shorts",
     overview:
-      "Self-built faceless YouTube channel in men's style and grooming. Scripted, edited, and scaled content that achieved 3.9 Crore lifetime views, 82.9K subscribers, and a single viral Short with 19 Million views.",
+      "Self-built faceless YouTube channel in men's style and grooming. Scripted, edited, and scaled content that achieved 3.9 Crore lifetime views, 32,905 subscribers, 82.9K watch hours, and a single viral Short with 19 Million views.",
     deepDive:
       "The Artist Mode proved that massive digital reach does not require celebrity talent or expensive camera gear. By mastering audience psychology, immediate 0.8-second dilemma hooks, and rapid visual pacing, I transformed everyday grooming dilemmas into hyper-retainable vertical video loops.",
     targetAudience: "Young men (16–28) interested in modern haircuts, fashion styling, aesthetic photography, and self-improvement.",
@@ -267,12 +267,13 @@ export const brandFolders: BrandFolder[] = [
       "Channel Operations & Analytics",
     ],
     platforms: ["YouTube Shorts", "YouTube Studio Analytics"],
-    keyMetric: { value: "3.9Cr", label: "Lifetime Channel Views · 82.9K Subs" },
+    keyMetric: { value: "3.9Cr", label: "Lifetime Channel Views · 32,905 Subscribers" },
     metricsDetail: [
       { label: "Lifetime Views", value: "3.9Cr", note: "39,000,000+ organic channel views" },
       { label: "Single Peak Video", value: "19M", note: "Fade haircut comparison Short" },
       { label: "Million+ Hits", value: "6 Shorts", note: "19M, 3M, 2.3M, 2.2M, 1.5M, 1.2M" },
-      { label: "Subscribers", value: "82.9K", note: "Built entirely through organic Shorts" },
+      { label: "Subscribers", value: "32,905", note: "Built entirely through organic Shorts" },
+      { label: "Watch Hours", value: "82.9K", note: "Lifetime, from YouTube Studio" },
     ],
     previewImages: [
       { src: "https://i.ytimg.com/vi/3tl3vXdl5_Y/oar2.jpg", alt: "19M View Short: Finding Your Ideal Fade Haircut", label: "19M Short" },
@@ -344,9 +345,7 @@ export const brandFolders: BrandFolder[] = [
       { label: "Total Reach", value: "24.8L", note: "Unique prospective student/parent accounts reached" },
       { label: "Impressions", value: "1.04Cr", note: "Total ad impressions delivered across Tamil Nadu" },
     ],
-    previewImages: [
-      { src: drVikramReel.url, alt: "Campus Social Media Creative", label: "Campus Feed" },
-    ],
+    previewImages: [],
     featuredDeliverables: [
       "₹160 cost-per-lead achieved during peak admission season",
       "24.8 Lakh accounts reached across targeted geographic cohorts",
@@ -374,6 +373,7 @@ export const brandFolders: BrandFolder[] = [
       },
     ],
     officialLinks: [
+      { label: "Watch Admission Campaign Reel", url: "https://www.instagram.com/reel/DZ-OjGvJict/", type: "instagram", badge: "Instagram Reel" },
       { label: "Anna Adarsh Official Website", url: "https://annaadarsh.edu.in/", type: "website", badge: "Official Website" },
       { label: "College LinkedIn Profile", url: "https://www.linkedin.com/school/anna-adarsh-college-for-women/", type: "linkedin", badge: "LinkedIn" },
     ],
@@ -402,14 +402,12 @@ export const brandFolders: BrandFolder[] = [
       "Social Media Content Planning",
     ],
     platforms: ["Instagram", "Facebook", "Meta Campaigns"],
-    keyMetric: { value: "Parent Trust", label: "Institutional Storytelling" },
+    keyMetric: { value: "5 Schools", label: "One Parent-Focused Admission Campaign" },
     metricsDetail: [
       { label: "Focus", value: "K-12 Branding", note: "Nursery through higher secondary parent engagement" },
       { label: "Channel", value: "Social Media", note: "Community updates and admission visibility" },
     ],
-    previewImages: [
-      { src: drVikramReel.url, alt: "School Community & Campus", label: "School Life" },
-    ],
+    previewImages: [],
     featuredDeliverables: [
       "Curriculum, safety, and faculty showcase posts",
       "Parent reassurance creative framework across social channels",
@@ -427,6 +425,7 @@ export const brandFolders: BrandFolder[] = [
       },
     ],
     officialLinks: [
+      { label: "Watch School Campaign Reel", url: "https://www.instagram.com/reel/DeGySo9Nswi/", type: "instagram", badge: "Instagram Reel" },
       { label: "School Group Official Website", url: "https://annaadarsh.edu.in/", type: "website", badge: "Official Website" },
     ],
   },
@@ -478,7 +477,7 @@ export const brandFolders: BrandFolder[] = [
       },
     ],
     officialLinks: [
-      { label: "Watch 11.3K Campus Reel", url: "https://www.instagram.com/reel/DdY2cFKztu4/", type: "instagram", badge: "Instagram Reel · 11.3K" },
+      { label: "Watch 11.3K Campus Reel", url: "https://www.instagram.com/p/DdY2cFKztu4/", type: "instagram", badge: "Instagram Reel · 11.3K" },
     ],
   },
   {
@@ -633,6 +632,7 @@ export const brandFolders: BrandFolder[] = [
     ],
     officialLinks: [
       { label: "Official Salon Website", url: "https://style365.one/", type: "website", badge: "Official Website" },
+      { label: "Watch Salon Reel", url: "https://www.instagram.com/reel/DZfDErthSCj/", type: "instagram", badge: "Instagram Reel" },
       { label: "Instagram Profile (@style365official)", url: "https://www.instagram.com/style365official/", type: "instagram", badge: "Instagram · 7.5K" },
     ],
   },
@@ -664,9 +664,7 @@ export const brandFolders: BrandFolder[] = [
       { label: "Curated Posts", value: "159 Posts", note: "Complete visual catalog of sofa models and finishes" },
       { label: "Showroom Audience", value: "1,448 Followers", note: "Bengaluru interior enthusiasts and furniture shoppers" },
     ],
-    previewImages: [
-      { src: style365Website.url, alt: "Sofa 42 Furniture Interior Showcase", label: "Living Inspiration" },
-    ],
+    previewImages: [],
     featuredDeliverables: [
       "Product-first creative posts highlighting fabric, texture, and frame",
       "Living room contextual styling that helps buyers visualize at home",
@@ -683,7 +681,9 @@ export const brandFolders: BrandFolder[] = [
         ],
       },
     ],
-    officialLinks: [],
+    officialLinks: [
+      { label: "Watch Sofa 42 Reel", url: "https://www.instagram.com/reel/DeTfw_NR7IK/", type: "instagram", badge: "Instagram Reel" },
+    ],
   },
   {
     id: "colan-infotech",
@@ -710,15 +710,13 @@ export const brandFolders: BrandFolder[] = [
       "Client Social Media Account Management",
     ],
     platforms: ["LinkedIn Corporate & Regional", "Facebook", "Instagram", "Corporate Blog"],
-    keyMetric: { value: "B2B Reach", label: "3 Regional Hubs & Corporate Channels" },
+    keyMetric: { value: "300+", label: "Organic B2B Leads · LinkedIn 45K to 60K" },
     metricsDetail: [
       { label: "Corporate Platforms", value: "LinkedIn, FB, IG", note: "Complete corporate social media presence management" },
       { label: "Regional Showcase", value: "3 Hubs", note: "Madurai, Pernambut, and Bangalore showcase pages" },
       { label: "Client Accounts", value: "Multi-Client", note: "Content planning and digital marketing for agency clients" },
     ],
-    previewImages: [
-      { src: topallYoutube.url, alt: "B2B Technology and Social Presence", label: "Tech Presence" },
-    ],
+    previewImages: [],
     featuredDeliverables: [
       "Main corporate LinkedIn & regional showcases (Madurai, Pernambut, Bangalore)",
       "Technical knowledge quizzes, polls, memes, and job openings",
@@ -747,7 +745,7 @@ export const brandFolders: BrandFolder[] = [
     ],
     officialLinks: [
       { label: "Colan Infotech Website", url: "https://www.colaninfotech.com/", type: "website", badge: "Official Website" },
-      { label: "Corporate LinkedIn Page", url: "https://in.linkedin.com/company/colan-infotech-private-limited", type: "linkedin", badge: "Corporate LinkedIn" },
+      { label: "Corporate LinkedIn Page", url: "https://www.linkedin.com/company/colan-infotech-private-limited/home/", type: "linkedin", badge: "Corporate LinkedIn" },
       { label: "Official Facebook Page", url: "https://www.facebook.com/ColanInfotechPvtLtd", type: "facebook", badge: "Facebook" },
       { label: "Official Instagram Page", url: "https://www.instagram.com/colaninfotechpvtltd/", type: "instagram", badge: "Instagram" },
       { label: "LinkedIn Madurai Hub", url: "https://in.linkedin.com/showcase/colan-infotech-pvt-ltd-madurai/", type: "linkedin", badge: "Regional: Madurai" },

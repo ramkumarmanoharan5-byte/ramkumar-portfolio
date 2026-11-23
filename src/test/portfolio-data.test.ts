@@ -68,7 +68,7 @@ describe("portfolio accuracy rules", () => {
 
   it("supplied creatives keep their supplied views and links", () => {
     expect(contentBySlug("dr-vikram-agarwal-college-student-reel")?.metrics[0]?.value).toBe("11.3K");
-    expect(contentBySlug("dr-vikram-agarwal-college-student-reel")?.url).toBe("https://www.instagram.com/reel/DdY2cFKztu4/");
+    expect(contentBySlug("dr-vikram-agarwal-college-student-reel")?.url).toBe("https://www.instagram.com/p/DdY2cFKztu4/");
     expect(contentBySlug("asta-properties-aerial-location-reel")?.metrics[0]?.value).toBe("3,431");
     expect(contentBySlug("asta-properties-aerial-location-reel")?.url).toBe("https://www.instagram.com/reel/DSSPWyUku9g/");
     expect(contentBySlug("ambrig-homes-korattur-location-post")?.url).toBe("https://www.instagram.com/p/DaCtOoOjbeW/?img_index=1");
@@ -83,7 +83,7 @@ describe("portfolio accuracy rules", () => {
   it("Colan Infotech includes official verified public links", () => {
     const colan = caseStudyBySlug("colan-infotech");
     expect(colan?.links.map((l) => l.url)).toContain("https://www.colaninfotech.com/");
-    expect(colan?.links.map((l) => l.url)).toContain("https://in.linkedin.com/company/colan-infotech-private-limited");
+    expect(colan?.links.map((l) => l.url)).toContain("https://www.linkedin.com/company/colan-infotech-private-limited/home/");
     expect(colan?.learnings.length).toBeGreaterThan(0);
   });
 

@@ -37,7 +37,11 @@ export function ContentDetail({ item, compact = false }: { item: ContentItem; co
 
       <div className={portrait ? "md:col-span-7" : "md:col-span-6"}>
         <p className="eyebrow">{item.brand}</p>
-        <h2 className="mt-3 font-display text-3xl leading-tight text-primary md:text-4xl">{item.title}</h2>
+        {compact ? (
+          <h2 className="mt-3 font-display text-3xl leading-tight text-primary md:text-4xl">{item.title}</h2>
+        ) : (
+          <h1 className="mt-3 font-display text-3xl leading-tight text-primary md:text-4xl">{item.title}</h1>
+        )}
         <div className="mt-6"><ContentLinks item={item} /></div>
 
         <div className="mt-8 divide-y divide-line border-y border-line">
