@@ -1,5 +1,6 @@
 import artistModeChannel from "@/assets/the-artist-mode-channel.jpg.asset.json";
 import artistStudio from "@/assets/the-artist-mode-studio-lifetime.jpg.asset.json";
+import style365Website from "@/assets/style365-website.jpg.asset.json";
 import topallPrep from "@/assets/topall-prep-portal.jpg.asset.json";
 import topallApp from "@/assets/topall-app.jpg.asset.json";
 import neetGuideHome from "@/assets/neet-guide-home.jpg.asset.json";
@@ -457,8 +458,78 @@ export const caseStudies: CaseStudy[] = [
 
   /* 07 ------------------------------------------------------------------ */
   {
-    slug: "asta-properties",
+    slug: "style-365",
     number: "07",
+    title: "Style 365 Studio Salon",
+    client: "Style 365 Studio Salon",
+    kind: "Client project",
+    industry: "Salon and beauty services",
+    highlight: { value: "₹3,00,000", label: "campaign budget reference" },
+    headline: "Local search and paid social, working together.",
+    summary:
+      "SEO and Meta Ads for a unisex salon. People find a salon in two ways: they search for one nearby, or they see one while scrolling. I worked on both, with one goal: get more people to enquire and book.",
+    budgetReference: { label: "Campaign Budget Reference", value: "₹3,00,000", note: "The budget figure for this work. It's a reference, not verified media spend." },
+    overview: {
+      objective: "Help people nearby discover the salon's services and enquire or book.",
+      audience: "Local customers looking for hair, skin and beauty services.",
+      strategy: "Search-friendly website content for organic discovery, supported by Meta Ads focused on enquiries.",
+    },
+    formats: ["Website content", "Meta Ads", "Instagram"],
+    responsibilities: ["SEO", "Website content", "Meta Ads", "Creative direction"],
+    images: [{ src: style365Website.url, alt: "Style 365 Studio Salon website homepage", caption: "style365.one, homepage" }],
+    chapters: [
+      {
+        label: "A",
+        title: "SEO and organic discovery",
+        intro: "Making the salon easy to find for people searching for its services nearby.",
+        items: [
+          { title: "Service discovery", body: "Each service is easy to find and easy to understand." },
+          { title: "Local search intent", body: "Content shaped around how people search, such as salon near me or a service plus the area." },
+          { title: "Search-friendly service pages", body: "Clear service information that both visitors and search engines can read quickly." },
+          { title: "Keyword relevance", body: "Service and location keywords used naturally in the content." },
+          { title: "Local visibility and optimisation", body: "Improving the website so the salon shows up in local results." },
+        ],
+      },
+      {
+        label: "B",
+        title: "Meta Ads and paid social",
+        intro: "Reaching people nearby on Facebook and Instagram with service-led ads.",
+        items: [
+          { title: "Local targeting", body: "Reaching people close enough to visit." },
+          { title: "Service promotions", body: "Ads built around specific services and offers." },
+          { title: "Creative variation", body: "Different creatives to learn which services and angles people respond to." },
+          { title: "Enquiry-focused messaging", body: "Every ad points to one action: enquire or book." },
+          { title: "Traffic to website and social", body: "Sending people to the website and Instagram to see more before they book." },
+        ],
+      },
+    ],
+    journey: {
+      label: "C",
+      title: "From discovery to booking",
+      intro: "An illustrative path showing how I think about a local service business. It's the journey the work was built around, not a report of results.",
+      steps: [
+        { title: "Discovery", body: "Someone sees an ad or finds the salon in search." },
+        { title: "Profile or website visit", body: "They check the Instagram profile or the website." },
+        { title: "Service exploration", body: "They look at a specific service and what it includes." },
+        { title: "Enquiry", body: "They reach out with a question." },
+        { title: "Booking", body: "They book an appointment through the salon's contact channels." },
+      ],
+      note: "Each step needs to feel easy, so the website, the profile and the ads all have to tell the same story.",
+    },
+    learnings: [
+      "Local businesses need both search and social. They reach people at different moments.",
+      "For a salon, showing the result of a service is the strongest creative.",
+    ],
+    links: [
+      { label: "Website", url: "https://style365.one/" },
+      { label: "Instagram @style365official", url: "https://www.instagram.com/style365official/" },
+    ],
+  },
+
+  /* 08 ------------------------------------------------------------------ */
+  {
+    slug: "asta-properties",
+    number: "08",
     title: "Asta Properties",
     client: "Asta Properties",
     kind: "Client project",
@@ -491,10 +562,10 @@ export const caseStudies: CaseStudy[] = [
     links: [],
   },
 
-  /* 08 ------------------------------------------------------------------ */
+  /* 09 ------------------------------------------------------------------ */
   {
     slug: "ambrig-homes",
-    number: "08",
+    number: "09",
     title: "Ambrig Homes",
     client: "Ambrig Homes",
     kind: "Client project",
@@ -528,10 +599,10 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
 
-  /* 09 ------------------------------------------------------------------ */
+  /* 10 ------------------------------------------------------------------ */
   {
     slug: "neet-guide",
-    number: "09",
+    number: "10",
     title: "NEET Guide",
     client: "NEET Guide",
     kind: "Employer work",
@@ -564,10 +635,10 @@ export const caseStudies: CaseStudy[] = [
     links: [{ label: "NEET Guide website", url: "https://neet.guide/" }],
   },
 
-  /* 10 ------------------------------------------------------------------ */
+  /* 11 ------------------------------------------------------------------ */
   {
     slug: "colan-infotech",
-    number: "10",
+    number: "11",
     title: "Colan Infotech",
     client: "Colan Infotech",
     kind: "Employer work",

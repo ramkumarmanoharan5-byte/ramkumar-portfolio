@@ -42,11 +42,19 @@ describe("portfolio accuracy rules", () => {
       "anna-adarsh-womens-college",
       "anna-adarsh-group-of-schools",
       "dr-vikram-agarwal-adarsh-college",
+      "style-365",
       "asta-properties",
       "ambrig-homes",
       "neet-guide",
       "colan-infotech",
     ]);
+  });
+
+  it("Style 365 shows the ₹3,00,000 budget only as a reference", () => {
+    const ref = caseStudyBySlug("style-365")?.budgetReference;
+    expect(ref?.label).toBe("Campaign Budget Reference");
+    expect(ref?.value).toBe("₹3,00,000");
+    expect(caseStudyBySlug("style-365")?.results).toBeUndefined();
   });
 
   it("the Chondrichthyes guide links to TopAll and to YouTube", () => {

@@ -125,7 +125,7 @@ function Home() {
           <dl className="grid grid-cols-1 gap-px bg-line pt-px sm:grid-cols-3">
             {[
               { k: "Experience", v: "Nearly 3 years" },
-              { k: "Industries", v: "EdTech, education, real estate, B2B tech" },
+              { k: "Industries", v: "EdTech, education, real estate, salon, B2B tech" },
               { k: "Platforms", v: "Instagram, YouTube, Facebook, LinkedIn" },
             ].map((f) => (
               <div key={f.k} className="bg-ivory py-5 sm:pr-5">
