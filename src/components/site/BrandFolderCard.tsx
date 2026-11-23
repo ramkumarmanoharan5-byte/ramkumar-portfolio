@@ -1,4 +1,4 @@
-import { ArrowUpRight, Folder, FolderOpen, Layers, Sparkles } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Folder, FolderOpen, Layers, Sparkles } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import type { BrandFolder } from "@/data/folders";
 import { cn } from "@/lib/utils";
