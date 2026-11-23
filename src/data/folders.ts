@@ -14,6 +14,19 @@ import vvtAiReel from "@/assets/vvt-ig-DM2lwC9pwzN-post.jpg.asset.json";
 import vvtChemQuiz from "@/assets/vvt-ig-Ddl5MBstGRm-post.jpg.asset.json";
 import vvtArticle1 from "@/assets/vvt-article-1.jpg.asset.json";
 
+export interface OfficialLink {
+  label: string;
+  url: string;
+  type: "website" | "linkedin" | "instagram" | "youtube" | "facebook" | "portal";
+  badge?: string;
+}
+
+export interface FolderSection {
+  title: string;
+  description: string;
+  points?: string[];
+}
+
 export interface BrandFolder {
   id: string;
   number: string;
@@ -25,11 +38,17 @@ export interface BrandFolder {
   caseStudySlug: string;
   websiteUrl: string | null;
   overview: string;
+  deepDive: string;
+  targetAudience: string;
+  strategySummary: string;
   contentAreas: string[];
   platforms: string[];
   keyMetric?: { label: string; value: string };
+  metricsDetail?: { label: string; value: string; note?: string }[];
   previewImages: { src: string; alt: string; label?: string }[];
   featuredDeliverables: string[];
+  sections: FolderSection[];
+  officialLinks: OfficialLink[];
 }
 
 export const brandFolders: BrandFolder[] = [
@@ -45,9 +64,13 @@ export const brandFolders: BrandFolder[] = [
     websiteUrl: "https://topall.app/",
     overview:
       "Primary in-house EdTech product connecting free NCERT preparation tools (chapter MCQs, revision notes, video explainers) with an upgraded AI app featuring doubt clarification and performance analytics.",
+    deepDive:
+      "TopAll addresses a fundamental bottleneck in medical and engineering entrance prep: students struggle to bridge NCERT theory and high-speed MCQ application. By building an open, indexed repository of chapter-level video lessons and free practice questions, we attract organic search traffic and establish trust before inviting students to upgrade into the full mobile application.",
+    targetAudience: "NEET and JEE aspirants in Class 11, Class 12, and repeat years seeking chapter-wise revision and instant doubt resolution.",
+    strategySummary: "Search-first educational content distribution paired with AI workflows (NotebookLM) and targeted acquisition campaigns.",
     contentAreas: [
       "Social Media Management",
-      "AI Content Workflows",
+      "AI Content Workflows (NotebookLM)",
       "Educational Video Lessons",
       "Product Brochures & Collateral",
       "Google Search Ads Support",
@@ -55,6 +78,10 @@ export const brandFolders: BrandFolder[] = [
     ],
     platforms: ["YouTube", "Website", "Google Ads", "NotebookLM", "Android / iOS"],
     keyMetric: { value: "Full Funnel", label: "Free Portal to App Upgrade" },
+    metricsDetail: [
+      { label: "Core Proposition", value: "Free to Paid", note: "Zero-friction practice portal funnelling into paid AI app" },
+      { label: "AI Production", value: "Multi-Video", note: "Single NCERT chapter transformed into targeted sub-topic lessons" },
+    ],
     previewImages: [
       { src: topallPrep.url, alt: "TopAll Free Preparation Portal", label: "Prep Portal" },
       { src: topallApp.url, alt: "TopAll Mobile App", label: "AI App" },
@@ -63,9 +90,35 @@ export const brandFolders: BrandFolder[] = [
     ],
     featuredDeliverables: [
       "Free NCERT chapter MCQ and lesson hub (prep.topall.app)",
-      "NotebookLM prompt-engineered video explainers",
-      "Digital product brochure for school & student outreach",
-      "Assistance on Google Search & App Install campaigns",
+      "NotebookLM prompt-engineered video explainers for Physics and Biology",
+      "Digital product brochure for school, coaching institute, and student outreach",
+      "Assistance on Google Search and Mobile App Install advertising campaigns",
+    ],
+    sections: [
+      {
+        title: "The Free Preparation Portal Architecture",
+        description: "Built chapter-level lesson pages that deliver focused conceptual explanations followed by direct MCQ practice links. Every page is structured to satisfy student search intent during exam prep cycles.",
+        points: [
+          "NCERT-aligned video embeds with structured chapter notes",
+          "One-click transition from revision to practice MCQs",
+          "SEO-optimized naming conventions for YouTube and Web search discoverability",
+        ],
+      },
+      {
+        title: "AI Video Production via NotebookLM",
+        description: "Formulated rigorous prompts utilizing NCERT textbooks as primary sources to generate high-fidelity, pedagogically sound educational videos for complex Class 12 Physics chapters.",
+        points: [
+          "Precise prompt framing for audience level, tone, and pacing",
+          "Generated sub-topic videos including Dipole in Uniform Field and Diamagnetism",
+          "Production pipeline for rapid syllabus coverage without compromising accuracy",
+        ],
+      },
+    ],
+    officialLinks: [
+      { label: "TopAll Mobile App", url: "https://topall.app/", type: "website", badge: "Official App" },
+      { label: "Free Prep Portal", url: "https://prep.topall.app/", type: "portal", badge: "Free Learning Hub" },
+      { label: "TopAll YouTube Channel", url: "https://www.youtube.com/@topallapplication/videos", type: "youtube", badge: "Video Library" },
+      { label: "Class Chondrichthyes Lesson", url: "https://prep.topall.app/neet/biology/animal-kingdom/videos/class-chondrichthyes-guide-topall", type: "website", badge: "Lesson Page" },
     ],
   },
   {
@@ -80,15 +133,24 @@ export const brandFolders: BrandFolder[] = [
     websiteUrl: "https://www.vvtcoaching.com/",
     overview:
       "Premier NEET coaching institute in Chennai. Managed Instagram channel growth, admission lead-generation campaigns, educational quiz reels, on-page SEO blog articles, and lead handling in NoPaperForms CRM.",
+    deepDive:
+      "Medical entrance coaching is an intense, high-trust decision for families. Content had to balance high academic credibility with approachable, student-driven storytelling. We developed a multi-channel presence combining daily quiz engagement, campus life transparency, and structured SEO guides that answer anxious parent questions.",
+    targetAudience: "Class 11, Class 12, and NEET repeater students and their parents across Chennai and Tamil Nadu.",
+    strategySummary: "Combines authentic campus video reels, daily interactive story polls, long-form SEO guides, and NoPaperForms CRM pipeline management.",
     contentAreas: [
-      "Instagram Management",
-      "Admission Campaigns",
-      "Content Creation & Quizzes",
-      "Educational Blog Articles",
-      "CRM Setup & Lead Handling",
+      "Instagram Page Management",
+      "Admission Campaigns & Lead Generation",
+      "Interactive Quizzes & Daily Challenges",
+      "Educational Blog Articles & On-Page SEO",
+      "NoPaperForms CRM Setup & Pipeline Handling",
     ],
     platforms: ["Instagram", "Meta Ads", "Website / SEO", "NoPaperForms CRM"],
     keyMetric: { value: "5.6K+ Views", label: "Single Campus Reel" },
+    metricsDetail: [
+      { label: "Campus Video", value: "5,671 Views", note: "Girls NEET Residential Campus reel" },
+      { label: "SEO Content", value: "4 Strategy Guides", note: "Published ranking articles on NEET preparation" },
+      { label: "Lead Tracking", value: "NoPaperForms", note: "End-to-end CRM lead status monitoring" },
+    ],
     previewImages: [
       { src: vvtGirlsReel.url, alt: "VVT Coaching Centre Girls NEET Campus Reel", label: "Campus Reel" },
       { src: vvtAiReel.url, alt: "VVT AI Performance Analysis Reel", label: "AI Feature Reel" },
@@ -96,10 +158,37 @@ export const brandFolders: BrandFolder[] = [
       { src: vvtArticle1.url, alt: "VVT SEO Blog Article on AI Error Exams", label: "SEO Blog" },
     ],
     featuredDeliverables: [
-      "Girls NEET residential campus promotional campaign",
-      "NEET Challenge of the Day interactive daily quiz series",
-      "4 ranking on-page SEO strategy guides",
-      "NoPaperForms CRM pipeline setup and parent enquiry tracking",
+      "Girls NEET residential campus promotional campaign at Pallikaranai",
+      "NEET Challenge of the Day interactive daily quiz and MCQ series",
+      "4 ranking on-page SEO strategy guides answering student search intent",
+      "NoPaperForms CRM pipeline setup, qualification tagging, and enquiry tracking",
+    ],
+    sections: [
+      {
+        title: "Instagram Community & Interactive Engagement",
+        description: "Replaced one-directional flyers with interactive challenge reels. Chemistry quizzes and Botany challenges encouraged comments and saves, expanding organic reach within student peer groups.",
+        points: [
+          "Four-option MCQ reels with answers pinned in comments",
+          "Student testimonials filmed on campus providing authentic peer social proof",
+          "Campus facility walkthroughs addressing parent safety priorities",
+        ],
+      },
+      {
+        title: "Search-Engine Optimized Thought Leadership",
+        description: "Drafted and published four in-depth strategy guides addressing practical student anxieties: morning-of exam routines, 45-minute chemistry pacing, and AI error analysis.",
+        points: [
+          "Targeted long-tail search queries during key exam revision months",
+          "Clear structural headers, actionable time breakdowns, and syllabus tips",
+          "Internal cross-links directing readers toward admission counseling",
+        ],
+      },
+    ],
+    officialLinks: [
+      { label: "Official Institute Website", url: "https://www.vvtcoaching.com/", type: "website", badge: "Website" },
+      { label: "Instagram Channel", url: "https://www.instagram.com/vvtcoaching/", type: "instagram", badge: "Instagram" },
+      { label: "Girls NEET Campus Reel", url: "https://www.instagram.com/reel/DMuMKBtJuaT/", type: "instagram", badge: "Reel · 5.6K" },
+      { label: "AI Analysis Reel", url: "https://www.instagram.com/reel/DM2lwC9pwzN/", type: "instagram", badge: "Reel" },
+      { label: "AI Error Exams SEO Article", url: "https://www.vvtcoaching.com/featured/how-vvt-ai-error-exams-improve-neet-scores/", type: "website", badge: "SEO Article" },
     ],
   },
   {
@@ -114,21 +203,44 @@ export const brandFolders: BrandFolder[] = [
     websiteUrl: "https://neet.guide/",
     overview:
       "In-house digital educational platform dedicated to NEET aspirants. Developed educational content, study resources, website content, and organic digital marketing strategy.",
+    deepDive:
+      "NEET Guide serves as an organic educational landing ground providing structured syllabus roadmaps, question patterns, and curated study materials. The goal is to establish search authority and act as a reliable academic companion for medical aspirants.",
+    targetAudience: "Medical entrance exam candidates across India seeking structured chapter outlines, cutoff information, and practice advice.",
+    strategySummary: "Keyword-mapped educational content architecture built to attract students during high-intent research phases.",
     contentAreas: [
-      "Educational Content",
-      "Website Content & Architecture",
-      "Study Resources & Mock Info",
-      "Organic Digital Marketing",
+      "Educational Content Curation",
+      "Website Information Architecture",
+      "Study Resources & Mock Test Guides",
+      "Organic Digital Marketing Strategy",
     ],
     platforms: ["Website", "SEO", "Digital Marketing"],
     keyMetric: { value: "Organic Hub", label: "Free Study Destination" },
+    metricsDetail: [
+      { label: "Role", value: "Content Strategy", note: "Syllabus mapping and informational resource development" },
+      { label: "Synergy", value: "VVT Solutions", note: "Feeds organic candidate awareness into product ecosystem" },
+    ],
     previewImages: [
       { src: neetGuideHome.url, alt: "NEET Guide Homepage and Preparation Hub", label: "Portal Home" },
     ],
     featuredDeliverables: [
       "Structured syllabus guides and chapter summaries",
-      "Aspirant study resource navigation",
-      "Search-first educational content planning",
+      "Aspirant study resource navigation and exam notifications",
+      "Search-first educational content planning and taxonomy",
+    ],
+    sections: [
+      {
+        title: "Content Taxonomy & Information Architecture",
+        description: "Organized complex entrance exam information into digestible, topic-specific clusters covering Physics, Chemistry, and Biology essentials.",
+        points: [
+          "Clear chapter breakdowns mapped to NCERT difficulty levels",
+          "Exam date notifications, document checklists, and counselling advisories",
+          "Low-latency static pages structured for rapid browsing and revision",
+        ],
+      },
+    ],
+    officialLinks: [
+      { label: "NEET Guide Official Portal", url: "https://neet.guide/", type: "website", badge: "Official Portal" },
+      { label: "TopAll Prep Portal (Companion)", url: "https://prep.topall.app/", type: "portal", badge: "Practice Hub" },
     ],
   },
   {
@@ -143,6 +255,10 @@ export const brandFolders: BrandFolder[] = [
     websiteUrl: "https://www.youtube.com/@TheArtistMode/shorts",
     overview:
       "Self-built faceless YouTube channel in men's style and grooming. Scripted, edited, and scaled content that achieved 3.9 Crore lifetime views, 82.9K subscribers, and a single viral Short with 19 Million views.",
+    deepDive:
+      "The Artist Mode proved that massive digital reach does not require celebrity talent or expensive camera gear. By mastering audience psychology, immediate 0.8-second dilemma hooks, and rapid visual pacing, I transformed everyday grooming dilemmas into hyper-retainable vertical video loops.",
+    targetAudience: "Young men (16–28) interested in modern haircuts, fashion styling, aesthetic photography, and self-improvement.",
+    strategySummary: "Faceless visual storytelling, retention loops, rapid visual cuts every 1.5 seconds, and choice-driven hooks.",
     contentAreas: [
       "YouTube Shorts Production",
       "Faceless Brand Building",
@@ -152,6 +268,12 @@ export const brandFolders: BrandFolder[] = [
     ],
     platforms: ["YouTube Shorts", "YouTube Studio Analytics"],
     keyMetric: { value: "3.9Cr", label: "Lifetime Channel Views · 82.9K Subs" },
+    metricsDetail: [
+      { label: "Lifetime Views", value: "3.9Cr", note: "39,000,000+ organic channel views" },
+      { label: "Single Peak Video", value: "19M", note: "Fade haircut comparison Short" },
+      { label: "Million+ Hits", value: "6 Shorts", note: "19M, 3M, 2.3M, 2.2M, 1.5M, 1.2M" },
+      { label: "Subscribers", value: "82.9K", note: "Built entirely through organic Shorts" },
+    ],
     previewImages: [
       { src: "https://i.ytimg.com/vi/3tl3vXdl5_Y/oar2.jpg", alt: "19M View Short: Finding Your Ideal Fade Haircut", label: "19M Short" },
       { src: "https://i.ytimg.com/vi/ekhq8dEqcNE/oar2.jpg", alt: "3M View Short: Aesthetic Poses for Boys", label: "3M Short" },
@@ -163,6 +285,33 @@ export const brandFolders: BrandFolder[] = [
       "6 million-plus viral Shorts (3M, 2.3M, 2.2M, 1.5M, 1.2M)",
       "High-retention visual editing without on-camera talent",
       "Consistent 13-phase channel creation, script, and packaging workflow",
+    ],
+    sections: [
+      {
+        title: "The 19M Viral Short Architecture",
+        description: "Men frequently struggle to articulate fade preferences to barbers. By placing low, mid, and high fades side-by-side with an immediate 'Which suits you best?' hook, viewers looped the video repeatedly to compare, triggering the algorithm's highest viral multiplier.",
+        points: [
+          "First 0.8 seconds forces visual engagement without voice intro",
+          "Side-by-side comparative frames optimize loop completion rates",
+          "Comment section ignited debate, propelling international feed distribution",
+        ],
+      },
+      {
+        title: "End-to-End 13-Phase Channel Engine",
+        description: "Operated every function independently: trend research, scriptwriting, hook ideation, graphic asset preparation, audio mixing, subtitle typography, and studio analytics review.",
+        points: [
+          "Zero paid promotion or ad boost — 100% organic algorithmic distribution",
+          "Repeatable series frameworks ('Finding Your Perfect Hairstyle', 'Glow Up Tips')",
+          "Consistent branding identity across thumbnail cards and video title typography",
+        ],
+      },
+    ],
+    officialLinks: [
+      { label: "The Artist Mode Channel", url: "https://www.youtube.com/@TheArtistMode/shorts", type: "youtube", badge: "YouTube Channel" },
+      { label: "19M Short: Ideal Fade Haircut", url: "https://www.youtube.com/shorts/3tl3vXdl5_Y", type: "youtube", badge: "19M Views" },
+      { label: "3M Short: Aesthetic Poses", url: "https://www.youtube.com/shorts/ekhq8dEqcNE", type: "youtube", badge: "3M Views" },
+      { label: "2.3M Short: Wolf Cut", url: "https://www.youtube.com/shorts/8vhUUeC_vCM", type: "youtube", badge: "2.3M Views" },
+      { label: "2.2M Short: Glow Up Tips", url: "https://www.youtube.com/shorts/OwvXNWKr_bA", type: "youtube", badge: "2.2M Views" },
     ],
   },
   {
@@ -177,22 +326,56 @@ export const brandFolders: BrandFolder[] = [
     websiteUrl: "https://annaadarsh.edu.in/",
     overview:
       "Prestigious women's higher education institution in Chennai. Managed Meta advertising campaigns, student-centric Instagram creative strategy, and targeted admission lead generation.",
+    deepDive:
+      "College admissions have a strict, highly compressed time window. We designed a full Meta advertising funnel combining thumb-stopping campus culture reels with high-intent lead generation forms, resulting in over 24.8 Lakh accounts reached and an industry-beating ₹160 cost per qualified lead.",
+    targetAudience: "Female students completing Class 12, undergraduate aspirants, and their parents across Tamil Nadu and neighbouring regions.",
+    strategySummary: "Segmented Meta Ads campaigns pairing authentic campus culture creative hooks with frictionless on-platform lead capture forms.",
     contentAreas: [
-      "Admission Campaigns",
-      "Instagram Management",
-      "Meta Ads (Lead Generation)",
-      "Creative Concept Development",
+      "Meta Ads Campaign Management",
+      "Admission Lead Generation",
+      "Audience Segmentation & Targeting",
+      "Instagram Content Strategy",
+      "CPL Optimization & Budget Efficiency",
     ],
     platforms: ["Instagram", "Meta Ads Manager", "Facebook"],
     keyMetric: { value: "₹160 CPL", label: "24.8L Reach · 1.04Cr Impressions" },
+    metricsDetail: [
+      { label: "Cost Per Lead", value: "₹160", note: "Highly efficient admission inquiry cost" },
+      { label: "Total Reach", value: "24.8L", note: "Unique prospective student/parent accounts reached" },
+      { label: "Impressions", value: "1.04Cr", note: "Total ad impressions delivered across Tamil Nadu" },
+    ],
     previewImages: [
       { src: drVikramReel.url, alt: "Campus Social Media Creative", label: "Campus Feed" },
     ],
     featuredDeliverables: [
-      "₹160 cost-per-lead achieved in admission campaign",
-      "24.8 Lakh accounts reached across targeted demographics",
+      "₹160 cost-per-lead achieved during peak admission season",
+      "24.8 Lakh accounts reached across targeted geographic cohorts",
       "1.04 Crore campaign impressions across Meta platforms",
-      "Authentic campus culture visual communication",
+      "Student life and academic empowerment messaging matrix",
+    ],
+    sections: [
+      {
+        title: "The Admission Window Campaign Architecture",
+        description: "Organized Meta Ads into segmented audience tiers: immediate school-leavers looking for Arts & Science degrees, and parent cohorts evaluating safety, faculty reputation, and placement records.",
+        points: [
+          "Hyper-targeted geographic parameters covering Chennai and key tier-2 districts",
+          "Short-form video creatives showing real campus vibrancy, library, and lab facilities",
+          "Automated on-Facebook lead forms to minimize drop-off from external redirects",
+        ],
+      },
+      {
+        title: "Cost Per Lead Discipline & Optimization",
+        description: "Monitored campaign delivery daily to reallocate budget to top-performing ad sets, keeping CPL down to ₹160 while maintaining high lead qualification standards.",
+        points: [
+          "A/B creative testing between career outcome headlines vs campus culture",
+          "Exclusion of non-target demographics to prevent budget dilution",
+          "Direct handover of incoming leads to admissions counseling team",
+        ],
+      },
+    ],
+    officialLinks: [
+      { label: "Anna Adarsh Official Website", url: "https://annaadarsh.edu.in/", type: "website", badge: "Official Website" },
+      { label: "College LinkedIn Profile", url: "https://www.linkedin.com/school/anna-adarsh-college-for-women/", type: "linkedin", badge: "LinkedIn" },
     ],
   },
   {
@@ -207,21 +390,44 @@ export const brandFolders: BrandFolder[] = [
     websiteUrl: "https://annaadarsh.edu.in/",
     overview:
       "Reputed Chennai school network. Formulated social media communication for parent reassurance, campus infrastructure, academic milestones, and admission period visibility.",
+    deepDive:
+      "School selection is fundamentally about parent reassurance: safety, faculty warmth, extracurricular breadth, and holistic values. The content strategy highlighted real classroom interactions, science exhibitions, sports achievements, and campus infrastructure.",
+    targetAudience: "Parents of nursery, primary, and high school students in Chennai seeking balanced, values-driven schooling.",
+    strategySummary: "Values-led visual storytelling focusing on academic excellence, child safety, sports, and holistic development.",
     contentAreas: [
       "Institutional Branding",
-      "Social Media Content",
-      "Academic Highlights",
-      "Admission Promotion",
+      "Parent Reassurance Framework",
+      "Academic & Extracurricular Highlights",
+      "Admission Season Announcements",
+      "Social Media Content Planning",
     ],
     platforms: ["Instagram", "Facebook", "Meta Campaigns"],
     keyMetric: { value: "Parent Trust", label: "Institutional Storytelling" },
+    metricsDetail: [
+      { label: "Focus", value: "K-12 Branding", note: "Nursery through higher secondary parent engagement" },
+      { label: "Channel", value: "Social Media", note: "Community updates and admission visibility" },
+    ],
     previewImages: [
       { src: drVikramReel.url, alt: "School Community & Campus", label: "School Life" },
     ],
     featuredDeliverables: [
       "Curriculum, safety, and faculty showcase posts",
-      "Parent reassurance creative framework",
-      "Admission cycle announcement campaigns",
+      "Parent reassurance creative framework across social channels",
+      "Admission cycle announcement campaigns and open-house visibility",
+    ],
+    sections: [
+      {
+        title: "Parent Reassurance & Campus Transparency",
+        description: "Engineered content pillars showing daily campus life, safety standards, modern lab spaces, and holistic student achievements to reinforce parent confidence.",
+        points: [
+          "Showcased faculty guidance, student arts, and science fairs",
+          "Clear admission timelines and age eligibility announcements",
+          "Consistent visual branding aligning all school branches under one heritage identity",
+        ],
+      },
+    ],
+    officialLinks: [
+      { label: "School Group Official Website", url: "https://annaadarsh.edu.in/", type: "website", badge: "Official Website" },
     ],
   },
   {
@@ -236,21 +442,43 @@ export const brandFolders: BrandFolder[] = [
     websiteUrl: null,
     overview:
       "Co-educational college requiring relatable, student-driven digital presence. Created high-engagement campus reels that resonated organically with prospective applicants.",
+    deepDive:
+      "Prospective college students swipe past polished corporate advertisements. For Dr. Vikram Agarwal Adarsh College, we leaned into authentic, relatable campus moments. The standout piece — an Instagram Reel titled 'Open when you are alone' — generated 11.3K views organically by framing campus friendships with curiosity.",
+    targetAudience: "Class 12 graduates exploring undergraduate degree courses in commerce, computer science, and management.",
+    strategySummary: "Relatable, peer-level short-form video content emphasizing college atmosphere, student camaraderie, and campus energy.",
     contentAreas: [
-      "Student-Focused Content",
+      "Student-Focused Video Content",
       "Relatable Campus Reels",
-      "Event Highlights",
-      "Audience Engagement Campaigns",
+      "Event Highlights & College Culture",
+      "Audience Engagement & Comment Driving",
     ],
     platforms: ["Instagram Reels", "Instagram Posts"],
     keyMetric: { value: "11.3K Views", label: "Campus Reel" },
+    metricsDetail: [
+      { label: "Top Reel Views", value: "11.3K", note: "'Open when you are alone' campus life reel" },
+      { label: "Creative Hook", value: "Peer-to-Peer", note: "Authentic student scene rather than formal brochure" },
+    ],
     previewImages: [
       { src: drVikramReel.url, alt: "Dr. Vikram Agarwal College Campus Reel", label: "Campus Reel" },
     ],
     featuredDeliverables: [
       "11.3K view campus life reel 'Open when you are alone'",
-      "Relatable peer-to-peer visual hook format",
-      "Campus event and student life coverage",
+      "Relatable peer-to-peer visual hook format that drove organic sharing",
+      "Campus event and student life coverage across the academic year",
+    ],
+    sections: [
+      {
+        title: "The 11.3K View Relatable Campus Reel",
+        description: "Captured friends hanging out on college steps checking their phones with an intriguing chat-style hook. The simplicity and relatability made prospective students tag their friends.",
+        points: [
+          "Chat-style intrigue hook that stopped scrolling in feed",
+          "Authentic, un-staged campus vibe building positive emotional association",
+          "Comment section engagement nudging prospective admissions",
+        ],
+      },
+    ],
+    officialLinks: [
+      { label: "Watch 11.3K Campus Reel", url: "https://www.instagram.com/reel/DdY2cFKztu4/", type: "instagram", badge: "Instagram Reel · 11.3K" },
     ],
   },
   {
@@ -265,21 +493,43 @@ export const brandFolders: BrandFolder[] = [
     websiteUrl: null,
     overview:
       "Premium property developer. Developed visual social media reels emphasising prime coastal location, connectivity, aerial perspective, and lifestyle appeal to attract high-intent buyers.",
+    deepDive:
+      "In luxury coastal real estate, location is the primary differentiator. Buyers are investing in sea views, proximity to beaches, and connectivity. We produced an aerial drone video reel that achieved 3,431 views by spotlighting the scenic coastline first, anchoring the development in lifestyle desirability.",
+    targetAudience: "High-net-worth home buyers, NRI investors, and families seeking premium coastal apartments.",
+    strategySummary: "Aerial drone cinematography, lifestyle-first storytelling, and scenic neighbourhood presentation.",
     contentAreas: [
       "Coastal Property Content",
-      "Aerial Video Reels",
+      "Aerial Video Reels & Drone Cinematography",
       "Location Storytelling",
-      "Real Estate Social Media",
+      "Real Estate Social Media Management",
     ],
     platforms: ["Instagram Reels", "Instagram Posts"],
     keyMetric: { value: "3,431 Views", label: "Aerial Location Reel" },
+    metricsDetail: [
+      { label: "Aerial Reel", value: "3,431 Views", note: "Organic reach on coastline location reel" },
+      { label: "Focus", value: "Luxury Lifestyle", note: "Beachside setting and connectivity showcase" },
+    ],
     previewImages: [
       { src: astaReel.url, alt: "Asta Properties Aerial Coastline Reel", label: "Aerial Reel" },
     ],
     featuredDeliverables: [
-      "Drone and aerial coastline lifestyle video reel",
-      "Location-first property narrative connecting amenities and lifestyle",
+      "Drone and aerial coastline lifestyle video reel (3,431 views)",
+      "Location-first property narrative connecting amenities, road access, and sea views",
       "High-intent real estate enquiry social creatives",
+    ],
+    sections: [
+      {
+        title: "Aerial Location Storytelling",
+        description: "Instead of standard interior mockups, the footage led with sweeping coastal views. By demonstrating how close the property was to the shoreline, it naturally attracted serious home searchers.",
+        points: [
+          "Cinematic drone pan emphasizing coastal topography and road links",
+          "Concise copy highlighting investment value and serenity",
+          "Direct inquiry prompts for private site viewings",
+        ],
+      },
+    ],
+    officialLinks: [
+      { label: "Watch Aerial Coastline Reel", url: "https://www.instagram.com/reel/DSSPWyUku9g/", type: "instagram", badge: "Instagram Reel · 3.4K" },
     ],
   },
   {
@@ -294,21 +544,43 @@ export const brandFolders: BrandFolder[] = [
     websiteUrl: null,
     overview:
       "Residential developer in Chennai. Executed location-focused teaser campaigns and carousel creatives for upcoming developments, generating pre-launch curiosity in specific neighbourhoods.",
+    deepDive:
+      "Announcing a new residential project requires building anticipation before opening site visits. For Ambrig Homes' Korattur project, we designed bold, typography-led teaser carousels announcing 'We've found our location! Something exceptional is coming to Korattur', capturing early waitlist interest.",
+    targetAudience: "Families and working professionals looking for new residential apartments in Korattur and West Chennai.",
+    strategySummary: "Pre-launch anticipation strategy combining bold typography, geographic familiarity, and curiosity hooks.",
     contentAreas: [
       "New Launch Teasers",
       "Social Media Carousels",
-      "Project Awareness",
-      "Real Estate Branding",
+      "Project Awareness & Branding",
+      "Real Estate Social Media",
     ],
     platforms: ["Instagram Carousels", "Meta Social"],
     keyMetric: { value: "Pre-Launch", label: "Korattur Teaser Campaign" },
+    metricsDetail: [
+      { label: "Campaign", value: "Pre-Launch", note: "Curiosity and neighbourhood excitement before launch" },
+      { label: "Creative", value: "Carousel", note: "Multi-slide storytelling on location advantages" },
+    ],
     previewImages: [
       { src: ambrigPost.url, alt: "Ambrig Homes Korattur Location Teaser Post", label: "Teaser Post" },
     ],
     featuredDeliverables: [
       "Bold typography location announcement creative ('Something exceptional is coming to Korattur')",
-      "Multi-slide carousel explaining neighbourhood connectivity",
-      "Pre-launch brand anticipation framework",
+      "Multi-slide carousel explaining neighbourhood connectivity and amenities",
+      "Pre-launch brand anticipation framework driving early buyer inquiries",
+    ],
+    sections: [
+      {
+        title: "The Korattur Location Launch Teaser",
+        description: "Used high-contrast red-and-white typography emphasizing 'LOCATION'. Kept details teasingly concise to encourage direct messages and early registry.",
+        points: [
+          "Minimalist, bold typography built for mobile feed stop-rate",
+          "Focus on Korattur's strategic rail and road connectivity",
+          "Clear call-to-action inviting followers to stay tuned for floor plans",
+        ],
+      },
+    ],
+    officialLinks: [
+      { label: "View Korattur Teaser Post", url: "https://www.instagram.com/p/DaCtOoOjbeW/?img_index=1", type: "instagram", badge: "Instagram Carousel" },
     ],
   },
   {
@@ -323,21 +595,45 @@ export const brandFolders: BrandFolder[] = [
     websiteUrl: "https://style365.one/",
     overview:
       "Leading unisex salon brand in Bengaluru with 147 posts and 7,500+ followers. Created transformation-focused, before-and-after social creatives that make salon outcomes tangible for neighbourhood booking decisions.",
+    deepDive:
+      "Salon clients do not buy hair products or scissors; they buy personal confidence and visible results. The content strategy centered on authentic hair transformations, keratin treatments, and bridal styling shown in clear before-and-after formats.",
+    targetAudience: "Urban professionals, college students, and local residents in Bengaluru seeking dependable hair and skin care.",
+    strategySummary: "Show-the-outcome visual proof, service-first pricing transparency, and hyper-local neighbourhood engagement.",
     contentAreas: [
-      "Hair Transformations",
-      "Salon Service Promotion",
-      "Before-and-After Content",
-      "Local Audience Engagement",
+      "Hair and Beauty Services Promotion",
+      "Hair Transformations & Makeovers",
+      "Before-and-After Creative Concepts",
+      "Local Audience Communication & Offers",
     ],
     platforms: ["Instagram", "Meta Ads Planning", "Website"],
     keyMetric: { value: "₹3,00,000", label: "Campaign Budget Reference" },
+    metricsDetail: [
+      { label: "Instagram Grid", value: "147 Posts", note: "Showcasing services, transformations, and client results" },
+      { label: "Community", value: "7,505 Followers", note: "Local Bengaluru customer following" },
+      { label: "Budget Framework", value: "₹3,00,000", note: "Campaign planning budget reference" },
+    ],
     previewImages: [
       { src: style365Website.url, alt: "Style 365 Studio Salon Bengaluru Homepage", label: "Official Site" },
     ],
     featuredDeliverables: [
-      "Before-and-after transformation creative strategy",
-      "Service-first pricing and package visual posts",
-      "Local neighbourhood hyper-targeted creative angles",
+      "Before-and-after transformation creative strategy for hair makeovers",
+      "Service-first package posts detailing hair spa, colouring, and keratin results",
+      "Local neighbourhood hyper-targeted creative angles driving appointment calls",
+    ],
+    sections: [
+      {
+        title: "Transformation-First Visual Strategy",
+        description: "Documented real client transformations in salon chairs. Showing genuine before-and-after styling helped prospective clients visualize their own makeover.",
+        points: [
+          "Side-by-side comparison graphics demonstrating hair texture restoration",
+          "Clear pricing transparency reducing friction for first-time bookers",
+          "Seasonal festive grooming and wedding styling packages",
+        ],
+      },
+    ],
+    officialLinks: [
+      { label: "Official Salon Website", url: "https://style365.one/", type: "website", badge: "Official Website" },
+      { label: "Instagram Profile (@style365official)", url: "https://www.instagram.com/style365official/", type: "instagram", badge: "Instagram · 7.5K" },
     ],
   },
   {
@@ -351,23 +647,43 @@ export const brandFolders: BrandFolder[] = [
     caseStudySlug: "sofa-42",
     websiteUrl: null,
     overview:
-      "Modern furniture and home interiors showroom in Bengaluru. Crafted product-centric social showcases that let buyers examine sofa fabric, finish, and spatial proportions before stepping into the showroom.",
+      "Modern furniture and home interiors showroom in Bengaluru with 159 posts and 1,448 followers. Crafted product-centric social showcases that let buyers examine sofa fabric, finish, and spatial proportions before stepping into the showroom.",
+    deepDive:
+      "Buying a sofa is a major lifestyle and spatial commitment. Customers want to inspect fabric durability, stitch lines, and cushioning resilience. Our content put the product details in high-definition focus, framed within realistic living room spaces.",
+    targetAudience: "New homeowners, apartment dwellers, and interior design enthusiasts in Bengaluru looking for modern custom sofas.",
+    strategySummary: "Product-first detailing of fabrics and woodwork combined with interior living room lifestyle context.",
     contentAreas: [
       "Sofa Collection Showcases",
-      "Interior Inspiration",
-      "Product-Focused Creatives",
-      "Lifestyle Room Styling",
+      "Interior Inspiration & Room Styling",
+      "Product-Focused Detailing & Fabrics",
+      "Showroom Footfall Generation",
     ],
     platforms: ["Instagram Posts", "Visual Catalog"],
     keyMetric: { value: "159 Posts", label: "Visual Showroom Feed" },
+    metricsDetail: [
+      { label: "Curated Posts", value: "159 Posts", note: "Complete visual catalog of sofa models and finishes" },
+      { label: "Showroom Audience", value: "1,448 Followers", note: "Bengaluru interior enthusiasts and furniture shoppers" },
+    ],
     previewImages: [
       { src: style365Website.url, alt: "Sofa 42 Furniture Interior Showcase", label: "Living Inspiration" },
     ],
     featuredDeliverables: [
       "Product-first creative posts highlighting fabric, texture, and frame",
       "Living room contextual styling that helps buyers visualize at home",
-      "Showroom visit conversion copy and location CTAs",
+      "Showroom visit conversion copy and direct location guidance",
     ],
+    sections: [
+      {
+        title: "Product-First Small Screen Presentation",
+        description: "Highlighted macro shots of premium fabric weaves, corner cushioning, and wooden legs. Emphasized custom sizing options to fit varying apartment layouts.",
+        points: [
+          "Close-up craftsmanship details showing stitch quality and foam density",
+          "Color palette swatches matching modern minimalist interiors",
+          "Direct calls to visit the Bengaluru showroom to test seating comfort",
+        ],
+      },
+    ],
+    officialLinks: [],
   },
   {
     id: "colan-infotech",
@@ -381,15 +697,25 @@ export const brandFolders: BrandFolder[] = [
     websiteUrl: "https://www.colaninfotech.com/",
     overview:
       "My former employer as Digital Marketing Executive in Madurai. Spearheaded corporate social media channels (LinkedIn, Facebook, Instagram), organic B2B lead generation, regional showcase hubs, technical polls, and client social campaigns.",
+    deepDive:
+      "In B2B IT consulting, marketing serves two critical engines: business lead credibility for enterprise tech buyers, and employer branding for engineering talent. I managed Colan Infotech's main corporate channels alongside three regional showcase hubs, producing technical quizzes, developer memes, career announcements, and client social campaigns.",
+    targetAudience: "Global enterprise software buyers, IT decision-makers, and prospective technology professionals across India.",
+    strategySummary: "B2B corporate authority on LinkedIn, interactive tech engagement (quizzes & polls), and search engine optimization.",
     contentAreas: [
-      "B2B Social Media Management",
-      "LinkedIn Lead Generation",
-      "Search Engine Optimization (SEO)",
-      "Tech Quizzes & Industry Polls",
-      "Client Social Media Accounts",
+      "B2B Social Media Management (LinkedIn, Facebook, IG)",
+      "Organic LinkedIn Lead Generation",
+      "Search Engine Optimization (SEO) & On-Page Content",
+      "Technical Knowledge Quizzes, Polls & Memes",
+      "Regional Showcase Pages (Madurai, Pernambut, Bangalore)",
+      "Client Social Media Account Management",
     ],
     platforms: ["LinkedIn Corporate & Regional", "Facebook", "Instagram", "Corporate Blog"],
     keyMetric: { value: "B2B Reach", label: "3 Regional Hubs & Corporate Channels" },
+    metricsDetail: [
+      { label: "Corporate Platforms", value: "LinkedIn, FB, IG", note: "Complete corporate social media presence management" },
+      { label: "Regional Showcase", value: "3 Hubs", note: "Madurai, Pernambut, and Bangalore showcase pages" },
+      { label: "Client Accounts", value: "Multi-Client", note: "Content planning and digital marketing for agency clients" },
+    ],
     previewImages: [
       { src: topallYoutube.url, alt: "B2B Technology and Social Presence", label: "Tech Presence" },
     ],
@@ -398,6 +724,35 @@ export const brandFolders: BrandFolder[] = [
       "Technical knowledge quizzes, polls, memes, and job openings",
       "Client social media account management and content planning",
       "On-page website SEO and content performance tracking",
+    ],
+    sections: [
+      {
+        title: "B2B Corporate Voice & LinkedIn Growth",
+        description: "Managed the corporate LinkedIn presence with consistent technology updates, company culture celebrations, and thought leadership pieces that established B2B authority.",
+        points: [
+          "Curated technology insight posts covering cloud, mobile, and AI advancements",
+          "Managed regional showcase pages connecting local development centers with regional talent",
+          "Job vacancy packaging that increased candidate application velocity",
+        ],
+      },
+      {
+        title: "Client Social Media Management & SEO",
+        description: "Handled digital marketing initiatives and social media management for Colan Infotech's agency clients, building content calendars, graphics, and search-optimized copy.",
+        points: [
+          "Developed end-to-end social media calendars for diverse business clients",
+          "Conducted keyword research and on-page optimization for web articles",
+          "Monitored social performance analytics and engagement KPIs",
+        ],
+      },
+    ],
+    officialLinks: [
+      { label: "Colan Infotech Website", url: "https://www.colaninfotech.com/", type: "website", badge: "Official Website" },
+      { label: "Corporate LinkedIn Page", url: "https://in.linkedin.com/company/colan-infotech-private-limited", type: "linkedin", badge: "Corporate LinkedIn" },
+      { label: "Official Facebook Page", url: "https://www.facebook.com/ColanInfotechPvtLtd", type: "facebook", badge: "Facebook" },
+      { label: "Official Instagram Page", url: "https://www.instagram.com/colaninfotechpvtltd/", type: "instagram", badge: "Instagram" },
+      { label: "LinkedIn Madurai Hub", url: "https://in.linkedin.com/showcase/colan-infotech-pvt-ltd-madurai/", type: "linkedin", badge: "Regional: Madurai" },
+      { label: "LinkedIn Pernambut Hub", url: "https://in.linkedin.com/showcase/colan-infotech-pvt-ltd-pernambut-vellore/", type: "linkedin", badge: "Regional: Pernambut" },
+      { label: "LinkedIn Bangalore Hub", url: "https://in.linkedin.com/showcase/colan-infotech-pvt-ltd-bangalore/", type: "linkedin", badge: "Regional: Bangalore" },
     ],
   },
 ];

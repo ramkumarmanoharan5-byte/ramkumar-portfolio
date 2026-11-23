@@ -1,11 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { Eye, Flame, Play, Sparkles, TrendingUp, Video } from "lucide-react";
+import { ArrowUpRight, Eye, Flame, Play, Sparkles, TrendingUp, Video, Youtube, Instagram } from "lucide-react";
 import { PageIntro } from "@/components/site/PageIntro";
 import { ContactBand } from "@/components/site/ContactBand";
 import { VideoClusterCard } from "@/components/site/VideoClusterCard";
-import { VideoPlayerModal } from "@/components/site/VideoPlayerModal";
-import { contentItems, type ContentItem } from "@/data/content";
+import { contentItems } from "@/data/content";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/video")({
@@ -34,7 +33,6 @@ type VideoFilter = "All" | "YouTube Shorts" | "Instagram Reels" | "Educational" 
 
 function VideoShowcase() {
   const [filter, setFilter] = useState<VideoFilter>("All");
-  const [activeVideo, setActiveVideo] = useState<ContentItem | null>(null);
 
   // Filter all items that are videos (Shorts, Reels, Video Lessons)
   const allVideos = useMemo(() => {
@@ -68,6 +66,12 @@ function VideoShowcase() {
 
   // Featured 19M Short
   const heroShort = allVideos.find((v) => v.slug === "the-artist-mode-fade-haircut");
+
+  const openHeroVideo = () => {
+    if (heroShort?.url) {
+      window.open(heroShort.url, "_blank", "noopener,noreferrer");
+    }
+  };
 
   return (
     <>
@@ -106,9 +110,9 @@ function VideoShowcase() {
         </div>
       </section>
 
-      {/* FILTER TABS BAR */}
+      {/* FILTER TABS BAR (USER-FRIENDLY BUTTONS) */}
       <section className="sticky top-16 z-30 border-b border-line bg-ivory/95 backdrop-blur-md">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-10">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-5 py-4 md:px-10">
           <div className="flex flex-wrap gap-2" role="group" aria-label="Filter videos by category">
             {(["All", "YouTube Shorts", "Instagram Reels", "Educational", "Promotional"] as VideoFilter[]).map((tab) => (
               <button
@@ -117,10 +121,10 @@ function VideoShowcase() {
                 onClick={() => setFilter(tab)}
                 aria-pressed={filter === tab}
                 className={cn(
-                  "border px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider transition-colors",
+                  "border px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-all min-h-[40px] cursor-pointer",
                   filter === tab
                     ? "border-primary bg-primary text-primary-foreground shadow-sm"
-                    : "border-line bg-cream text-foreground/80 hover:border-primary hover:text-primary",
+                    : "border-line bg-cream text-foreground/80 hover:border-primary hover:text-primary hover:bg-paper",
                 )}
               >
                 {tab}
@@ -128,8 +132,8 @@ function VideoShowcase() {
             ))}
           </div>
 
-          <span className="hidden text-xs text-foreground/60 md:block">
-            Showing {filtered.length} video creatives
+          <span className="text-xs text-foreground/60 font-medium">
+            Showing {filtered.length} video pieces · Click to open source page ↗
           </span>
         </div>
       </section>
@@ -140,7 +144,7 @@ function VideoShowcase() {
           <div className="border border-line bg-cream p-6 md:p-10 shadow-sm">
             <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
               <div className="lg:col-span-7">
-                <span className="inline-flex items-center gap-1.5 bg-primary px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary-foreground">
+                <span className="inline-flex items-center gap-1.5 bg-primary px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-primary-foreground shadow-sm">
                   <Flame className="h-4 w-4" /> 19 Million Views Viral Masterpiece
                 </span>
                 <h2 className="mt-4 font-display text-3xl text-primary md:text-5xl leading-tight">
@@ -150,59 +154,63 @@ function VideoShowcase() {
                   Built on a powerful audience dilemma: millions of men want a modern fade haircut, but cannot tell low, mid, or high fades apart in the barber chair. By presenting styles side by side and forcing an immediate choice in the first second, the Short triggered massive loop replays, comments, and saves without on-camera talent.
                 </p>
 
-                <div className="mt-6 flex flex-wrap gap-4 text-xs">
-                  <div className="border border-line bg-paper px-3 py-2">
-                    <span className="eyebrow block">Retention Hook</span>
+                <div className="mt-6 flex flex-wrap gap-3 text-xs">
+                  <div className="border border-line bg-paper px-3.5 py-2">
+                    <span className="eyebrow block text-[0.62rem]">Retention Hook</span>
                     <span className="font-semibold text-foreground">First 0.8s Question</span>
                   </div>
-                  <div className="border border-line bg-paper px-3 py-2">
-                    <span className="eyebrow block">Format</span>
+                  <div className="border border-line bg-paper px-3.5 py-2">
+                    <span className="eyebrow block text-[0.62rem]">Format</span>
                     <span className="font-semibold text-foreground">Faceless Comparison</span>
                   </div>
-                  <div className="border border-line bg-paper px-3 py-2">
-                    <span className="eyebrow block">Platform Result</span>
+                  <div className="border border-line bg-paper px-3.5 py-2">
+                    <span className="eyebrow block text-[0.62rem]">Platform Result</span>
                     <span className="font-semibold text-primary">19M Views (Organic)</span>
                   </div>
                 </div>
 
-                <div className="mt-8 flex flex-wrap gap-3">
+                <div className="mt-8 flex flex-wrap gap-4">
                   <button
                     type="button"
-                    onClick={() => setActiveVideo(heroShort)}
-                    className="inline-flex items-center gap-2 bg-primary px-5 py-3 text-xs font-semibold uppercase tracking-wider text-primary-foreground hover:bg-primary-deep transition-colors"
+                    onClick={openHeroVideo}
+                    className="inline-flex items-center gap-2 bg-primary px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-primary-foreground hover:bg-primary-deep transition-all shadow-md cursor-pointer"
                   >
-                    <Play className="h-4 w-4 fill-current" /> Watch Video Breakdown
+                    <Youtube className="h-4 w-4" /> Watch Short on YouTube (19M) ↗
                   </button>
                   <a
-                    href={heroShort.url || "#"}
+                    href="https://www.youtube.com/@TheArtistMode/shorts"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 border border-line bg-paper px-5 py-3 text-xs font-semibold uppercase tracking-wider text-foreground hover:border-primary hover:text-primary transition-colors"
+                    className="inline-flex items-center gap-2 border border-line bg-paper px-5 py-3.5 text-xs font-semibold uppercase tracking-wider text-foreground hover:border-primary hover:text-primary transition-colors cursor-pointer"
                   >
-                    Open on YouTube Shorts ↗
+                    <span>Visit YouTube Channel (82.9K Subs)</span>
+                    <ArrowUpRight className="h-4 w-4" />
                   </a>
                 </div>
               </div>
 
               <div className="flex justify-center lg:col-span-5">
                 <div
-                  onClick={() => setActiveVideo(heroShort)}
-                  className="group relative w-64 max-w-full overflow-hidden border border-line bg-ink shadow-2xl cursor-pointer hover:border-primary"
+                  onClick={openHeroVideo}
+                  className="group relative w-64 max-w-full overflow-hidden border border-line bg-ink shadow-2xl cursor-pointer hover:border-primary transition-all hover:-translate-y-1"
                 >
                   <img
                     src={heroShort.image.src}
                     alt={heroShort.image.alt}
                     className="aspect-[9/16] w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-black/30" />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/95 text-primary-foreground shadow-xl transition-transform group-hover:scale-110">
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-transparent to-black/30" />
+                  <div className="absolute inset-0 flex flex-col items-center justify-center p-4">
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/95 text-primary-foreground shadow-2xl transition-transform group-hover:scale-115">
                       <Play className="ml-1 h-7 w-7 fill-current" />
                     </div>
+                    <span className="mt-3 inline-flex items-center gap-1 bg-black/80 px-3 py-1 text-[0.7rem] font-bold uppercase tracking-wider text-white backdrop-blur">
+                      Watch on YouTube ↗
+                    </span>
                   </div>
                   <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white">
                     <span className="font-display text-xl text-primary-foreground">19M Views</span>
-                    <span className="text-xs uppercase tracking-wider text-rose">Play Short</span>
+                    <span className="text-xs uppercase tracking-wider text-rose">YouTube Short</span>
                   </div>
                 </div>
               </div>
@@ -215,20 +223,16 @@ function VideoShowcase() {
       <section className="mx-auto max-w-7xl px-5 py-16 md:px-10">
         <div className="mb-8 flex items-baseline justify-between border-b border-line pb-4">
           <p className="eyebrow">
-            Interactive Video Wall · Click any card to play
+            Interactive Video Wall · Click any card to watch on original platform
           </p>
-          <p className="text-xs text-foreground/60">
-            Muted autoplay on hover &amp; full modal player with sound controls
+          <p className="text-xs text-foreground/60 hidden sm:block">
+            Opens directly on YouTube Shorts / Instagram Reels in a new tab
           </p>
         </div>
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {filtered.map((item) => (
-            <VideoClusterCard
-              key={item.slug}
-              item={item}
-              onPlay={(v) => setActiveVideo(v)}
-            />
+            <VideoClusterCard key={item.slug} item={item} />
           ))}
         </div>
       </section>
@@ -273,9 +277,6 @@ function VideoShowcase() {
           </div>
         </div>
       </section>
-
-      {/* FULL VIDEO PLAYER MODAL */}
-      <VideoPlayerModal item={activeVideo} onClose={() => setActiveVideo(null)} />
 
       <ContactBand />
     </>

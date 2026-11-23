@@ -135,13 +135,13 @@ export function BrandFolderCard({ folder, onOpen, creativeCount = 0 }: BrandFold
 
       {/* FOOTER ACTIONS */}
       <div className="mt-6 flex items-center justify-between border-t border-line pt-4 text-xs">
-        <span className="flex items-center gap-1.5 text-foreground/60 font-medium text-[0.75rem]">
-          <FolderOpen className="h-3.5 w-3.5 text-rose" />
-          {creativeCount > 0 ? `${creativeCount} pieces` : "Case Study"}
+        <span className="flex items-center gap-1.5 text-foreground/70 font-semibold text-[0.75rem]">
+          <FolderOpen className="h-4 w-4 text-rose" />
+          {creativeCount > 0 ? `${creativeCount} Creatives` : "Project Details"}
         </span>
 
-        <span className="inline-flex items-center gap-1 font-semibold text-primary transition-transform group-hover:translate-x-1">
-          Open Folder <ArrowUpRight className="h-3.5 w-3.5" />
+        <span className="inline-flex items-center gap-1.5 border border-primary/40 bg-paper px-3.5 py-1.5 font-bold uppercase tracking-wider text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all shadow-sm">
+          Open Folder <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
         </span>
       </div>
     </article>

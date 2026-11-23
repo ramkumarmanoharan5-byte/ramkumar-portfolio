@@ -147,6 +147,20 @@
     background: var(--burgundy);
     color: var(--cream);
   }
+  ::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--ivory);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--rose);
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--burgundy);
+  }
 }
 
 /* Small uppercase editorial label */
