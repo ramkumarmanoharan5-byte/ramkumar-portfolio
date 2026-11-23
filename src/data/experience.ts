@@ -74,7 +74,7 @@ export const employment: Employment[] = [
       { value: "4K to 8K", label: "Instagram followers, grown organically" },
       { value: "300+", label: "SEO-focused blogs published and optimised" },
       { value: "30K+", label: "organic blog views contributed to" },
-      { value: "₹160", label: "corrected cost per lead achieved in admission campaigns" },
+      { value: "₹286", label: "cost per lead across 2,461 admission leads" },
     ],
     brandCategories: {
       title: "Brands and Products I Worked On",
@@ -87,13 +87,6 @@ export const employment: Employment[] = [
           url: "https://topall.app/",
           description:
             "AI-powered NEET and JEE learning platform. My involvement spans social media and digital content strategy, AI-assisted video workflows with NotebookLM, product brochure creation, supporting free resource distribution (prep.topall.app), and assisting with Google Search and app installation campaigns.",
-        },
-        {
-          name: "NEET Guide",
-          slug: "neet-guide",
-          url: "https://neet.guide/",
-          description:
-            "Chapter-wise educational resource brand. I manage educational content marketing, search intent architecture, revision content, and platform SEO across Physics, Chemistry, and Biology.",
         },
       ],
       clients: [
@@ -113,7 +106,7 @@ export const employment: Employment[] = [
           name: "Anna Adarsh Women's College",
           slug: "anna-adarsh-womens-college",
           description:
-            "Higher education institution. Admission lead generation through Meta Ads, Instagram marketing, and CPL optimisation to ₹160.",
+            "Higher education institution. Admission lead generation through Meta Ads, Instagram marketing, and CPL optimisation to ₹286.",
         },
         {
           name: "Anna Adarsh Group of Schools",
@@ -154,7 +147,6 @@ export const employment: Employment[] = [
       { slug: "anna-adarsh-womens-college", label: "Anna Adarsh Women's College" },
       { slug: "style-365", label: "Style 365 Studio Salon" },
       { slug: "sofa-42", label: "Sofa 42 Furniture" },
-      { slug: "neet-guide", label: "NEET Guide" },
     ],
   },
   {

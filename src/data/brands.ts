@@ -38,8 +38,8 @@ export const brands: Brand[] = [
     name: "Style 365",
     displayName: "Style 365 Studio Salon",
     industry: "Beauty, grooming and salon services",
-    instagramHandle: "@style365official",
-    instagramUrl: "https://www.instagram.com/style365official/",
+    instagramHandle: "@style365studio",
+    instagramUrl: "https://www.instagram.com/style365studio/",
     website: "https://style365.one/",
     snapshot: { posts: "147", followers: "7,505", following: "71" },
     featuredLink: {

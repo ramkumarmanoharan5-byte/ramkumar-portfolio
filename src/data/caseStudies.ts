@@ -3,7 +3,6 @@ import artistStudio from "@/assets/the-artist-mode-studio-lifetime.jpg.asset.jso
 import style365Website from "@/assets/style365-website.jpg.asset.json";
 import topallPrep from "@/assets/topall-prep-portal.jpg.asset.json";
 import topallApp from "@/assets/topall-app.jpg.asset.json";
-import neetGuideHome from "@/assets/neet-guide-home.jpg.asset.json";
 import type { Metric } from "./content";
 
 export interface Chapter {
@@ -472,18 +471,18 @@ export const caseStudies: CaseStudy[] = [
     client: "Anna Adarsh Women's College",
     kind: "Client project",
     industry: "Higher education",
-    highlight: { value: "₹160", label: "corrected cost per lead" },
+    highlight: { value: "₹286", label: "cost per lead" },
     headline: "Admission lead generation and cost-per-lead optimisation through Meta Ads.",
     summary:
-      "An admission-season Meta Ads campaign developed to generate high-intent enquiries from prospective female students and parents in Chennai. I managed ad creative development, audience targeting, Instagram marketing, and Campaign Budget Optimisation, achieving a corrected cost per lead of ₹160.",
+      "An admission-season Meta Ads campaign developed to generate high-intent enquiries from prospective female students and parents in Chennai. I managed ad creative development, audience targeting, Instagram marketing, and Campaign Budget Optimisation, achieving a cost per lead of ₹286.",
     results: {
       title: "Reported campaign performance",
       metrics: [
-        { label: "Cost per lead", value: "₹160", note: "Latest corrected CPL figure" },
+        { label: "Cost per lead", value: "₹286", note: "₹7.04 lakh spend ÷ 2,461 leads" },
         { label: "Total reach", value: "24.8L", note: "Admission season campaign reach" },
         { label: "Impressions", value: "1.04Cr", note: "Cumulative campaign impressions" },
       ],
-      note: "₹160 is my latest corrected cost per lead figure. A separate reporting summary noted ₹7.04 lakh spend and 2,461 leads; these metrics describe different reporting scopes and periods and are not combined directly into one calculation. L = lakh, Cr = crore.",
+      note: "Cost per lead is calculated from the campaign reporting summary: ₹7.04 lakh total spend across 2,461 leads. L = lakh, Cr = crore.",
     },
     overview: {
       objective: "Generate qualified admission enquiries from prospective students and parents during the academic admission window.",
@@ -509,7 +508,7 @@ export const caseStudies: CaseStudy[] = [
         { title: "Admission-focused creative", body: "Creatives highlighted academic excellence, campus culture, course variety, and career placements." },
         { title: "Instant form engagement", body: "Interested candidates clicked through to pre-filled instant enquiry forms on Facebook and Instagram." },
         { title: "Lead generation", body: "Captured qualified student contact details directly for college admissions counselling teams." },
-        { title: "CPL optimisation", body: "Regularly retired underperforming ad sets and scaled winning creatives to maintain the corrected ₹160 cost per lead." },
+        { title: "CPL optimisation", body: "Regularly retired underperforming ad sets and scaled winning creatives to maintain a ₹286 cost per lead." },
       ],
     },
     chapters: [
@@ -527,7 +526,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     conversionLens: [
       { stage: "Awareness", detail: "24.8L reach and 1.04Cr impressions across Meta platforms." },
-      { stage: "Conversion", detail: "Corrected cost per lead of ₹160 achieved during campaign optimization." },
+      { stage: "Conversion", detail: "Cost per lead of ₹286 across 2,461 leads." },
       { stage: "Business outcomes", detail: "Student enquiries forwarded to college admissions teams for counselling and enrolment." },
     ],
     learnings: [
@@ -700,7 +699,7 @@ export const caseStudies: CaseStudy[] = [
     links: [
       { label: "Salon Reel on Instagram", url: "https://www.instagram.com/reel/DZfDErthSCj/" },
       { label: "Website", url: "https://style365.one/" },
-      { label: "Instagram @style365official", url: "https://www.instagram.com/style365official/" },
+      { label: "Instagram @style365studio", url: "https://www.instagram.com/style365studio/" },
     ],
   },
 
@@ -856,50 +855,8 @@ export const caseStudies: CaseStudy[] = [
 
   /* 11 ------------------------------------------------------------------ */
   {
-    slug: "neet-guide",
-    number: "11",
-    title: "NEET Guide",
-    client: "NEET Guide",
-    kind: "Employer work",
-    industry: "NEET preparation",
-    headline: "Chapter-wise educational content marketing and search discovery for NEET students.",
-    summary:
-      "NEET Guide is an in-house educational brand under VVT Solutions. It provides chapter-wise preparation resources, subject quizzes, and AI-supported doubt clarification across Physics, Chemistry, Botany, and Zoology. My work centers on educational content marketing, search intent mapping, and platform SEO.",
-    ctas: [{ label: "Visit neet.guide", url: "https://neet.guide/" }],
-    overview: {
-      objective: "Help NEET aspirants locate immediate chapter-level answers through search engines and establish the platform as a trusted daily study companion.",
-      audience: "NEET aspirants in Class 11 and Class 12 looking for quick chapter revision, formula sheets, and AI doubt assistance.",
-      strategy: "Structured, search-optimized pages for every NCERT chapter and subject, written to capture student queries at the exact moment of study need.",
-    },
-    formats: ["Chapter resource pages", "Subject quizzes", "Revision content", "AI doubt clarification"],
-    responsibilities: [
-      "Educational content marketing",
-      "Platform content planning",
-      "Blog and SEO content",
-    ],
-    images: [{ src: neetGuideHome.url, alt: "NEET Guide homepage", caption: "neet.guide, homepage" }],
-    chapters: [],
-    pages: {
-      title: "Example chapter resources",
-      intro: "Representative chapter resource pages from each core medical preparation subject.",
-      items: [
-        { group: "Physics", label: "Electromagnetic Induction, Class 12", url: "https://neet.guide/ask-your-doubts/physics/class-xii-electromagnetic-induction" },
-        { group: "Chemistry", label: "Chemical Kinetics, Class 12", url: "https://neet.guide/ask-your-doubts/chemistry/class-xii-chemical-kinetics" },
-        { group: "Botany", label: "Photosynthesis in Higher Plants, Class 11", url: "https://neet.guide/ask-your-doubts/botany/class-xi-photosynthesis-in-higher-plants" },
-        { group: "Zoology", label: "Animal Kingdom, Class 11", url: "https://neet.guide/ask-your-doubts/zoology/class-xi-animal-kingdom" },
-        { group: "Admissions", label: "Ask about admissions", url: "https://neet.guide/ask-about-admissions" },
-      ],
-    },
-    learnings: [
-      "Students organize their exam revision by specific textbook chapters, making chapter-level page architecture essential for educational search traffic.",
-    ],
-    links: [{ label: "NEET Guide website", url: "https://neet.guide/" }],
-  },
-
-  /* 12 ------------------------------------------------------------------ */
-  {
     slug: "colan-infotech",
-    number: "12",
+    number: "11",
     title: "Colan Infotech",
     client: "Colan Infotech Pvt. Ltd.",
     kind: "Employer work",

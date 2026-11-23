@@ -371,7 +371,7 @@ function Home() {
                 <h2 className="display-lg mt-5 text-primary">{anna.title}</h2>
                 <p className="mt-4 max-w-2xl font-display text-2xl leading-snug">
                   Admission lead generation that kept the cost per lead at{" "}
-                  {anna.highlight?.value ?? "₹160"}.
+                  {anna.highlight?.value ?? "₹286"}.
                 </p>
               </div>
               <div className="flex flex-wrap gap-3 lg:col-span-5 lg:justify-end">
@@ -500,7 +500,7 @@ function Home() {
               to: "/work" as const,
               n: "01",
               t: "Work, organised by brand",
-              d: "Twelve company and brand project folders with deliverables and case studies.",
+              d: "Eleven company and brand project folders with deliverables and case studies.",
             },
             {
               to: "/video" as const,

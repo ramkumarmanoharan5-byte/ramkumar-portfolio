@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import type { BrandFolder, OfficialLink } from "@/data/folders";
 import { contentItems, type ContentItem } from "@/data/content";
+import { brandFolders } from "@/data/folders";
 import { cn } from "@/lib/utils";
 
 interface BrandFolderDrawerProps {
@@ -342,7 +343,7 @@ function FolderModalContent({ folder, onClose }: { folder: BrandFolder; onClose:
 
       {/* DRAWER FOOTER (FIXED/SHRINK-0) */}
       <div className="shrink-0 flex items-center justify-between border-t border-line bg-ivory px-6 py-4 z-20">
-        <span className="eyebrow">Folder {folder.number} of 12</span>
+        <span className="eyebrow">Folder {folder.number} of {brandFolders.length}</span>
         <button
           type="button"
           onClick={onClose}

@@ -23,11 +23,11 @@ describe("portfolio accuracy rules", () => {
     expect(values).toEqual(["3.9Cr", "32,905", "82.9K", "+33K", "62,756"]);
   });
 
-  it("Anna Adarsh shows the corrected cost per lead of ₹160", () => {
+  it("Anna Adarsh shows the cost per lead of ₹286", () => {
     const cs = caseStudyBySlug("anna-adarsh-womens-college");
-    expect(cs?.highlight?.value).toBe("₹160");
+    expect(cs?.highlight?.value).toBe("₹286");
     const values = cs?.results?.metrics.map((m) => m.value);
-    expect(values).toEqual(["₹160", "24.8L", "1.04Cr"]);
+    expect(values).toEqual(["₹286", "24.8L", "1.04Cr"]);
   });
 
   it("TopAll is the first project and its primary CTA is the free portal", () => {
@@ -48,7 +48,6 @@ describe("portfolio accuracy rules", () => {
       "asta-properties",
       "ambrig-homes",
       "sofa-42",
-      "neet-guide",
       "colan-infotech",
     ]);
   });

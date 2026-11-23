@@ -12,7 +12,7 @@ export const Route = createFileRoute("/case-studies/")({
       {
         name: "description",
         content:
-          "Twelve projects, led by TopAll: an AI-powered NEET and JEE product funnel, VVT Coaching, The Artist Mode (3.9Cr views), Anna Adarsh Women's College, Sofa 42 Furniture, Colan Infotech and more.",
+          "Eleven projects, led by TopAll: an AI-powered NEET and JEE product funnel, VVT Coaching, The Artist Mode (3.9Cr views), Anna Adarsh Women's College, Sofa 42 Furniture, Colan Infotech and more.",
       },
       { property: "og:title", content: "Projects and Case Studies | Ramkumar M." },
       {
@@ -34,7 +34,7 @@ function CaseStudies() {
       <PageIntro
         eyebrow="Projects"
         title="The thinking behind the work."
-        lede="Twelve projects, from the product I work on now to my own YouTube channel. Each one is labelled for what it is, and explained from the goal to what I learned."
+        lede="Eleven projects, from the product I work on now to my own YouTube channel. Each one is labelled for what it is, and explained from the goal to what I learned."
       />
       <section className="mx-auto max-w-7xl px-5 pb-24 md:px-10">
         {lead && (

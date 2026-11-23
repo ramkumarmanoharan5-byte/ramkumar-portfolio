@@ -2,7 +2,6 @@ import topallPrep from "@/assets/topall-prep-portal.jpg.asset.json";
 import topallApp from "@/assets/topall-app.jpg.asset.json";
 import topallChon from "@/assets/topall-chondrichthyes-guide.jpg.asset.json";
 import topallYoutube from "@/assets/topall-youtube-channel.jpg.asset.json";
-import neetGuideHome from "@/assets/neet-guide-home.jpg.asset.json";
 import artistChannel from "@/assets/the-artist-mode-channel.jpg.asset.json";
 import artistStudio from "@/assets/the-artist-mode-studio-lifetime.jpg.asset.json";
 import drVikramReel from "@/assets/dr-vikram-agarwal-college-reel.jpg.asset.json";
@@ -192,60 +191,8 @@ export const brandFolders: BrandFolder[] = [
     ],
   },
   {
-    id: "neet-guide",
-    number: "03",
-    name: "NEET Guide",
-    displayName: "NEET Guide — Preparation Hub",
-    industry: "Educational Technology",
-    relationship: "In-house Product (VVT Solutions)",
-    relationshipBadge: "In-house Product",
-    caseStudySlug: "neet-guide",
-    websiteUrl: "https://neet.guide/",
-    overview:
-      "In-house digital educational platform dedicated to NEET aspirants. Developed educational content, study resources, website content, and organic digital marketing strategy.",
-    deepDive:
-      "NEET Guide serves as an organic educational landing ground providing structured syllabus roadmaps, question patterns, and curated study materials. The goal is to establish search authority and act as a reliable academic companion for medical aspirants.",
-    targetAudience: "Medical entrance exam candidates across India seeking structured chapter outlines, cutoff information, and practice advice.",
-    strategySummary: "Keyword-mapped educational content architecture built to attract students during high-intent research phases.",
-    contentAreas: [
-      "Educational Content Curation",
-      "Website Information Architecture",
-      "Study Resources & Mock Test Guides",
-      "Organic Digital Marketing Strategy",
-    ],
-    platforms: ["Website", "SEO", "Digital Marketing"],
-    keyMetric: { value: "Organic Hub", label: "Free Study Destination" },
-    metricsDetail: [
-      { label: "Role", value: "Content Strategy", note: "Syllabus mapping and informational resource development" },
-      { label: "Synergy", value: "VVT Solutions", note: "Feeds organic candidate awareness into product ecosystem" },
-    ],
-    previewImages: [
-      { src: neetGuideHome.url, alt: "NEET Guide Homepage and Preparation Hub", label: "Portal Home" },
-    ],
-    featuredDeliverables: [
-      "Structured syllabus guides and chapter summaries",
-      "Aspirant study resource navigation and exam notifications",
-      "Search-first educational content planning and taxonomy",
-    ],
-    sections: [
-      {
-        title: "Content Taxonomy & Information Architecture",
-        description: "Organized complex entrance exam information into digestible, topic-specific clusters covering Physics, Chemistry, and Biology essentials.",
-        points: [
-          "Clear chapter breakdowns mapped to NCERT difficulty levels",
-          "Exam date notifications, document checklists, and counselling advisories",
-          "Low-latency static pages structured for rapid browsing and revision",
-        ],
-      },
-    ],
-    officialLinks: [
-      { label: "NEET Guide Official Portal", url: "https://neet.guide/", type: "website", badge: "Official Portal" },
-      { label: "TopAll Prep Portal (Companion)", url: "https://prep.topall.app/", type: "portal", badge: "Practice Hub" },
-    ],
-  },
-  {
     id: "the-artist-mode",
-    number: "04",
+    number: "03",
     name: "The Artist Mode",
     displayName: "The Artist Mode — Men's Grooming Channel",
     industry: "Men's Lifestyle & Grooming",
@@ -317,7 +264,7 @@ export const brandFolders: BrandFolder[] = [
   },
   {
     id: "anna-adarsh-womens-college",
-    number: "05",
+    number: "04",
     name: "Anna Adarsh Women's College",
     displayName: "Anna Adarsh College for Women",
     industry: "Higher Education",
@@ -328,7 +275,7 @@ export const brandFolders: BrandFolder[] = [
     overview:
       "Prestigious women's higher education institution in Chennai. Managed Meta advertising campaigns, student-centric Instagram creative strategy, and targeted admission lead generation.",
     deepDive:
-      "College admissions have a strict, highly compressed time window. We designed a full Meta advertising funnel combining thumb-stopping campus culture reels with high-intent lead generation forms, resulting in over 24.8 Lakh accounts reached and an industry-beating ₹160 cost per qualified lead.",
+      "College admissions have a strict, highly compressed time window. We designed a full Meta advertising funnel combining thumb-stopping campus culture reels with high-intent lead generation forms, resulting in over 24.8 Lakh accounts reached and a ₹286 cost per lead across 2,461 leads.",
     targetAudience: "Female students completing Class 12, undergraduate aspirants, and their parents across Tamil Nadu and neighbouring regions.",
     strategySummary: "Segmented Meta Ads campaigns pairing authentic campus culture creative hooks with frictionless on-platform lead capture forms.",
     contentAreas: [
@@ -339,15 +286,15 @@ export const brandFolders: BrandFolder[] = [
       "CPL Optimization & Budget Efficiency",
     ],
     platforms: ["Instagram", "Meta Ads Manager", "Facebook"],
-    keyMetric: { value: "₹160 CPL", label: "24.8L Reach · 1.04Cr Impressions" },
+    keyMetric: { value: "₹286 CPL", label: "24.8L Reach · 1.04Cr Impressions" },
     metricsDetail: [
-      { label: "Cost Per Lead", value: "₹160", note: "Highly efficient admission inquiry cost" },
+      { label: "Cost Per Lead", value: "₹286", note: "₹7.04 lakh spend ÷ 2,461 leads" },
       { label: "Total Reach", value: "24.8L", note: "Unique prospective student/parent accounts reached" },
       { label: "Impressions", value: "1.04Cr", note: "Total ad impressions delivered across Tamil Nadu" },
     ],
     previewImages: [],
     featuredDeliverables: [
-      "₹160 cost-per-lead achieved during peak admission season",
+      "₹286 cost per lead across 2,461 admission leads",
       "24.8 Lakh accounts reached across targeted geographic cohorts",
       "1.04 Crore campaign impressions across Meta platforms",
       "Student life and academic empowerment messaging matrix",
@@ -364,7 +311,7 @@ export const brandFolders: BrandFolder[] = [
       },
       {
         title: "Cost Per Lead Discipline & Optimization",
-        description: "Monitored campaign delivery daily to reallocate budget to top-performing ad sets, keeping CPL down to ₹160 while maintaining high lead qualification standards.",
+        description: "Monitored campaign delivery daily to reallocate budget to top-performing ad sets, keeping CPL at ₹286 while maintaining high lead qualification standards.",
         points: [
           "A/B creative testing between career outcome headlines vs campus culture",
           "Exclusion of non-target demographics to prevent budget dilution",
@@ -380,7 +327,7 @@ export const brandFolders: BrandFolder[] = [
   },
   {
     id: "anna-adarsh-group-of-schools",
-    number: "06",
+    number: "05",
     name: "Anna Adarsh Group of Schools",
     displayName: "Anna Adarsh Group of Schools",
     industry: "School Education (K-12)",
@@ -431,7 +378,7 @@ export const brandFolders: BrandFolder[] = [
   },
   {
     id: "dr-vikram-agarwal-adarsh-college",
-    number: "07",
+    number: "06",
     name: "Dr. Vikram Agarwal Adarsh College",
     displayName: "Dr. Vikram Agarwal Adarsh College",
     industry: "Higher Education",
@@ -478,6 +425,60 @@ export const brandFolders: BrandFolder[] = [
     ],
     officialLinks: [
       { label: "Watch 11.3K Campus Reel", url: "https://www.instagram.com/p/DdY2cFKztu4/", type: "instagram", badge: "Instagram Reel · 11.3K" },
+    ],
+  },
+  {
+    id: "style-365",
+    number: "07",
+    name: "Style 365",
+    displayName: "Style 365 Studio Salon",
+    industry: "Beauty, Grooming & Salon Services",
+    relationship: "Client Project (VVT Solutions)",
+    relationshipBadge: "Client Project",
+    caseStudySlug: "style-365",
+    websiteUrl: "https://style365.one/",
+    overview:
+      "Leading unisex salon brand in Bengaluru with 147 posts and 7,500+ followers. Created transformation-focused, before-and-after social creatives that make salon outcomes tangible for neighbourhood booking decisions.",
+    deepDive:
+      "Salon clients do not buy hair products or scissors; they buy personal confidence and visible results. The content strategy centered on authentic hair transformations, keratin treatments, and bridal styling shown in clear before-and-after formats.",
+    targetAudience: "Urban professionals, college students, and local residents in Bengaluru seeking dependable hair and skin care.",
+    strategySummary: "Show-the-outcome visual proof, service-first pricing transparency, and hyper-local neighbourhood engagement.",
+    contentAreas: [
+      "Hair and Beauty Services Promotion",
+      "Hair Transformations & Makeovers",
+      "Before-and-After Creative Concepts",
+      "Local Audience Communication & Offers",
+    ],
+    platforms: ["Instagram", "Meta Ads Planning", "Website"],
+    keyMetric: { value: "₹3,00,000", label: "Campaign Budget Reference" },
+    metricsDetail: [
+      { label: "Instagram Grid", value: "147 Posts", note: "Showcasing services, transformations, and client results" },
+      { label: "Community", value: "7,505 Followers", note: "Local Bengaluru customer following" },
+      { label: "Budget Framework", value: "₹3,00,000", note: "Campaign planning budget reference" },
+    ],
+    previewImages: [
+      { src: style365Website.url, alt: "Style 365 Studio Salon Bengaluru Homepage", label: "Official Site" },
+    ],
+    featuredDeliverables: [
+      "Before-and-after transformation creative strategy for hair makeovers",
+      "Service-first package posts detailing hair spa, colouring, and keratin results",
+      "Local neighbourhood hyper-targeted creative angles driving appointment calls",
+    ],
+    sections: [
+      {
+        title: "Transformation-First Visual Strategy",
+        description: "Documented real client transformations in salon chairs. Showing genuine before-and-after styling helped prospective clients visualize their own makeover.",
+        points: [
+          "Side-by-side comparison graphics demonstrating hair texture restoration",
+          "Clear pricing transparency reducing friction for first-time bookers",
+          "Seasonal festive grooming and wedding styling packages",
+        ],
+      },
+    ],
+    officialLinks: [
+      { label: "Official Salon Website", url: "https://style365.one/", type: "website", badge: "Official Website" },
+      { label: "Watch Salon Reel", url: "https://www.instagram.com/reel/DZfDErthSCj/", type: "instagram", badge: "Instagram Reel" },
+      { label: "Instagram Profile (@style365studio)", url: "https://www.instagram.com/style365studio/", type: "instagram", badge: "Instagram · 7.5K" },
     ],
   },
   {
@@ -583,62 +584,8 @@ export const brandFolders: BrandFolder[] = [
     ],
   },
   {
-    id: "style-365",
-    number: "10",
-    name: "Style 365",
-    displayName: "Style 365 Studio Salon",
-    industry: "Beauty, Grooming & Salon Services",
-    relationship: "Client Project (VVT Solutions)",
-    relationshipBadge: "Client Project",
-    caseStudySlug: "style-365",
-    websiteUrl: "https://style365.one/",
-    overview:
-      "Leading unisex salon brand in Bengaluru with 147 posts and 7,500+ followers. Created transformation-focused, before-and-after social creatives that make salon outcomes tangible for neighbourhood booking decisions.",
-    deepDive:
-      "Salon clients do not buy hair products or scissors; they buy personal confidence and visible results. The content strategy centered on authentic hair transformations, keratin treatments, and bridal styling shown in clear before-and-after formats.",
-    targetAudience: "Urban professionals, college students, and local residents in Bengaluru seeking dependable hair and skin care.",
-    strategySummary: "Show-the-outcome visual proof, service-first pricing transparency, and hyper-local neighbourhood engagement.",
-    contentAreas: [
-      "Hair and Beauty Services Promotion",
-      "Hair Transformations & Makeovers",
-      "Before-and-After Creative Concepts",
-      "Local Audience Communication & Offers",
-    ],
-    platforms: ["Instagram", "Meta Ads Planning", "Website"],
-    keyMetric: { value: "₹3,00,000", label: "Campaign Budget Reference" },
-    metricsDetail: [
-      { label: "Instagram Grid", value: "147 Posts", note: "Showcasing services, transformations, and client results" },
-      { label: "Community", value: "7,505 Followers", note: "Local Bengaluru customer following" },
-      { label: "Budget Framework", value: "₹3,00,000", note: "Campaign planning budget reference" },
-    ],
-    previewImages: [
-      { src: style365Website.url, alt: "Style 365 Studio Salon Bengaluru Homepage", label: "Official Site" },
-    ],
-    featuredDeliverables: [
-      "Before-and-after transformation creative strategy for hair makeovers",
-      "Service-first package posts detailing hair spa, colouring, and keratin results",
-      "Local neighbourhood hyper-targeted creative angles driving appointment calls",
-    ],
-    sections: [
-      {
-        title: "Transformation-First Visual Strategy",
-        description: "Documented real client transformations in salon chairs. Showing genuine before-and-after styling helped prospective clients visualize their own makeover.",
-        points: [
-          "Side-by-side comparison graphics demonstrating hair texture restoration",
-          "Clear pricing transparency reducing friction for first-time bookers",
-          "Seasonal festive grooming and wedding styling packages",
-        ],
-      },
-    ],
-    officialLinks: [
-      { label: "Official Salon Website", url: "https://style365.one/", type: "website", badge: "Official Website" },
-      { label: "Watch Salon Reel", url: "https://www.instagram.com/reel/DZfDErthSCj/", type: "instagram", badge: "Instagram Reel" },
-      { label: "Instagram Profile (@style365official)", url: "https://www.instagram.com/style365official/", type: "instagram", badge: "Instagram · 7.5K" },
-    ],
-  },
-  {
     id: "sofa-42",
-    number: "11",
+    number: "10",
     name: "Sofa 42",
     displayName: "Sofa 42 Furniture, Bengaluru",
     industry: "Furniture & Home Interiors",
@@ -687,7 +634,7 @@ export const brandFolders: BrandFolder[] = [
   },
   {
     id: "colan-infotech",
-    number: "12",
+    number: "11",
     name: "Colan Infotech",
     displayName: "Colan Infotech — Digital Marketing Executive",
     industry: "B2B Technology Services & IT Consulting",
