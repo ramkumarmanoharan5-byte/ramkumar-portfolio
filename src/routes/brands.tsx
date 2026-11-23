@@ -10,10 +10,10 @@ import { contentItems } from "@/data/content";
 export const Route = createFileRoute("/brands")({
   head: () => ({
     meta: [
-      { title: "Brands: Style 365, Sofa 42 and Shoutout Campus | Ramkumar M." },
-      { name: "description", content: "Brand showcases for Style 365 Studio Salon, Sofa 42 Furniture and Shoutout Campus: their audiences, content areas and approach." },
+      { title: "Brands: Sofa 42 and Shoutout Campus | Ramkumar M." },
+      { name: "description", content: "Brand showcases for Sofa 42 Furniture and Shoutout Campus: their audiences, content areas and approach." },
       { property: "og:title", content: "Brands, Audiences & Content Experiences" },
-      { property: "og:description", content: "Salon, furniture and influencer marketing brands, each with its own audience and content approach." },
+      { property: "og:description", content: "Furniture and influencer marketing brands, each with its own audience and content approach." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -27,12 +27,12 @@ function Brands() {
       <PageIntro
         eyebrow="Brands"
         title="Brands, Audiences & Content Experiences"
-        lede="A salon, a furniture showroom and an influencer-promotions account. Each needed content shaped around a different audience and a different reason to engage."
+        lede="A furniture showroom and an influencer-promotions account. Each needed content shaped around a different audience and a different reason to engage."
       />
 
       {/* Overview */}
       <section className="mx-auto max-w-7xl px-5 md:px-10">
-        <div className="grid gap-px bg-line md:grid-cols-3">
+        <div className="grid gap-px bg-line md:grid-cols-2">
           {brands.map((b) => (
             <a key={b.slug} href={`#${b.slug}`} className="group bg-ivory p-8 transition-colors hover:bg-cream">
               <p className="font-display text-6xl text-primary/25">{b.number}</p>

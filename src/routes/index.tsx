@@ -125,7 +125,7 @@ function Home() {
           <dl className="grid grid-cols-1 gap-px bg-line pt-px sm:grid-cols-3">
             {[
               { k: "Experience", v: "Nearly 3 years" },
-              { k: "Industries", v: "EdTech, education, real estate, salon, B2B tech" },
+              { k: "Industries", v: "EdTech, education, real estate, B2B tech" },
               { k: "Platforms", v: "Instagram, YouTube, Facebook, LinkedIn" },
             ].map((f) => (
               <div key={f.k} className="bg-ivory py-5 sm:pr-5">
@@ -239,8 +239,8 @@ function Home() {
       <section className="bg-cream">
         <div className="mx-auto max-w-7xl px-5 py-24 md:px-10">
           <p className="eyebrow">Brands and audiences</p>
-          <h2 className="display-md mt-4 max-w-3xl text-primary">Three brands, three very different audiences.</h2>
-          <div className="mt-14 grid gap-px bg-line md:grid-cols-3">
+          <h2 className="display-md mt-4 max-w-3xl text-primary">Two brands, two very different audiences.</h2>
+          <div className="mt-14 grid gap-px bg-line md:grid-cols-2">
             {brands.map((b) => (
               <Link key={b.slug} to="/brands" hash={b.slug} className="group bg-cream p-8 transition-colors hover:bg-paper">
                 <p className="font-display text-sm text-rose">{b.number}</p>
