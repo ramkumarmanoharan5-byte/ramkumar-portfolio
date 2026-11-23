@@ -138,7 +138,7 @@ function RootComponent() {
         Skip to content
       </a>
       <SiteHeader />
-      <main id="main">
+      <main id="main" className="page-transition">
         {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
         <Outlet />
       </main>

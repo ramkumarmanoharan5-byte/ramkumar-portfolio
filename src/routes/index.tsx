@@ -68,7 +68,10 @@ function Home() {
                 <Link to="/work">Explore My Work <ArrowRight /></Link>
               </Button>
               <Button asChild size="lg" variant="outline">
-                <Link to="/case-studies">View My Case Studies</Link>
+                <Link to="/case-studies">View Projects</Link>
+              </Button>
+              <Button asChild size="lg" variant="outline">
+                <Link to="/video">Video Studio</Link>
               </Button>
               <Button asChild size="lg" variant="ghost">
                 <Link to="/contact">Let's Connect</Link>
@@ -192,6 +195,9 @@ function Home() {
                   <Link to="/case-studies/$slug" params={{ slug: "the-artist-mode" }}>Read the case study <ArrowRight /></Link>
                 </Button>
                 <Button asChild variant="outlineOnDark" size="lg">
+                  <Link to="/video">Watch in Video Studio <ArrowRight /></Link>
+                </Button>
+                <Button asChild variant="outlineOnDark" size="lg">
                   <a href={profile.contact.youtube} target="_blank" rel="noopener noreferrer">Visit channel <ArrowUpRight /></a>
                 </Button>
               </div>
@@ -266,10 +272,11 @@ function Home() {
         <p className="eyebrow">Continue exploring</p>
         <ul className="mt-8 border-t border-line">
           {[
-            { to: "/work" as const, n: "01", t: "Every content piece has a story", d: "Individual creatives, the thinking behind them and their original links." },
-            { to: "/experience" as const, n: "02", t: "Experience", d: "VVT Solutions and Colan Infotech." },
-            { to: "/ai-production" as const, n: "03", t: "AI educational video production", d: "How I turn an NCERT chapter into videos with NotebookLM." },
-            { to: "/process" as const, n: "04", t: "My creative process", d: "Seven stages from research to analysis." },
+            { to: "/work" as const, n: "01", t: "Work, organised by brand", d: "Twelve company and brand project folders with deliverables and case studies." },
+            { to: "/video" as const, n: "02", t: "Made to Move: Video Studio", d: "Vertical Shorts and Reels with over 3.9 Crore views and retention hooks." },
+            { to: "/experience" as const, n: "03", t: "Professional Experience", d: "VVT Solutions Pvt. Ltd. and Colan Infotech with verified links." },
+            { to: "/ai-production" as const, n: "04", t: "AI educational video production", d: "How I turn an NCERT chapter into videos with NotebookLM." },
+            { to: "/process" as const, n: "05", t: "My creative process", d: "Seven stages from research to distribution and analysis." },
           ].map((row) => (
             <li key={row.to} className="border-b border-line">
               <Link to={row.to} className="group grid items-baseline gap-2 py-7 md:grid-cols-12 md:gap-6">

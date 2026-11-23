@@ -16,6 +16,7 @@ import { Route as BrandsRouteImport } from './routes/brands'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ExperienceRouteImport } from './routes/experience'
 import { Route as ProcessRouteImport } from './routes/process'
+import { Route as VideoRouteImport } from './routes/video'
 import { Route as CaseStudiesIndexRouteImport } from './routes/case-studies.index'
 import { Route as CaseStudiesSlugRouteImport } from './routes/case-studies.$slug'
 import { Route as WorkIndexRouteImport } from './routes/work.index'
@@ -56,6 +57,11 @@ const ProcessRoute = ProcessRouteImport.update({
   path: '/process',
   getParentRoute: () => rootRouteImport,
 } as any)
+const VideoRoute = VideoRouteImport.update({
+  id: '/video',
+  path: '/video',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CaseStudiesIndexRoute = CaseStudiesIndexRouteImport.update({
   id: '/case-studies/',
   path: '/case-studies/',
@@ -85,6 +91,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/experience': typeof ExperienceRoute
   '/process': typeof ProcessRoute
+  '/video': typeof VideoRoute
   '/case-studies/$slug': typeof CaseStudiesSlugRoute
   '/work/$slug': typeof WorkSlugRoute
   '/case-studies/': typeof CaseStudiesIndexRoute
@@ -98,6 +105,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/experience': typeof ExperienceRoute
   '/process': typeof ProcessRoute
+  '/video': typeof VideoRoute
   '/case-studies/$slug': typeof CaseStudiesSlugRoute
   '/work/$slug': typeof WorkSlugRoute
   '/case-studies': typeof CaseStudiesIndexRoute
@@ -112,6 +120,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/experience': typeof ExperienceRoute
   '/process': typeof ProcessRoute
+  '/video': typeof VideoRoute
   '/case-studies/$slug': typeof CaseStudiesSlugRoute
   '/work/$slug': typeof WorkSlugRoute
   '/case-studies/': typeof CaseStudiesIndexRoute
@@ -127,6 +136,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/experience'
     | '/process'
+    | '/video'
     | '/case-studies/$slug'
     | '/work/$slug'
     | '/case-studies/'
@@ -140,6 +150,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/experience'
     | '/process'
+    | '/video'
     | '/case-studies/$slug'
     | '/work/$slug'
     | '/case-studies'
@@ -153,6 +164,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/experience'
     | '/process'
+    | '/video'
     | '/case-studies/$slug'
     | '/work/$slug'
     | '/case-studies/'
@@ -167,6 +179,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   ExperienceRoute: typeof ExperienceRoute
   ProcessRoute: typeof ProcessRoute
+  VideoRoute: typeof VideoRoute
   CaseStudiesSlugRoute: typeof CaseStudiesSlugRoute
   WorkSlugRoute: typeof WorkSlugRoute
   CaseStudiesIndexRoute: typeof CaseStudiesIndexRoute
@@ -224,6 +237,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProcessRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/video': {
+      id: '/video'
+      path: '/video'
+      fullPath: '/video'
+      preLoaderRoute: typeof VideoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/case-studies/': {
       id: '/case-studies/'
       path: '/case-studies'
@@ -263,6 +283,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   ExperienceRoute: ExperienceRoute,
   ProcessRoute: ProcessRoute,
+  VideoRoute: VideoRoute,
   CaseStudiesSlugRoute: CaseStudiesSlugRoute,
   WorkSlugRoute: WorkSlugRoute,
   CaseStudiesIndexRoute: CaseStudiesIndexRoute,
