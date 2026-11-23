@@ -118,7 +118,15 @@ export const brands: Brand[] = [
         body: "Showroom content gives people a reason to visit in person and makes the collection feel real.",
       },
     ],
-    images: [],
+    images: [
+      {
+        src: "/images/work/sofa-42-showroom-reel.jpg",
+        alt: "Sofa 42 showroom with cream lounge chairs and a presenter",
+        caption: "Showroom Reel on Instagram",
+        aspect: "aspect-[9/16]",
+        frameClass: "mx-auto max-w-xs lg:mx-0",
+      },
+    ],
     caseStudy: "sofa-42",
   },
   {

@@ -17,6 +17,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ExperienceRouteImport } from './routes/experience'
 import { Route as ProcessRouteImport } from './routes/process'
 import { Route as VideoRouteImport } from './routes/video'
+import { Route as WhyMeRouteImport } from './routes/why-me'
 import { Route as CaseStudiesIndexRouteImport } from './routes/case-studies.index'
 import { Route as CaseStudiesSlugRouteImport } from './routes/case-studies.$slug'
 import { Route as WorkIndexRouteImport } from './routes/work.index'
@@ -62,6 +63,11 @@ const VideoRoute = VideoRouteImport.update({
   path: '/video',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WhyMeRoute = WhyMeRouteImport.update({
+  id: '/why-me',
+  path: '/why-me',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CaseStudiesIndexRoute = CaseStudiesIndexRouteImport.update({
   id: '/case-studies/',
   path: '/case-studies/',
@@ -92,6 +98,7 @@ export interface FileRoutesByFullPath {
   '/experience': typeof ExperienceRoute
   '/process': typeof ProcessRoute
   '/video': typeof VideoRoute
+  '/why-me': typeof WhyMeRoute
   '/case-studies/$slug': typeof CaseStudiesSlugRoute
   '/work/$slug': typeof WorkSlugRoute
   '/case-studies/': typeof CaseStudiesIndexRoute
@@ -106,6 +113,7 @@ export interface FileRoutesByTo {
   '/experience': typeof ExperienceRoute
   '/process': typeof ProcessRoute
   '/video': typeof VideoRoute
+  '/why-me': typeof WhyMeRoute
   '/case-studies/$slug': typeof CaseStudiesSlugRoute
   '/work/$slug': typeof WorkSlugRoute
   '/case-studies': typeof CaseStudiesIndexRoute
@@ -121,6 +129,7 @@ export interface FileRoutesById {
   '/experience': typeof ExperienceRoute
   '/process': typeof ProcessRoute
   '/video': typeof VideoRoute
+  '/why-me': typeof WhyMeRoute
   '/case-studies/$slug': typeof CaseStudiesSlugRoute
   '/work/$slug': typeof WorkSlugRoute
   '/case-studies/': typeof CaseStudiesIndexRoute
@@ -137,6 +146,7 @@ export interface FileRouteTypes {
     | '/experience'
     | '/process'
     | '/video'
+    | '/why-me'
     | '/case-studies/$slug'
     | '/work/$slug'
     | '/case-studies/'
@@ -151,6 +161,7 @@ export interface FileRouteTypes {
     | '/experience'
     | '/process'
     | '/video'
+    | '/why-me'
     | '/case-studies/$slug'
     | '/work/$slug'
     | '/case-studies'
@@ -165,6 +176,7 @@ export interface FileRouteTypes {
     | '/experience'
     | '/process'
     | '/video'
+    | '/why-me'
     | '/case-studies/$slug'
     | '/work/$slug'
     | '/case-studies/'
@@ -180,6 +192,7 @@ export interface RootRouteChildren {
   ExperienceRoute: typeof ExperienceRoute
   ProcessRoute: typeof ProcessRoute
   VideoRoute: typeof VideoRoute
+  WhyMeRoute: typeof WhyMeRoute
   CaseStudiesSlugRoute: typeof CaseStudiesSlugRoute
   WorkSlugRoute: typeof WorkSlugRoute
   CaseStudiesIndexRoute: typeof CaseStudiesIndexRoute
@@ -244,6 +257,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof VideoRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/why-me': {
+      id: '/why-me'
+      path: '/why-me'
+      fullPath: '/why-me'
+      preLoaderRoute: typeof WhyMeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/case-studies/': {
       id: '/case-studies/'
       path: '/case-studies'
@@ -284,6 +304,7 @@ const rootRouteChildren: RootRouteChildren = {
   ExperienceRoute: ExperienceRoute,
   ProcessRoute: ProcessRoute,
   VideoRoute: VideoRoute,
+  WhyMeRoute: WhyMeRoute,
   CaseStudiesSlugRoute: CaseStudiesSlugRoute,
   WorkSlugRoute: WorkSlugRoute,
   CaseStudiesIndexRoute: CaseStudiesIndexRoute,

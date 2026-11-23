@@ -206,7 +206,7 @@ function WorkIndex() {
               className="inline-flex items-center gap-1.5 border border-line bg-paper px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:border-primary hover:text-primary"
             >
               <PlayCircle className="h-3.5 w-3.5 text-primary" />
-              <span>Video Studio ("Made to Move")</span>
+              <span>Shorts &amp; Reels ("Made to Move")</span>
             </Link>
           </div>
         </div>

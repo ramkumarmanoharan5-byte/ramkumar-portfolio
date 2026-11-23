@@ -86,7 +86,7 @@ function Home() {
                 <Link to="/case-studies">View Projects</Link>
               </Button>
               <Button asChild size="lg" variant="outline">
-                <Link to="/video">Video Studio</Link>
+                <Link to="/video">Shorts &amp; Reels</Link>
               </Button>
               <Button asChild size="lg" variant="ghost">
                 <Link to="/contact">Let's Connect</Link>
@@ -324,7 +324,7 @@ function Home() {
                 </Button>
                 <Button asChild variant="outlineOnDark" size="lg">
                   <Link to="/video">
-                    Watch in Video Studio <ArrowRight />
+                    Watch in Shorts &amp; Reels <ArrowRight />
                   </Link>
                 </Button>
                 <Button asChild variant="outlineOnDark" size="lg">
@@ -505,7 +505,7 @@ function Home() {
             {
               to: "/video" as const,
               n: "02",
-              t: "Made to Move: Video Studio",
+              t: "Made to Move: Shorts & Reels",
               d: "Vertical Shorts and Reels with over 3.9 Crore views and retention hooks.",
             },
             {
@@ -521,10 +521,10 @@ function Home() {
               d: "How I turn an NCERT chapter into videos with NotebookLM.",
             },
             {
-              to: "/process" as const,
+              to: "/why-me" as const,
               n: "05",
-              t: "My creative process",
-              d: "Seven stages from research to distribution and analysis.",
+              t: "Why work with me",
+              d: "Five reasons backed by real results, and the seven steps I follow.",
             },
           ].map((row) => (
             <li key={row.to} className="border-b border-line">

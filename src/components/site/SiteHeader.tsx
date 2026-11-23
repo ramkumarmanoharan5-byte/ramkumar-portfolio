@@ -18,7 +18,7 @@ export function SiteHeader() {
           </span>
           <span className="hidden leading-tight sm:block">
             <span className="block font-display text-lg text-primary">{profile.name}</span>
-            <span className="block text-[0.65rem] uppercase tracking-[0.18em] text-rose">
+            <span className="block whitespace-nowrap text-[0.65rem] uppercase tracking-[0.18em] text-rose lg:hidden xl:block">
               Social Media &amp; Content Strategist
             </span>
           </span>
@@ -26,15 +26,15 @@ export function SiteHeader() {
 
         {/* DESKTOP NAV */}
         <nav aria-label="Main Navigation" className="hidden lg:block">
-          <ul className="flex items-center gap-1 xl:gap-2">
+          <ul className="flex items-center gap-0 xl:gap-1">
             {navItems.slice(1, -1).map((item) => (
               <li key={item.to}>
                 <Link
                   to={item.to}
-                  className="relative px-3 py-1.5 text-[0.78rem] font-medium tracking-wide text-foreground/80 transition-colors hover:text-primary"
+                  className="relative whitespace-nowrap px-2 py-1.5 text-[0.75rem] font-medium tracking-wide text-foreground/80 transition-colors hover:text-primary xl:px-3 xl:text-[0.78rem]"
                   activeProps={{
                     className:
-                      "text-primary font-semibold after:absolute after:bottom-0 after:left-3 after:right-3 after:h-0.5 after:bg-primary",
+                      "text-primary font-semibold after:absolute after:bottom-0 after:left-2 after:right-2 xl:after:left-3 xl:after:right-3 after:h-0.5 after:bg-primary",
                   }}
                 >
                   {item.label}
@@ -48,7 +48,7 @@ export function SiteHeader() {
         <div className="flex items-center gap-3">
           <Link
             to="/contact"
-            className="hidden items-center gap-1.5 bg-primary px-4 py-2 text-xs font-semibold uppercase tracking-[0.15em] text-primary-foreground shadow-sm transition-all hover:bg-primary-deep hover:shadow sm:inline-flex"
+            className="hidden items-center gap-1.5 whitespace-nowrap bg-primary px-4 py-2 text-xs font-semibold uppercase tracking-[0.15em] text-primary-foreground shadow-sm transition-all hover:bg-primary-deep hover:shadow sm:inline-flex"
           >
             <span>Let's Connect</span>
           </Link>

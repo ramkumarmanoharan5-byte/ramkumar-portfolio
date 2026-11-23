@@ -899,7 +899,7 @@ export const caseStudies: CaseStudy[] = [
       "Content planning and publishing",
       "Creating informative posts, polls, quizzes, memes, job-related content, and technology-related content",
     ],
-    images: [],
+    images: [{ src: "/images/work/colan-infotech-website.jpg", alt: "Colan Infotech website homepage: Partner in Technological Expansion", caption: "colaninfotech.com, homepage" }],
     chapters: [
       {
         label: "A",

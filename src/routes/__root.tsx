@@ -86,12 +86,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "Ramkumar M. | Social Media & Content Strategist" },
       {
         name: "description",
-        content: "Portfolio of Ramkumar M.: social media, content strategy, short-form video and Meta Ads work, with individual content pieces and case studies.",
+        content:
+          "Portfolio of Ramkumar M.: social media, content strategy, short-form video and Meta Ads work, with individual content pieces and case studies.",
       },
       { name: "author", content: "Ramkumar M." },
       { name: "theme-color", content: "#6E0202" },
       { property: "og:title", content: "Ramkumar M. | Social Media & Content Strategist" },
-      { property: "og:description", content: "Content that captures attention, builds brands and drives meaningful results." },
+      {
+        property: "og:description",
+        content: "Content that captures attention, builds brands and drives meaningful results.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -100,7 +104,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.ico", sizes: "any" },
+      { rel: "icon", href: "/icon-512.png", type: "image/png", sizes: "512x512" },
+      { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
@@ -134,7 +140,10 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground">
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
+      >
         Skip to content
       </a>
       <SiteHeader />

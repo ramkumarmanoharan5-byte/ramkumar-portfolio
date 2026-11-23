@@ -292,7 +292,7 @@ export const brandFolders: BrandFolder[] = [
       { label: "Total Reach", value: "24.8L", note: "Unique prospective student/parent accounts reached" },
       { label: "Impressions", value: "1.04Cr", note: "Total ad impressions delivered across Tamil Nadu" },
     ],
-    previewImages: [],
+    previewImages: [{ src: "/images/work/anna-adarsh-college-reel.jpg", alt: "Anna Adarsh College student council Reel with a colourful campus kolam", label: "Campus Reel" }],
     featuredDeliverables: [
       "₹286 cost per lead across 2,461 admission leads",
       "24.8 Lakh accounts reached across targeted geographic cohorts",
@@ -354,7 +354,7 @@ export const brandFolders: BrandFolder[] = [
       { label: "Focus", value: "K-12 Branding", note: "Nursery through higher secondary parent engagement" },
       { label: "Channel", value: "Social Media", note: "Community updates and admission visibility" },
     ],
-    previewImages: [],
+    previewImages: [{ src: "/images/work/anna-adarsh-schools-reel.jpg", alt: "Anna Adarsh Presents title card with a vintage film projector", label: "School Reel" }],
     featuredDeliverables: [
       "Curriculum, safety, and faculty showcase posts",
       "Parent reassurance creative framework across social channels",
@@ -611,7 +611,7 @@ export const brandFolders: BrandFolder[] = [
       { label: "Curated Posts", value: "159 Posts", note: "Complete visual catalog of sofa models and finishes" },
       { label: "Showroom Audience", value: "1,448 Followers", note: "Bengaluru interior enthusiasts and furniture shoppers" },
     ],
-    previewImages: [],
+    previewImages: [{ src: "/images/work/sofa-42-showroom-reel.jpg", alt: "Sofa 42 showroom with cream lounge chairs and a presenter", label: "Showroom Reel" }],
     featuredDeliverables: [
       "Product-first creative posts highlighting fabric, texture, and frame",
       "Living room contextual styling that helps buyers visualize at home",
@@ -663,7 +663,7 @@ export const brandFolders: BrandFolder[] = [
       { label: "Regional Showcase", value: "3 Hubs", note: "Madurai, Pernambut, and Bangalore showcase pages" },
       { label: "Client Accounts", value: "Multi-Client", note: "Content planning and digital marketing for agency clients" },
     ],
-    previewImages: [],
+    previewImages: [{ src: "/images/work/colan-infotech-website.jpg", alt: "Colan Infotech website homepage: Partner in Technological Expansion", label: "Official Site" }],
     featuredDeliverables: [
       "Main corporate LinkedIn & regional showcases (Madurai, Pernambut, Bangalore)",
       "Technical knowledge quizzes, polls, memes, and job openings",

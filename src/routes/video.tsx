@@ -16,7 +16,7 @@ export const Route = createFileRoute("/video")({
         content:
           "Video showcase of Ramkumar M.: 19M view Short, 3.9 Crore lifetime YouTube channel views, Instagram Reels for coaching and colleges, and high-retention educational videos.",
       },
-      { property: "og:title", content: "Made to Move: Video Studio | Ramkumar M." },
+      { property: "og:title", content: "Made to Move: Shorts & Reels | Ramkumar M." },
       {
         property: "og:description",
         content:
@@ -76,7 +76,7 @@ function VideoShowcase() {
   return (
     <>
       <PageIntro
-        eyebrow="Video Studio"
+        eyebrow="Shorts & Reels"
         title="Made to Move."
         lede="Vertical storytelling, high-retention hooks, and video creatives built for modern feeds. Explore the Shorts, Reels, and educational videos that generated over 3.9 Crore organic views."
       />
