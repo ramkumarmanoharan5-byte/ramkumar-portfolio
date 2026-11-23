@@ -1,32 +1,77 @@
 export const skillGroups: { title: string; items: string[] }[] = [
   {
-    title: "Social Media",
-    items: ["Social media strategy", "Content planning and calendars", "Platform-specific content", "Short-form video", "Community growth", "Brand voice", "Trend-based content"],
+    title: "Social Media Marketing",
+    items: [
+      "Instagram Management",
+      "Facebook Management",
+      "LinkedIn Management",
+      "Social Media Strategy",
+      "Content Creation",
+      "Content Planning",
+      "Content Calendars",
+      "Platform-Specific Content",
+      "Audience Engagement",
+      "Brand Communication",
+    ],
   },
   {
     title: "Performance Marketing",
-    items: ["Meta Ads", "Google Ads", "Lead generation", "Audience targeting", "Campaign optimisation", "A/B and creative testing", "Budget planning (CBO, lifetime budgets)"],
+    items: [
+      "Meta Ads",
+      "Google Search Campaigns",
+      "App Installation Campaign Support",
+      "Lead Generation",
+      "Admission Campaigns",
+      "Audience Targeting",
+      "Creative Testing",
+      "Campaign Optimisation",
+      "Conversion Tracking",
+    ],
   },
   {
-    title: "SEO & Content",
-    items: ["Keyword research and search intent", "On-page, off-page and technical SEO", "AEO and GEO content", "Blog writing", "Copywriting", "Website content"],
+    title: "SEO",
+    items: [
+      "Keyword Research",
+      "Website SEO",
+      "Blog Publishing",
+      "Search Visibility",
+      "Content Optimisation",
+      "Local SEO",
+    ],
   },
   {
-    title: "Analytics",
-    items: ["Google Analytics and GA4", "Google Search Console", "Google Tag Manager", "Campaign reporting", "Funnel and conversion tracking"],
+    title: "CRM & Conversion",
+    items: [
+      "CRM Setup",
+      "CRM Handling",
+      "Lead Management",
+      "Enquiry Management",
+      "Lead Follow-up Processes",
+      "Conversion Funnel Understanding",
+    ],
   },
   {
-    title: "AI Marketing",
-    items: ["Prompt engineering", "NotebookLM video production", "AI-assisted content creation", "Marketing research", "Workflow automation"],
+    title: "Content & AI",
+    items: [
+      "Prompt Engineering",
+      "NotebookLM",
+      "AI-Assisted Educational Video Production",
+      "Short-Form Video Strategy",
+      "Video Editing",
+      "Content Research",
+      "Brochure Creation",
+      "Educational Content Development",
+    ],
   },
 ];
 
 export const tools: { group: string; items: string[] }[] = [
-  { group: "AI", items: ["NotebookLM", "Claude", "ChatGPT", "Perplexity", "Gemini", "Grok", "Midjourney"] },
+  { group: "AI & Video", items: ["NotebookLM", "Claude", "ChatGPT", "Perplexity", "Gemini", "CapCut"] },
   { group: "Advertising", items: ["Meta Ads Manager", "Meta Business Suite", "Google Ads"] },
-  { group: "Analytics", items: ["GA4", "Google Search Console", "Google Tag Manager"] },
+  { group: "Analytics & Tracking", items: ["GA4", "Google Search Console", "Google Tag Manager"] },
   { group: "SEO", items: ["Google Keyword Planner", "Google Trends", "Semrush", "Ahrefs", "WordPress"] },
-  { group: "Design", items: ["Canva", "CapCut"] },
+  { group: "CRM & Workflows", items: ["CRM Setup", "Lead Management", "Enquiry Tracking"] },
+  { group: "Design & Collateral", items: ["Canva", "Brochure Layout"] },
 ];
 
 export const education: { title: string; institution: string | null; status: string; year: string }[] = [

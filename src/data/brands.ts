@@ -104,6 +104,7 @@ export const brands: Brand[] = [
       },
     ],
     images: [],
+    caseStudy: "sofa-42",
   },
 ];
 

@@ -22,8 +22,8 @@ const journey = [
   { k: "2017 to 2020", t: "Diploma in Civil Engineering", d: "Government Polytechnic College." },
   { k: "Certification", t: "Google Digital Marketing & E-commerce", d: "Professional Certificate through Google and Coursera." },
   { k: "Personal brand", t: "The Artist Mode", d: "Built a faceless YouTube channel to 3.9Cr lifetime views. One Short passed 19M." },
-  { k: "Feb 2024 to Jan 2025", t: "Colan Infotech", d: "Digital Marketing Executive. LinkedIn strategy and 300+ organic B2B leads." },
-  { k: "Feb 2025 to now", t: "VVT Solutions Pvt. Ltd.", d: "Digital Marketing Specialist. TopAll, VVT Coaching, Meta Ads and SEO." },
+  { k: "Feb 2024 to Jan 2025", t: "Colan Infotech Pvt. Ltd.", d: "Digital Marketing Executive. Social media management, LinkedIn B2B lead generation, SEO and client marketing." },
+  { k: "Feb 2025 to now", t: "VVT Solutions Pvt. Ltd.", d: "Digital Marketing Specialist. TopAll, NEET Guide, VVT Coaching, Meta Ads, and CRM workflows." },
   { k: "2024 to 2027", t: "BBA, Alagappa University", d: "Currently pursuing through distance education." },
 ];
 

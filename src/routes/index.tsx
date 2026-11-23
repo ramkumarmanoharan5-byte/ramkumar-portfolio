@@ -14,7 +14,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Portfolio of Ramkumar M.: TopAll product marketing, VVT Coaching social media, a 19M view YouTube Short, 3.9Cr channel views and a 2,461 lead Meta Ads campaign.",
+          "Portfolio of Ramkumar M.: TopAll product marketing, VVT Coaching, a 19M view YouTube Short, 3.9Cr channel views, Meta Ads admission campaigns and B2B growth.",
       },
       { property: "og:title", content: "Ramkumar M. | Social Media & Content Strategist" },
       { property: "og:description", content: "Creating content that captures attention, builds brands, and drives meaningful results." },
@@ -223,15 +223,16 @@ function Home() {
               See how it was run <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
-          <dl className="mt-12 grid grid-cols-2 border-t border-line md:grid-cols-5">
+          <dl className="mt-12 grid grid-cols-1 border-t border-line sm:grid-cols-3">
             {anna.results.metrics.map((m) => (
-              <div key={m.label} className="border-b border-line py-8 pr-4 md:border-b-0 md:border-r md:px-5 md:first:pl-0 md:last:border-r-0">
+              <div key={m.label} className="border-b border-line py-8 pr-4 sm:border-b-0 sm:border-r sm:px-5 sm:first:pl-0 sm:last:border-r-0">
                 <dd className="font-display text-5xl leading-none text-primary md:text-6xl">{m.value}</dd>
                 <dt className="mt-3 text-xs uppercase tracking-[0.16em] text-foreground/70">{m.label}</dt>
+                {m.note && <p className="mt-1 text-[0.7rem] text-rose">{m.note}</p>}
               </div>
             ))}
           </dl>
-          <p className="mt-6 text-xs text-muted-foreground">Reported campaign totals. L = lakh, Cr = crore.</p>
+          <p className="mt-6 text-xs text-muted-foreground">{anna.results.note}</p>
         </section>
       )}
 

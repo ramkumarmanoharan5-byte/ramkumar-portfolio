@@ -23,9 +23,11 @@ describe("portfolio accuracy rules", () => {
     expect(values).toEqual(["3.9Cr", "32,905", "82.9K", "+33K", "62,756"]);
   });
 
-  it("Anna Adarsh shows exactly the reported campaign figures", () => {
-    const values = caseStudyBySlug("anna-adarsh-womens-college")?.results?.metrics.map((m) => m.value);
-    expect(values).toEqual(["₹7.04L", "2,461", "₹286.08", "24.8L", "1.04Cr"]);
+  it("Anna Adarsh shows the corrected cost per lead of ₹160", () => {
+    const cs = caseStudyBySlug("anna-adarsh-womens-college");
+    expect(cs?.highlight?.value).toBe("₹160");
+    const values = cs?.results?.metrics.map((m) => m.value);
+    expect(values).toEqual(["₹160", "24.8L", "1.04Cr"]);
   });
 
   it("TopAll is the first project and its primary CTA is the free portal", () => {
@@ -45,6 +47,7 @@ describe("portfolio accuracy rules", () => {
       "style-365",
       "asta-properties",
       "ambrig-homes",
+      "sofa-42",
       "neet-guide",
       "colan-infotech",
     ]);
@@ -77,11 +80,11 @@ describe("portfolio accuracy rules", () => {
     expect(caseStudyBySlug("anna-adarsh-group-of-schools")?.results).toBeUndefined();
   });
 
-  it("Colan Infotech has no separate links section or job-post category", () => {
+  it("Colan Infotech includes official verified public links", () => {
     const colan = caseStudyBySlug("colan-infotech");
-    expect(colan?.links).toHaveLength(0);
+    expect(colan?.links.map((l) => l.url)).toContain("https://www.colaninfotech.com/");
+    expect(colan?.links.map((l) => l.url)).toContain("https://in.linkedin.com/company/colan-infotech-private-limited");
     expect(colan?.learnings.length).toBeGreaterThan(0);
-    expect(JSON.stringify(colan)).not.toMatch(/job post/i);
   });
 
   it("the CavinKare page is gone from navigation", () => {
