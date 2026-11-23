@@ -15,3 +15,11 @@ describe("App routing", () => {
     expect(matches.at(-1)?.routeId).not.toBe(rootRouteId);
   });
 });
+
+describe("Removed pages", () => {
+  it("no longer has a /cavinkare page", () => {
+    const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
+    const ids = router.matchRoutes("/cavinkare").map((m) => m.routeId as string);
+    expect(ids).not.toContain("/cavinkare");
+  });
+});

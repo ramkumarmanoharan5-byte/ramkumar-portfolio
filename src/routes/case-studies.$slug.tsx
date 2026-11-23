@@ -40,7 +40,7 @@ export const Route = createFileRoute("/case-studies/$slug")({
   component: CaseStudyPage,
 });
 
-function SectionTitle({ label, eyebrow, title, intro, dark }: { label?: string; eyebrow?: string; title: string; intro?: string; dark?: boolean }) {
+function SectionTitle({ label, eyebrow, title, intro, dark }: { label?: string | undefined; eyebrow?: string | undefined; title: string; intro?: string | undefined; dark?: boolean }) {
   return (
     <div className="max-w-3xl">
       {label && <p className={`font-display text-7xl leading-none ${dark ? "text-primary-foreground/25" : "text-primary/20"}`}>{label}</p>}
@@ -84,7 +84,7 @@ function Journey({ journey }: { journey: NonNullable<CaseStudy["journey"]> }) {
   );
 }
 
-function Creatives({ items, title, intro, cta, onOpen }: { items: ContentItem[]; title: string; intro?: string; cta?: { label: string; url: string }; onOpen: (i: ContentItem) => void }) {
+function Creatives({ items, title, intro, cta, onOpen }: { items: ContentItem[]; title: string; intro?: string | undefined; cta?: { label: string; url: string } | undefined; onOpen: (i: ContentItem) => void }) {
   const single = items.length === 1 ? items[0] : undefined;
   return (
     <section id="content-and-creatives" className="border-t border-line">
