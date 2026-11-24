@@ -1,15 +1,32 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight, Mail, Menu, Phone, Sparkles } from "lucide-react";
-import { useState } from "react";
-import { Sheet, SheetContent, SheetTitle, SheetTrigger, SheetDescription } from "@/components/ui/sheet";
+import { useEffect, useState } from "react";
+import {
+  Sheet,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger,
+  SheetDescription,
+} from "@/components/ui/sheet";
 import { profile } from "@/data/profile";
 import { navItems } from "./nav";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-line bg-ivory/92 backdrop-blur-md transition-all">
+    <header
+      data-scrolled={scrolled ? "1" : "0"}
+      className="site-header sticky top-0 z-40 border-b border-line bg-ivory/92 backdrop-blur-md transition-[box-shadow,background-color] duration-500"
+    >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-6 px-5 md:px-10">
         {/* LOGO / MONOGRAM */}
         <Link to="/" className="group flex items-center gap-3" aria-label={`${profile.name}, home`}>
@@ -48,9 +65,10 @@ export function SiteHeader() {
         <div className="flex items-center gap-3">
           <Link
             to="/contact"
-            className="hidden items-center gap-1.5 whitespace-nowrap bg-primary px-4 py-2 text-xs font-semibold uppercase tracking-[0.15em] text-primary-foreground shadow-sm transition-all hover:bg-primary-deep hover:shadow sm:inline-flex"
+            className="btn-sweep hidden items-center gap-1.5 whitespace-nowrap bg-primary px-4 py-2 text-xs font-semibold uppercase tracking-[0.15em] text-primary-foreground shadow-sm transition-shadow [--sweep:var(--ink)] hover:shadow sm:inline-flex"
           >
             <span>Let's Connect</span>
+            <ArrowUpRight className="h-3.5 w-3.5" />
           </Link>
 
           {/* MOBILE MENU TRIGGER */}
@@ -65,7 +83,10 @@ export function SiteHeader() {
               </button>
             </SheetTrigger>
 
-            <SheetContent side="right" className="w-full max-w-sm border-line bg-cream p-8 flex flex-col justify-between">
+            <SheetContent
+              side="right"
+              className="w-full max-w-sm border-line bg-cream p-8 flex flex-col justify-between"
+            >
               <div>
                 <div className="border-b border-line pb-4">
                   <div className="flex items-center gap-3">
@@ -76,7 +97,9 @@ export function SiteHeader() {
                       <SheetTitle className="font-display text-xl font-normal text-primary">
                         {profile.name}
                       </SheetTitle>
-                      <SheetDescription className="eyebrow text-[0.62rem]">{profile.title}</SheetDescription>
+                      <SheetDescription className="eyebrow text-[0.62rem]">
+                        {profile.title}
+                      </SheetDescription>
                     </div>
                   </div>
                 </div>

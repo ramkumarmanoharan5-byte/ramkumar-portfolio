@@ -13,6 +13,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
+import { CursorFollower, ScrollRing, useSiteMotion } from "@/components/site/Motion";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
@@ -137,6 +138,7 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  useSiteMotion();
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -152,6 +154,8 @@ function RootComponent() {
         <Outlet />
       </main>
       <SiteFooter />
+      <ScrollRing />
+      <CursorFollower />
     </QueryClientProvider>
   );
 }

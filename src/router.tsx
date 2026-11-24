@@ -10,6 +10,8 @@ export const getRouter = () => {
     routeTree,
     context: { queryClient },
     scrollRestoration: true,
+    // Animated page-to-page transitions where the browser supports them (styled in styles.css).
+    defaultViewTransition: true,
     // Lets Query own freshness; set caching defaults on the QueryClient, not the router.
     defaultPreloadStaleTime: 0,
   });

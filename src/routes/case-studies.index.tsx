@@ -41,7 +41,8 @@ function CaseStudies() {
           <Link
             to="/case-studies/$slug"
             params={{ slug: lead.slug }}
-            className="group mb-6 grid gap-8 bg-primary p-8 text-primary-foreground md:grid-cols-12 md:p-12"
+            data-spotlight
+            className="group mb-6 grid gap-8 overflow-hidden bg-primary p-8 text-primary-foreground shadow-[0_40px_80px_-45px_var(--burgundy)] md:grid-cols-12 md:p-12"
           >
             <div className="md:col-span-8">
               <p className="text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-primary-foreground/70">
@@ -82,7 +83,7 @@ function CaseStudies() {
                 <div className="md:col-span-4">
                   {cs.highlight ? (
                     <p>
-                      <span className="font-display text-5xl text-primary">
+                      <span data-count className="font-display text-5xl text-primary">
                         {cs.highlight.value}
                       </span>{" "}
                       <span className="text-sm text-foreground/70">{cs.highlight.label}</span>

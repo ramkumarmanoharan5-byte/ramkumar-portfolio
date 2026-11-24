@@ -86,25 +86,25 @@ function VideoShowcase() {
         <div className="mx-auto grid max-w-7xl grid-cols-2 divide-y divide-line md:grid-cols-4 md:divide-x md:divide-y-0">
           <div className="p-6 text-center md:p-8">
             <span className="eyebrow block">Channel Lifetime</span>
-            <span className="mt-2 block font-display text-4xl text-primary md:text-5xl">3.9Cr</span>
+            <span data-count className="mt-2 block font-display text-4xl text-primary md:text-5xl">3.9Cr</span>
             <span className="mt-1 block text-xs text-foreground/70">Organic Channel Views</span>
           </div>
 
           <div className="p-6 text-center md:p-8">
             <span className="eyebrow block">Peak Hit</span>
-            <span className="mt-2 block font-display text-4xl text-primary md:text-5xl">19M</span>
+            <span data-count className="mt-2 block font-display text-4xl text-primary md:text-5xl">19M</span>
             <span className="mt-1 block text-xs text-foreground/70">Views on Single Short</span>
           </div>
 
           <div className="p-6 text-center md:p-8">
             <span className="eyebrow block">Million-View Tier</span>
-            <span className="mt-2 block font-display text-4xl text-primary md:text-5xl">6</span>
+            <span data-count className="mt-2 block font-display text-4xl text-primary md:text-5xl">6</span>
             <span className="mt-1 block text-xs text-foreground/70">Million-View Shorts</span>
           </div>
 
           <div className="p-6 text-center md:p-8">
             <span className="eyebrow block">Subscriber Base</span>
-            <span className="mt-2 block font-display text-4xl text-primary md:text-5xl">32,905</span>
+            <span data-count className="mt-2 block font-display text-4xl text-primary md:text-5xl">32,905</span>
             <span className="mt-1 block text-xs text-foreground/70">Subscribers (YouTube Studio)</span>
           </div>
         </div>

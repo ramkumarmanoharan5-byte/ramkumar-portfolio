@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { profile, headlineStat } from "@/data/profile";
 import { contentItems } from "@/data/content";
@@ -28,6 +28,8 @@ export const Route = createFileRoute("/")({
   }),
   component: Home,
 });
+
+const outcomes = ["Attention", "Engagement", "Enquiries", "Leads", "Admissions", "Growth"];
 
 const disciplines = [
   "Social Media Management",
@@ -59,47 +61,114 @@ function Home() {
   return (
     <>
       {/* HERO */}
-      <section className="relative overflow-hidden">
+      <section className="hero-columns relative overflow-hidden">
         <div className="mx-auto grid max-w-7xl gap-12 px-5 pb-16 pt-14 md:px-10 md:pt-20 lg:grid-cols-12 lg:gap-10 lg:pb-24">
           <div className="lg:col-span-7">
-            <p className="eyebrow rise">Portfolio · Social Media &amp; Content</p>
-            <h1 className="display-xl rise mt-6 text-primary">
-              Ramkumar
-              <br />M<span className="text-rose">.</span>
+            <p className="eyebrow rise flex items-center gap-3">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary/60" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
+              </span>
+              Portfolio · Social Media &amp; Content
+            </p>
+            <h1 className="display-xl mt-6 text-primary" aria-label={profile.name}>
+              <span className="split-mask" aria-hidden>
+                <span className="split-word" style={{ animationDelay: "80ms" }}>
+                  Ramkumar
+                </span>
+              </span>
+              <br />
+              <span className="split-mask" aria-hidden>
+                <span className="split-word" style={{ animationDelay: "220ms" }}>
+                  M<span className="text-rose">.</span>
+                </span>
+              </span>
             </h1>
-            <p className="rise mt-6 text-sm font-semibold uppercase tracking-[0.2em] text-foreground">
+            <p
+              className="rise mt-6 text-sm font-semibold uppercase tracking-[0.2em] text-foreground"
+              style={{ animationDelay: "350ms" }}
+            >
               {profile.title}
               <span className="mx-2 text-rose">/</span>
               {profile.secondaryTitle}
             </p>
-            <p className="rise mt-8 max-w-2xl font-display text-2xl leading-snug text-foreground md:text-[2rem]">
+            <p
+              className="rise mt-8 max-w-2xl font-display text-2xl leading-snug text-foreground md:text-[2rem]"
+              style={{ animationDelay: "450ms" }}
+            >
               {profile.headline}
             </p>
-            <p className="prose-editorial rise mt-6 text-foreground/75">{profile.supporting}</p>
-            <div className="rise mt-10 flex flex-wrap gap-3">
+            <p
+              className="prose-editorial rise mt-6 text-foreground/75"
+              style={{ animationDelay: "550ms" }}
+            >
+              {profile.supporting}
+            </p>
+            <div
+              className="rise mt-10 flex flex-wrap items-center gap-3"
+              style={{ animationDelay: "650ms" }}
+            >
               <Button asChild size="lg">
                 <Link to="/work">
                   Explore My Work <ArrowRight />
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline">
-                <Link to="/case-studies">View Projects</Link>
+                <Link to="/case-studies">
+                  View Projects <ArrowRight />
+                </Link>
               </Button>
-              <Button asChild size="lg" variant="outline">
-                <Link to="/video">Shorts &amp; Reels</Link>
-              </Button>
-              <Button asChild size="lg" variant="ghost">
-                <Link to="/contact">Let's Connect</Link>
-              </Button>
+              <Link
+                to="/video"
+                className="link-draw ml-2 inline-flex items-center gap-2 text-sm font-semibold text-primary"
+              >
+                Shorts &amp; Reels <ArrowRight className="h-4 w-4" />
+              </Link>
             </div>
           </div>
 
-          <aside className="relative lg:col-span-5">
-            <div className="relative bg-primary p-7 text-primary-foreground md:p-9">
+          <aside className="rise relative lg:col-span-5" style={{ animationDelay: "300ms" }}>
+            {/* Rotating badge */}
+            <a
+              href={headlineStat.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Watch the 19M view Short on YouTube"
+              className="group absolute -right-3 -top-10 z-20 hidden h-28 w-28 place-items-center rounded-full bg-ivory shadow-[var(--shadow-print)] md:grid"
+            >
+              <svg
+                viewBox="0 0 100 100"
+                className="spin-slow absolute inset-0 h-full w-full"
+                aria-hidden
+              >
+                <defs>
+                  <path id="badge-circle" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0" />
+                </defs>
+                <text
+                  className="fill-primary"
+                  style={{ fontSize: "9.2px", letterSpacing: "0.28em", fontWeight: 600 }}
+                >
+                  <textPath href="#badge-circle" textLength="236" lengthAdjust="spacing">
+                    WATCH THE SHORT · 19M VIEWS ·
+                  </textPath>
+                </text>
+              </svg>
+              <span className="grid h-11 w-11 place-items-center rounded-full bg-primary text-primary-foreground transition-transform duration-500 group-hover:scale-110">
+                <Play className="ml-0.5 h-4 w-4 fill-current" />
+              </span>
+            </a>
+
+            <div
+              data-spotlight
+              className="relative overflow-hidden bg-primary p-7 text-primary-foreground shadow-[0_40px_80px_-40px_var(--burgundy)] md:p-9"
+            >
               <p className="text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-primary-foreground/70">
                 Key achievement
               </p>
-              <p className="mt-4 font-display text-[6.5rem] leading-[0.85] md:text-[8.5rem]">
+              <p
+                data-count
+                className="mt-4 font-display text-[6.5rem] leading-[0.85] md:text-[8.5rem]"
+              >
                 {headlineStat.value}
               </p>
               <p className="mt-3 max-w-xs font-display text-2xl leading-tight">
@@ -111,13 +180,15 @@ function Home() {
                     href={headlineStat.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group block w-28 shrink-0 overflow-hidden md:w-32"
+                    data-tilt
+                    className="relative block w-28 shrink-0 overflow-hidden shadow-2xl md:w-32"
                   >
                     <img
                       src={hero.image.src}
                       alt={hero.image.alt}
-                      className="aspect-[9/16] w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="aspect-[9/16] w-full object-cover"
                     />
+                    <span className="tilt-glare" aria-hidden />
                   </a>
                 )}
                 <div>
@@ -141,7 +212,7 @@ function Home() {
       </section>
 
       {/* MARQUEE */}
-      <div className="overflow-hidden border-y border-line bg-cream py-5" aria-hidden>
+      <div className="overflow-hidden border-y border-line bg-cream py-6" aria-hidden>
         <div className="marquee flex w-max gap-10 whitespace-nowrap">
           {[...disciplines, ...disciplines].map((d, i) => (
             <span
@@ -150,6 +221,13 @@ function Home() {
             >
               {d}
               <span className="text-primary">✦</span>
+            </span>
+          ))}
+        </div>
+        <div className="marquee marquee-reverse mt-3 flex w-max gap-12 whitespace-nowrap">
+          {[...outcomes, ...outcomes, ...outcomes, ...outcomes].map((d, i) => (
+            <span key={i} className="text-outline font-display text-5xl md:text-6xl">
+              {d}
             </span>
           ))}
         </div>
@@ -251,7 +329,7 @@ function Home() {
             <p className="mt-4 font-display text-2xl leading-snug">{vvt.headline}</p>
             {vvt.highlight && (
               <p className="mt-8 flex items-baseline gap-3 border-y border-line py-5">
-                <span className="font-display text-6xl leading-none text-primary">
+                <span data-count className="font-display text-6xl leading-none text-primary">
                   {vvt.highlight.value}
                 </span>
                 <span className="text-sm text-foreground/75">{vvt.highlight.label}</span>
@@ -280,20 +358,24 @@ function Home() {
                 params={{ slug: p.slug }}
                 className={`group block ${i === 1 ? "mt-8" : ""}`}
               >
-                <div className="aspect-[9/16] overflow-hidden border border-line bg-paper">
+                <div
+                  data-tilt
+                  className="relative aspect-[9/16] overflow-hidden border border-line bg-paper shadow-[var(--shadow-print)]"
+                >
                   <img
                     src={p.image.src}
                     alt={p.image.alt}
                     loading="lazy"
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
+                  <span className="tilt-glare" aria-hidden />
                 </div>
                 <p className="mt-3 line-clamp-2 text-xs font-medium text-foreground/80 group-hover:text-primary">
                   {p.title}
                 </p>
                 {p.metrics[0] && (
                   <p className="font-display text-xl text-primary">
-                    {p.metrics[0].value} {p.metrics[0].label.toLowerCase()}
+                    <span data-count>{p.metrics[0].value}</span> {p.metrics[0].label.toLowerCase()}
                   </p>
                 )}
               </Link>
@@ -303,7 +385,16 @@ function Home() {
       )}
 
       {/* FEATURED: THE ARTIST MODE */}
-      <section className="bg-primary text-primary-foreground">
+      <section
+        data-spotlight
+        className="relative overflow-hidden bg-primary text-primary-foreground"
+      >
+        <p
+          aria-hidden
+          className="pointer-events-none absolute -bottom-16 -right-6 select-none font-display text-[11rem] leading-none text-primary-foreground/[0.06] md:text-[20rem]"
+        >
+          3.9Cr
+        </p>
         <div className="mx-auto max-w-7xl px-5 py-24 md:px-10">
           <div className="grid gap-10 lg:grid-cols-12">
             <div className="lg:col-span-5">
@@ -342,15 +433,21 @@ function Home() {
                   params={{ slug: s.slug }}
                   className={`group block ${i % 2 === 1 ? "sm:mt-10" : ""}`}
                 >
-                  <div className="aspect-[9/16] overflow-hidden bg-primary-deep">
+                  <div
+                    data-tilt
+                    className="relative aspect-[9/16] overflow-hidden bg-primary-deep shadow-[0_30px_50px_-25px_oklch(0.15_0.05_28)]"
+                  >
                     <img
                       src={s.image.src}
                       alt={s.image.alt}
                       loading="lazy"
                       className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
+                    <span className="tilt-glare" aria-hidden />
                   </div>
-                  <p className="mt-3 font-display text-3xl leading-none">{s.metrics[0]?.value}</p>
+                  <p data-count className="mt-3 font-display text-3xl leading-none">
+                    {s.metrics[0]?.value}
+                  </p>
                   <p className="mt-1 line-clamp-2 text-xs text-primary-foreground/75">{s.title}</p>
                 </Link>
               ))}
@@ -364,7 +461,7 @@ function Home() {
         <section className="border-b border-line bg-paper">
           <div className="mx-auto max-w-7xl px-5 py-24 md:px-10">
             <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
-              <div className="lg:col-span-8">
+              <div className="lg:col-span-7">
                 <p className="eyebrow">
                   Project {anna.number} · {anna.kind} · Meta Ads
                 </p>
@@ -395,7 +492,10 @@ function Home() {
                   key={m.label}
                   className="border-t-4 border-primary bg-cream p-7 shadow-[var(--shadow-print)]"
                 >
-                  <dd className="font-display text-6xl leading-none text-primary md:text-7xl">
+                  <dd
+                    data-count
+                    className="font-display text-6xl leading-none text-primary md:text-7xl"
+                  >
                     {m.value}
                   </dd>
                   <dt className="mt-4 text-xs font-semibold uppercase tracking-[0.16em] text-foreground">
@@ -434,7 +534,8 @@ function Home() {
                 key={b.slug}
                 to="/brands"
                 hash={b.slug}
-                className="group flex flex-col border border-line bg-paper shadow-[var(--shadow-print)] transition-all hover:-translate-y-1 hover:border-primary"
+                data-tilt
+                className="group relative flex flex-col border border-line bg-paper shadow-[var(--shadow-print)] transition-colors hover:border-primary"
               >
                 <div className="relative aspect-[4/3] overflow-hidden bg-ivory">
                   {b.images[0] ? (
@@ -460,7 +561,10 @@ function Home() {
                     {b.snapshot.followers ? (
                       <>
                         <p className="text-sm">
-                          <strong className="font-display text-3xl font-normal text-foreground">
+                          <strong
+                            data-count
+                            className="font-display text-3xl font-normal text-foreground"
+                          >
                             {b.snapshot.followers}
                           </strong>{" "}
                           followers
@@ -471,7 +575,10 @@ function Home() {
                       </>
                     ) : b.keyStat ? (
                       <p className="text-sm">
-                        <strong className="font-display text-3xl font-normal text-foreground">
+                        <strong
+                          data-count
+                          className="font-display text-3xl font-normal text-foreground"
+                        >
                           {b.keyStat.value}
                         </strong>{" "}
                         {b.keyStat.label}
