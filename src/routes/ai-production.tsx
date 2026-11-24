@@ -9,9 +9,17 @@ export const Route = createFileRoute("/ai-production")({
   head: () => ({
     meta: [
       { title: "AI Educational Video Production with NotebookLM | Ramkumar M." },
-      { name: "description", content: "How I turn an NCERT chapter like Magnetism and Matter into educational videos and Shorts with NotebookLM, from source selection and prompts to review and repurposing." },
+      {
+        name: "description",
+        content:
+          "How I turn an NCERT chapter like Magnetism and Matter into educational videos and Shorts with NotebookLM, from source selection and prompts to review and repurposing.",
+      },
       { property: "og:title", content: "AI Educational Video Production | Ramkumar M." },
-      { property: "og:description", content: "A real NotebookLM workflow: one Physics chapter, many focused educational videos." },
+      {
+        property: "og:description",
+        content:
+          "A real NotebookLM workflow: one Physics chapter, many focused educational videos.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -20,17 +28,44 @@ export const Route = createFileRoute("/ai-production")({
 });
 
 const stages = [
-  { n: "01", t: "Research and source selection", d: "I start with the right source, usually the NCERT chapter, so everything the AI produces is grounded in what students actually study." },
-  { n: "02", t: "Understanding the subject", d: "I go through the chapter myself first and break it into sub-topics that are worth a video on their own." },
+  {
+    n: "01",
+    t: "Research and source selection",
+    d: "I start with the right source, usually the NCERT chapter, so everything the AI produces is grounded in what students actually study.",
+  },
+  {
+    n: "02",
+    t: "Understanding the subject",
+    d: "I go through the chapter myself first and break it into sub-topics that are worth a video on their own.",
+  },
   {
     n: "03",
     t: "Writing detailed prompts",
     d: "Each prompt tells NotebookLM exactly what to make.",
-    list: ["Topic and scope", "Tone of voice", "Narrative structure", "Examples to use", "Depth", "Visual direction"],
+    list: [
+      "Topic and scope",
+      "Tone of voice",
+      "Narrative structure",
+      "Examples to use",
+      "Depth",
+      "Visual direction",
+    ],
   },
-  { n: "04", t: "Audience and learning outcome", d: "Every prompt names who the video is for, for example JEE or NEET students, and what they should understand by the end." },
-  { n: "05", t: "Generating the videos", d: "NotebookLM produces the video from the source and the prompt. Longer explainers for understanding, and short ones for quick revision." },
-  { n: "06", t: "Review and refinement", d: "I check each output for accuracy, clarity and structure, and rework the prompt when something isn't right." },
+  {
+    n: "04",
+    t: "Audience and learning outcome",
+    d: "Every prompt names who the video is for, for example JEE or NEET students, and what they should understand by the end.",
+  },
+  {
+    n: "05",
+    t: "Generating the videos",
+    d: "NotebookLM produces the video from the source and the prompt. Longer explainers for understanding, and short ones for quick revision.",
+  },
+  {
+    n: "06",
+    t: "Review and refinement",
+    d: "I check each output for accuracy, clarity and structure, and rework the prompt when something isn't right.",
+  },
   {
     n: "07",
     t: "Repurposing",
@@ -72,9 +107,14 @@ function AiProduction() {
             <p className="eyebrow">What came out of this notebook</p>
             <h2 className="display-md mt-3 text-primary">Magnetism and Matter</h2>
             <p className="mt-4 leading-relaxed text-foreground/80">
-              One source, the NCERT chapter, and a separate prompt for each idea. Each video focuses on one concept, so students can find exactly what they're stuck on.
+              One source, the NCERT chapter, and a separate prompt for each idea. Each video focuses
+              on one concept, so students can find exactly what they're stuck on.
             </p>
-            <Link to="/case-studies/$slug" params={{ slug: "topall" }} className="mt-6 inline-flex items-center gap-2 font-semibold text-primary">
+            <Link
+              to="/case-studies/$slug"
+              params={{ slug: "topall" }}
+              className="mt-6 inline-flex items-center gap-2 font-semibold text-primary"
+            >
               See how this fits into TopAll <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
@@ -82,7 +122,9 @@ function AiProduction() {
             {outputs.map((o) => (
               <li key={o.t} className="flex items-baseline justify-between gap-4 py-4">
                 <span className="font-display text-xl">{o.t}</span>
-                <span className="shrink-0 text-xs uppercase tracking-[0.16em] text-rose">{o.f}</span>
+                <span className="shrink-0 text-xs uppercase tracking-[0.16em] text-rose">
+                  {o.f}
+                </span>
               </li>
             ))}
           </ul>
@@ -92,26 +134,47 @@ function AiProduction() {
       <section className="bg-primary text-primary-foreground">
         <div className="mx-auto max-w-5xl px-5 py-20 md:px-10">
           <p className="font-display text-3xl leading-snug md:text-[2.6rem]">
-            “I don't just ask AI for content. I give it a clear source, a clear audience and a clear goal, then check what it gives back.”
+            “I don't just ask AI for content. I give it a clear source, a clear audience and a clear
+            goal, then check what it gives back.”
           </p>
         </div>
       </section>
 
       <section className="mx-auto max-w-7xl px-5 py-24 md:px-10">
         <p className="eyebrow">My workflow, in seven steps</p>
-        <ol className="mt-10 grid gap-px bg-line md:grid-cols-2 lg:grid-cols-3">
-          {stages.map((s) => (
-            <li key={s.n} className="flex flex-col bg-ivory p-8">
-              <p className="font-display text-6xl leading-none text-primary">{s.n}</p>
-              <h2 className="mt-6 font-display text-3xl">{s.t}</h2>
-              <p className="mt-3 leading-relaxed text-foreground/80">{s.d}</p>
-              {s.list && (
-                <ul className="mt-5 flex flex-wrap gap-2">
-                  {s.list.map((l) => <li key={l} className="border border-primary/30 px-2.5 py-1 text-xs text-primary">{l}</li>)}
-                </ul>
-              )}
-            </li>
-          ))}
+        <ol className="mt-10 grid gap-px bg-line md:grid-cols-2 md:fill-row-2 lg:grid-cols-3 lg:fill-row-3">
+          {stages.map((s, i) => {
+            // An odd final step spans the full row, so lay it out side by side.
+            const wide = i === stages.length - 1 && stages.length % 2 === 1;
+            return (
+              <li
+                key={s.n}
+                className={`flex flex-col bg-ivory p-8 ${wide ? "md:grid md:grid-cols-12 md:items-start md:gap-x-8" : ""}`}
+              >
+                <div className={wide ? "md:col-span-5" : ""}>
+                  <p className="font-display text-6xl leading-none text-primary">{s.n}</p>
+                  <h2 className="mt-6 font-display text-3xl">{s.t}</h2>
+                </div>
+                <div className={wide ? "md:col-span-7 md:pt-2" : ""}>
+                  <p className={`mt-3 leading-relaxed text-foreground/80 ${wide ? "md:mt-0" : ""}`}>
+                    {s.d}
+                  </p>
+                  {s.list && (
+                    <ul className="mt-5 flex flex-wrap gap-2">
+                      {s.list.map((l) => (
+                        <li
+                          key={l}
+                          className="border border-primary/30 px-2.5 py-1 text-xs text-primary"
+                        >
+                          {l}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              </li>
+            );
+          })}
         </ol>
       </section>
       <ContactBand />

@@ -1,6 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { ArrowUpRight, Eye, Flame, Play, Sparkles, TrendingUp, Video, Youtube, Instagram } from "lucide-react";
+import {
+  ArrowUpRight,
+  Eye,
+  Flame,
+  Play,
+  Sparkles,
+  TrendingUp,
+  Video,
+  Youtube,
+  Instagram,
+} from "lucide-react";
 import { PageIntro } from "@/components/site/PageIntro";
 import { ContactBand } from "@/components/site/ContactBand";
 import { VideoClusterCard } from "@/components/site/VideoClusterCard";
@@ -86,26 +96,36 @@ function VideoShowcase() {
         <div className="mx-auto grid max-w-7xl grid-cols-2 divide-y divide-line md:grid-cols-4 md:divide-x md:divide-y-0">
           <div className="p-6 text-center md:p-8">
             <span className="eyebrow block">Channel Lifetime</span>
-            <span data-count className="mt-2 block font-display text-4xl text-primary md:text-5xl">3.9Cr</span>
+            <span data-count className="mt-2 block font-display text-4xl text-primary md:text-5xl">
+              3.9Cr
+            </span>
             <span className="mt-1 block text-xs text-foreground/70">Organic Channel Views</span>
           </div>
 
           <div className="p-6 text-center md:p-8">
             <span className="eyebrow block">Peak Hit</span>
-            <span data-count className="mt-2 block font-display text-4xl text-primary md:text-5xl">19M</span>
+            <span data-count className="mt-2 block font-display text-4xl text-primary md:text-5xl">
+              19M
+            </span>
             <span className="mt-1 block text-xs text-foreground/70">Views on Single Short</span>
           </div>
 
           <div className="p-6 text-center md:p-8">
             <span className="eyebrow block">Million-View Tier</span>
-            <span data-count className="mt-2 block font-display text-4xl text-primary md:text-5xl">6</span>
+            <span data-count className="mt-2 block font-display text-4xl text-primary md:text-5xl">
+              6
+            </span>
             <span className="mt-1 block text-xs text-foreground/70">Million-View Shorts</span>
           </div>
 
           <div className="p-6 text-center md:p-8">
             <span className="eyebrow block">Subscriber Base</span>
-            <span data-count className="mt-2 block font-display text-4xl text-primary md:text-5xl">32,905</span>
-            <span className="mt-1 block text-xs text-foreground/70">Subscribers (YouTube Studio)</span>
+            <span data-count className="mt-2 block font-display text-4xl text-primary md:text-5xl">
+              32,905
+            </span>
+            <span className="mt-1 block text-xs text-foreground/70">
+              Subscribers (YouTube Studio)
+            </span>
           </div>
         </div>
       </section>
@@ -114,7 +134,15 @@ function VideoShowcase() {
       <section className="sticky top-16 z-30 border-b border-line bg-ivory/95 backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-5 py-4 md:px-10">
           <div className="flex flex-wrap gap-2" role="group" aria-label="Filter videos by category">
-            {(["All", "YouTube Shorts", "Instagram Reels", "Educational", "Promotional"] as VideoFilter[]).map((tab) => (
+            {(
+              [
+                "All",
+                "YouTube Shorts",
+                "Instagram Reels",
+                "Educational",
+                "Promotional",
+              ] as VideoFilter[]
+            ).map((tab) => (
               <button
                 key={tab}
                 type="button"
@@ -151,7 +179,10 @@ function VideoShowcase() {
                   Finding Your Ideal Fade Haircut: The Anatomy of a 19M View Short
                 </h2>
                 <p className="mt-4 text-sm leading-relaxed text-foreground/85 md:text-base">
-                  Built on a powerful audience dilemma: millions of men want a modern fade haircut, but cannot tell low, mid, or high fades apart in the barber chair. By presenting styles side by side and forcing an immediate choice in the first second, the Short triggered massive loop replays, comments, and saves without on-camera talent.
+                  Built on a powerful audience dilemma: millions of men want a modern fade haircut,
+                  but cannot tell low, mid, or high fades apart in the barber chair. By presenting
+                  styles side by side and forcing an immediate choice in the first second, the Short
+                  triggered massive loop replays, comments, and saves without on-camera talent.
                 </p>
 
                 <div className="mt-6 flex flex-wrap gap-3 text-xs">
@@ -210,7 +241,9 @@ function VideoShowcase() {
                   </div>
                   <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white">
                     <span className="font-display text-xl text-primary-foreground">19M Views</span>
-                    <span className="text-xs uppercase tracking-wider text-rose">YouTube Short</span>
+                    <span className="text-xs uppercase tracking-wider text-rose">
+                      YouTube Short
+                    </span>
                   </div>
                 </div>
               </div>
@@ -230,7 +263,7 @@ function VideoShowcase() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {filtered.map((item) => (
             <VideoClusterCard key={item.slug} item={item} />
           ))}
@@ -242,20 +275,23 @@ function VideoShowcase() {
         <div className="mx-auto max-w-7xl px-5 md:px-10">
           <div className="max-w-2xl">
             <span className="eyebrow">The Method Behind the Numbers</span>
-            <h2 className="display-md mt-4 text-primary">
-              Why Short-Form Video Holds Attention
-            </h2>
+            <h2 className="display-md mt-4 text-primary">Why Short-Form Video Holds Attention</h2>
             <p className="prose-editorial mt-4 text-foreground/80">
-              Generating millions of organic views on YouTube and tens of thousands of views on local campus reels is not about lucky algorithms. It is a systematic, repeatable framework combining behavioral psychology with rapid visual pacing.
+              Generating millions of organic views on YouTube and tens of thousands of views on
+              local campus reels is not about lucky algorithms. It is a systematic, repeatable
+              framework combining behavioral psychology with rapid visual pacing.
             </p>
           </div>
 
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             <div className="border border-line bg-paper p-6">
               <span className="font-mono text-sm font-semibold text-rose">01</span>
-              <h3 className="mt-3 font-display text-xl text-foreground">The 0.8-Second Question Hook</h3>
+              <h3 className="mt-3 font-display text-xl text-foreground">
+                The 0.8-Second Question Hook
+              </h3>
               <p className="mt-2 text-xs leading-relaxed text-foreground/75">
-                Every video opens with a specific, relatable dilemma rather than a generic greeting. Viewers instantly realize the video solves a question they already have.
+                Every video opens with a specific, relatable dilemma rather than a generic greeting.
+                Viewers instantly realize the video solves a question they already have.
               </p>
             </div>
 
@@ -263,15 +299,20 @@ function VideoShowcase() {
               <span className="font-mono text-sm font-semibold text-rose">02</span>
               <h3 className="mt-3 font-display text-xl text-foreground">Faceless Visual Pacing</h3>
               <p className="mt-2 text-xs leading-relaxed text-foreground/75">
-                Transitioning visual elements every 1.5 to 2 seconds resets viewer attention before drop-off occurs. Illustrations, text cards, and b-roll keep momentum high.
+                Transitioning visual elements every 1.5 to 2 seconds resets viewer attention before
+                drop-off occurs. Illustrations, text cards, and b-roll keep momentum high.
               </p>
             </div>
 
             <div className="border border-line bg-paper p-6">
               <span className="font-mono text-sm font-semibold text-rose">03</span>
-              <h3 className="mt-3 font-display text-xl text-foreground">Replay-Inducing Comparisons</h3>
+              <h3 className="mt-3 font-display text-xl text-foreground">
+                Replay-Inducing Comparisons
+              </h3>
               <p className="mt-2 text-xs leading-relaxed text-foreground/75">
-                Presenting choices (low vs mid vs high fade, or quiz MCQs) forces viewers to rewatch to make up their mind, naturally multiplying retention rate and platform distribution.
+                Presenting choices (low vs mid vs high fade, or quiz MCQs) forces viewers to rewatch
+                to make up their mind, naturally multiplying retention rate and platform
+                distribution.
               </p>
             </div>
           </div>

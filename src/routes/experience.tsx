@@ -1,5 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, ArrowUpRight, MapPin, Globe, Linkedin, Facebook, Instagram } from "lucide-react";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  MapPin,
+  Globe,
+  Linkedin,
+  Facebook,
+  Instagram,
+} from "lucide-react";
 import { PageIntro } from "@/components/site/PageIntro";
 import { ContactBand } from "@/components/site/ContactBand";
 import { employment, type ManagedLink } from "@/data/experience";
@@ -26,7 +34,13 @@ export const Route = createFileRoute("/experience")({
   component: Experience,
 });
 
-function PlatformIcon({ platform, className }: { platform: ManagedLink["platform"]; className?: string }) {
+function PlatformIcon({
+  platform,
+  className,
+}: {
+  platform: ManagedLink["platform"];
+  className?: string;
+}) {
   switch (platform) {
     case "LinkedIn":
       return <Linkedin className={className} />;
@@ -77,17 +91,31 @@ function Experience() {
               <p className="prose-editorial mt-6 text-lg text-foreground/85">{job.summary}</p>
 
               {job.highlights.length > 0 && (
-                <dl className="mt-8 grid grid-cols-2 gap-px bg-line md:grid-cols-4">
+                <dl
+                  className={`mt-8 grid grid-cols-2 gap-px bg-line max-md:fill-row-2 ${
+                    [
+                      "",
+                      "md:grid-cols-1",
+                      "md:grid-cols-2",
+                      "md:grid-cols-3 md:fill-row-3",
+                      "md:grid-cols-4 md:fill-row-4",
+                    ][Math.min(job.highlights.length, 4)]
+                  }`}
+                >
                   {job.highlights.map((h) => (
                     <div key={h.label} className="bg-ivory p-5">
-                      <dd className="font-display text-3xl leading-none text-primary md:text-4xl">{h.value}</dd>
+                      <dd className="font-display text-3xl leading-none text-primary md:text-4xl">
+                        {h.value}
+                      </dd>
                       <dt className="mt-2 text-xs leading-snug text-foreground/70">{h.label}</dt>
                     </div>
                   ))}
                 </dl>
               )}
               {job.highlights.length > 0 && (
-                <p className="mt-2 text-xs text-muted-foreground">Reported from active work and resume records.</p>
+                <p className="mt-2 text-xs text-muted-foreground">
+                  Reported from active work and resume records.
+                </p>
               )}
 
               {/* BRANDS AND PRODUCTS MANAGED (FOR VVT SOLUTIONS) */}
@@ -101,7 +129,9 @@ function Experience() {
 
                   {/* In-House Products */}
                   <div className="mt-8">
-                    <h4 className="eyebrow mb-4 text-xs tracking-wider text-rose">A. In-House Products</h4>
+                    <h4 className="eyebrow mb-4 text-xs tracking-wider text-rose">
+                      A. In-House Products
+                    </h4>
                     <div className="grid gap-4 md:grid-cols-2">
                       {job.brandCategories.inHouse.map((b) => (
                         <div key={b.slug} className="border border-line bg-ivory p-6">
@@ -128,7 +158,9 @@ function Experience() {
                               Case Study <ArrowRight className="h-3.5 w-3.5" />
                             </Link>
                           </div>
-                          <p className="mt-3 text-sm leading-relaxed text-foreground/80">{b.description}</p>
+                          <p className="mt-3 text-sm leading-relaxed text-foreground/80">
+                            {b.description}
+                          </p>
                         </div>
                       ))}
                     </div>
@@ -136,13 +168,20 @@ function Experience() {
 
                   {/* Client Brands & Campaigns */}
                   <div className="mt-8">
-                    <h4 className="eyebrow mb-4 text-xs tracking-wider text-rose">B. Client Brands and Campaigns</h4>
+                    <h4 className="eyebrow mb-4 text-xs tracking-wider text-rose">
+                      B. Client Brands and Campaigns
+                    </h4>
                     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                       {job.brandCategories.clients.map((b) => (
-                        <div key={b.slug} className="flex flex-col justify-between border border-line bg-cream p-5">
+                        <div
+                          key={b.slug}
+                          className="flex flex-col justify-between border border-line bg-cream p-5"
+                        >
                           <div>
                             <h5 className="font-display text-xl text-primary">{b.name}</h5>
-                            <p className="mt-2 text-xs leading-relaxed text-foreground/75">{b.description}</p>
+                            <p className="mt-2 text-xs leading-relaxed text-foreground/75">
+                              {b.description}
+                            </p>
                           </div>
                           <Link
                             to="/case-studies/$slug"
@@ -164,9 +203,11 @@ function Experience() {
                   <div className="max-w-3xl">
                     <p className="eyebrow">Official Channels</p>
                     <h3 className="display-sm mt-2 text-primary">{job.socialPlatforms.title}</h3>
-                    <p className="mt-3 text-sm text-foreground/80">{job.socialPlatforms.description}</p>
+                    <p className="mt-3 text-sm text-foreground/80">
+                      {job.socialPlatforms.description}
+                    </p>
                   </div>
-                  <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                  <div className="mt-6 grid gap-3 sm:grid-cols-2 sm:fill-row-2 lg:grid-cols-3 lg:fill-row-3">
                     {job.socialPlatforms.links.map((link) => (
                       <a
                         key={link.url}
@@ -182,7 +223,9 @@ function Experience() {
                               {link.label}
                             </p>
                             {link.note && (
-                              <p className="text-[0.7rem] uppercase tracking-wider text-rose">{link.note}</p>
+                              <p className="text-[0.7rem] uppercase tracking-wider text-rose">
+                                {link.note}
+                              </p>
                             )}
                           </div>
                         </div>
@@ -198,10 +241,15 @@ function Experience() {
                 <div className="mt-10 border-t border-line pt-10">
                   <p className="eyebrow">Client Portfolio</p>
                   <h3 className="display-sm mt-2 text-primary">{job.clientSocial.title}</h3>
-                  <p className="prose-editorial mt-3 text-sm text-foreground/80">{job.clientSocial.description}</p>
+                  <p className="prose-editorial mt-3 text-sm text-foreground/80">
+                    {job.clientSocial.description}
+                  </p>
                   <ul className="mt-4 grid gap-2 sm:grid-cols-2">
                     {job.clientSocial.points.map((pt) => (
-                      <li key={pt} className="flex items-baseline gap-2.5 text-sm text-foreground/80">
+                      <li
+                        key={pt}
+                        className="flex items-baseline gap-2.5 text-sm text-foreground/80"
+                      >
                         <span className="h-px w-3 shrink-0 bg-primary" aria-hidden />
                         {pt}
                       </li>
@@ -215,10 +263,15 @@ function Experience() {
                 <div className="mt-10 border-t border-line pt-10">
                   <p className="eyebrow">Organic Growth</p>
                   <h3 className="display-sm mt-2 text-primary">{job.seoAndContent.title}</h3>
-                  <p className="prose-editorial mt-3 text-sm text-foreground/80">{job.seoAndContent.description}</p>
+                  <p className="prose-editorial mt-3 text-sm text-foreground/80">
+                    {job.seoAndContent.description}
+                  </p>
                   <div className="mt-4 flex flex-wrap gap-2">
                     {job.seoAndContent.items.map((it) => (
-                      <span key={it} className="border border-line bg-cream px-3 py-1.5 text-xs font-medium">
+                      <span
+                        key={it}
+                        className="border border-line bg-cream px-3 py-1.5 text-xs font-medium"
+                      >
                         {it}
                       </span>
                     ))}
@@ -258,7 +311,9 @@ function Experience() {
                       <ol className="space-y-1.5 text-xs text-foreground/75">
                         {job.responsibilities.map((r, n) => (
                           <li key={r} className="flex gap-2">
-                            <span className="font-semibold text-rose">{String(n + 1).padStart(2, "0")}.</span>
+                            <span className="font-semibold text-rose">
+                              {String(n + 1).padStart(2, "0")}.
+                            </span>
                             <span>{r}</span>
                           </li>
                         ))}

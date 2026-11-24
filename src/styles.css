@@ -580,6 +580,45 @@ body::after {
     radial-gradient(90% 70% at 0% 100%, oklch(0.24 0.09 28 / 80%), transparent 65%);
 }
 
+/*
+ * Fill the last row of an N-column grid: the final item stretches across
+ * whatever columns are left, so hairline grids never show an empty block.
+ * Use with responsive variants, e.g. "sm:fill-row-2 lg:fill-row-3".
+ */
+@utility fill-row-2 {
+  & > :last-child:nth-child(n) {
+    grid-column: auto;
+  }
+  & > :last-child:nth-child(2n + 1) {
+    grid-column: 1 / -1;
+  }
+}
+@utility fill-row-3 {
+  & > :last-child:nth-child(n) {
+    grid-column: auto;
+  }
+  & > :last-child:nth-child(3n + 1) {
+    grid-column: 1 / -1;
+  }
+  & > :last-child:nth-child(3n + 2) {
+    grid-column: span 2;
+  }
+}
+@utility fill-row-4 {
+  & > :last-child:nth-child(n) {
+    grid-column: auto;
+  }
+  & > :last-child:nth-child(4n + 1) {
+    grid-column: 1 / -1;
+  }
+  & > :last-child:nth-child(4n + 2) {
+    grid-column: span 3;
+  }
+  & > :last-child:nth-child(4n + 3) {
+    grid-column: span 2;
+  }
+}
+
 /* Faint editorial column lines behind the hero */
 @utility hero-columns {
   background-image: repeating-linear-gradient(

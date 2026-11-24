@@ -1,6 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { Folder, Grid, PlayCircle, Search, SlidersHorizontal, Sparkles, X } from "lucide-react";
+import {
+  ArrowRight,
+  Folder,
+  Grid,
+  PlayCircle,
+  Search,
+  SlidersHorizontal,
+  Sparkles,
+  X,
+} from "lucide-react";
 import { PageIntro } from "@/components/site/PageIntro";
 import { ContentCard } from "@/components/site/ContentCard";
 import { ContentDialog } from "@/components/site/ContentDialog";
@@ -9,6 +18,7 @@ import { BrandFolderDrawer } from "@/components/site/BrandFolderDrawer";
 import { brandFolders, type BrandFolder } from "@/data/folders";
 import { contentItems, type ContentItem } from "@/data/content";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/work/")({
   head: () => ({
@@ -129,7 +139,8 @@ function WorkIndex() {
         (brand === "All" || c.brand === brand) &&
         (platform === "All" || c.platform === platform) &&
         (format === "All" || c.format === format) &&
-        (category === "All" || c.categories.includes(category as ContentItem["categories"][number])),
+        (category === "All" ||
+          c.categories.includes(category as ContentItem["categories"][number])),
     );
   }, [brand, platform, format, category]);
 
@@ -217,27 +228,23 @@ function WorkIndex() {
             <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4">
               <div className="flex flex-wrap items-center gap-2">
                 <span className="eyebrow mr-2">Filter:</span>
-                {[
-                  "All",
-                  "In-house Products",
-                  "Client Projects",
-                  "Personal Brand",
-                  "Employers",
-                ].map((rel) => (
-                  <button
-                    key={rel}
-                    type="button"
-                    onClick={() => setFolderRelationship(rel)}
-                    className={cn(
-                      "px-2.5 py-1 text-xs transition-colors",
-                      folderRelationship === rel
-                        ? "bg-primary text-primary-foreground font-semibold"
-                        : "text-foreground/70 hover:text-primary hover:bg-ivory",
-                    )}
-                  >
-                    {rel}
-                  </button>
-                ))}
+                {["All", "In-house Products", "Client Projects", "Personal Brand", "Employers"].map(
+                  (rel) => (
+                    <button
+                      key={rel}
+                      type="button"
+                      onClick={() => setFolderRelationship(rel)}
+                      className={cn(
+                        "px-2.5 py-1 text-xs transition-colors",
+                        folderRelationship === rel
+                          ? "bg-primary text-primary-foreground font-semibold"
+                          : "text-foreground/70 hover:text-primary hover:bg-ivory",
+                      )}
+                    >
+                      {rel}
+                    </button>
+                  ),
+                )}
               </div>
 
               {/* Search Folders */}
@@ -272,17 +279,40 @@ function WorkIndex() {
               <span className="flex items-center gap-2">
                 <SlidersHorizontal className="h-3.5 w-3.5 text-primary" />
                 <span>
-                  Filtering <span className="font-normal text-foreground/60">{filteredCreatives.length} of {contentItems.length} pieces</span>
+                  Filtering{" "}
+                  <span className="font-normal text-foreground/60">
+                    {filteredCreatives.length} of {contentItems.length} pieces
+                  </span>
                 </span>
               </span>
               <span className="text-xs text-primary group-open:hidden">Show filters</span>
               <span className="hidden text-xs text-primary group-open:inline">Hide filters</span>
             </summary>
             <div className="space-y-3 pb-4 pt-1">
-              <FilterRow label="Brand" options={creativeOptions.brands} value={brand} onChange={setBrand} />
-              <FilterRow label="Platform" options={creativeOptions.platforms} value={platform} onChange={setPlatform} />
-              <FilterRow label="Format" options={creativeOptions.formats} value={format} onChange={setFormat} />
-              <FilterRow label="Category" options={creativeOptions.categories} value={category} onChange={setCategory} />
+              <FilterRow
+                label="Brand"
+                options={creativeOptions.brands}
+                value={brand}
+                onChange={setBrand}
+              />
+              <FilterRow
+                label="Platform"
+                options={creativeOptions.platforms}
+                value={platform}
+                onChange={setPlatform}
+              />
+              <FilterRow
+                label="Format"
+                options={creativeOptions.formats}
+                value={format}
+                onChange={setFormat}
+              />
+              <FilterRow
+                label="Category"
+                options={creativeOptions.categories}
+                value={category}
+                onChange={setCategory}
+              />
             </div>
           </details>
         )}
@@ -294,7 +324,9 @@ function WorkIndex() {
           <div>
             {filteredFolders.length === 0 ? (
               <div className="py-20 text-center">
-                <p className="font-display text-3xl text-primary">No brand folders match your search.</p>
+                <p className="font-display text-3xl text-primary">
+                  No brand folders match your search.
+                </p>
                 <button
                   type="button"
                   onClick={() => {
@@ -310,14 +342,15 @@ function WorkIndex() {
               <div>
                 <div className="mb-8 flex items-baseline justify-between border-b border-line pb-4">
                   <p className="eyebrow">
-                    Project Directory · Showing {filteredFolders.length} of {brandFolders.length} Brands
+                    Project Directory · Showing {filteredFolders.length} of {brandFolders.length}{" "}
+                    Brands
                   </p>
                   <p className="hidden text-xs text-foreground/60 sm:block">
                     Click any folder to inspect its creative pieces and full case study
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:fill-row-2 lg:grid-cols-3 lg:fill-row-3">
                   {filteredFolders.map((folder) => (
                     <BrandFolderCard
                       key={folder.id}
@@ -326,6 +359,44 @@ function WorkIndex() {
                       onOpen={(f) => setActiveFolder(f)}
                     />
                   ))}
+                  {/* Closing tile: stretches across whatever is left of the last row */}
+                  <div
+                    data-spotlight
+                    className="@container relative overflow-hidden bg-primary text-primary-foreground"
+                  >
+                    <span
+                      aria-hidden
+                      className="pointer-events-none absolute -right-4 top-1/2 -translate-y-1/2 select-none font-display text-[11rem] leading-none text-primary-foreground/[0.08] @xl:text-[14rem]"
+                    >
+                      {String(brandFolders.length + 1).padStart(2, "0")}
+                    </span>
+                    <div className="flex h-full flex-col justify-between gap-6 p-6 md:p-8 @xl:flex-row @xl:items-end">
+                      <div>
+                        <p className="text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-primary-foreground/70">
+                          Next folder
+                        </p>
+                        <p className="mt-3 font-display text-4xl leading-[1.05] md:text-5xl">
+                          Your brand could be next.
+                        </p>
+                        <p className="mt-2 max-w-md text-sm text-primary-foreground/80">
+                          Want the full story behind any of these? Every folder links to its case
+                          study.
+                        </p>
+                      </div>
+                      <div className="flex shrink-0 flex-wrap gap-3">
+                        <Button asChild variant="onDark">
+                          <Link to="/contact">
+                            Let's talk <ArrowRight />
+                          </Link>
+                        </Button>
+                        <Button asChild variant="outlineOnDark">
+                          <Link to="/case-studies">
+                            All projects <ArrowRight />
+                          </Link>
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             )}

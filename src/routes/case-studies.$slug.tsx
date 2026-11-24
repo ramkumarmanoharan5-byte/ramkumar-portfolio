@@ -18,7 +18,13 @@ export const Route = createFileRoute("/case-studies/$slug")({
   },
   head: ({ loaderData }) => {
     const cs = loaderData?.cs;
-    if (!cs) return { meta: [{ title: "Case study not found | Ramkumar M." }, { name: "robots", content: "noindex" }] };
+    if (!cs)
+      return {
+        meta: [
+          { title: "Case study not found | Ramkumar M." },
+          { name: "robots", content: "noindex" },
+        ],
+      };
     const title = `${cs.title} Case Study | Ramkumar M.`;
     return {
       meta: [
@@ -34,19 +40,51 @@ export const Route = createFileRoute("/case-studies/$slug")({
   notFoundComponent: () => (
     <div className="mx-auto max-w-3xl px-5 py-32 text-center">
       <h1 className="display-md text-primary">This case study doesn't exist.</h1>
-      <Link to="/case-studies" className="mt-6 inline-block font-semibold text-primary underline">All case studies</Link>
+      <Link to="/case-studies" className="mt-6 inline-block font-semibold text-primary underline">
+        All case studies
+      </Link>
     </div>
   ),
   component: CaseStudyPage,
 });
 
-function SectionTitle({ label, eyebrow, title, intro, dark }: { label?: string | undefined; eyebrow?: string | undefined; title: string; intro?: string | undefined; dark?: boolean }) {
+function SectionTitle({
+  label,
+  eyebrow,
+  title,
+  intro,
+  dark,
+}: {
+  label?: string | undefined;
+  eyebrow?: string | undefined;
+  title: string;
+  intro?: string | undefined;
+  dark?: boolean;
+}) {
   return (
     <div className="max-w-3xl">
-      {label && <p className={`font-display text-7xl leading-none ${dark ? "text-primary-foreground/25" : "text-primary/20"}`}>{label}</p>}
-      {eyebrow && <p className={`mt-3 text-[0.7rem] font-semibold uppercase tracking-[0.22em] ${dark ? "text-primary-foreground/70" : "text-rose"}`}>{eyebrow}</p>}
+      {label && (
+        <p
+          className={`font-display text-7xl leading-none ${dark ? "text-primary-foreground/25" : "text-primary/20"}`}
+        >
+          {label}
+        </p>
+      )}
+      {eyebrow && (
+        <p
+          className={`mt-3 text-[0.7rem] font-semibold uppercase tracking-[0.22em] ${dark ? "text-primary-foreground/70" : "text-rose"}`}
+        >
+          {eyebrow}
+        </p>
+      )}
       <h2 className={`display-md mt-3 ${dark ? "" : "text-primary"}`}>{title}</h2>
-      {intro && <p className={`mt-5 leading-relaxed ${dark ? "text-primary-foreground/80" : "text-foreground/80"}`}>{intro}</p>}
+      {intro && (
+        <p
+          className={`mt-5 leading-relaxed ${dark ? "text-primary-foreground/80" : "text-foreground/80"}`}
+        >
+          {intro}
+        </p>
+      )}
     </div>
   );
 }
@@ -61,15 +99,28 @@ function Journey({ journey }: { journey: NonNullable<CaseStudy["journey"]> }) {
           {journey.steps.map((s, i) => {
             const width = 100 - (i * 40) / Math.max(1, n - 1);
             return (
-              <li key={s.title} className="mx-auto md:w-[var(--w)]" style={{ "--w": `${width}%` } as React.CSSProperties}>
+              <li
+                key={s.title}
+                className="mx-auto md:w-[var(--w)]"
+                style={{ "--w": `${width}%` } as React.CSSProperties}
+              >
                 <div className="grid gap-3 border border-primary-foreground/25 bg-primary-deep/40 p-5 md:grid-cols-[4rem_1fr_auto] md:items-center md:gap-6 md:px-8">
-                  <span className="font-display text-4xl leading-none text-primary-foreground/60">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="font-display text-4xl leading-none text-primary-foreground/60">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
                   <div>
                     <h3 className="font-display text-2xl">{s.title}</h3>
-                    <p className="mt-1 text-sm leading-relaxed text-primary-foreground/80">{s.body}</p>
+                    <p className="mt-1 text-sm leading-relaxed text-primary-foreground/80">
+                      {s.body}
+                    </p>
                   </div>
                   {s.link && (
-                    <a href={s.link.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-sm font-semibold underline-offset-4 hover:underline">
+                    <a
+                      href={s.link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-sm font-semibold underline-offset-4 hover:underline"
+                    >
                       {s.link.label} <ArrowUpRight className="h-4 w-4" />
                     </a>
                   )}
@@ -78,13 +129,29 @@ function Journey({ journey }: { journey: NonNullable<CaseStudy["journey"]> }) {
             );
           })}
         </ol>
-        {journey.note && <p className="mx-auto mt-8 max-w-3xl text-center text-sm text-primary-foreground/75">{journey.note}</p>}
+        {journey.note && (
+          <p className="mx-auto mt-8 max-w-3xl text-center text-sm text-primary-foreground/75">
+            {journey.note}
+          </p>
+        )}
       </div>
     </section>
   );
 }
 
-function Creatives({ items, title, intro, cta, onOpen }: { items: ContentItem[]; title: string; intro?: string | undefined; cta?: { label: string; url: string } | undefined; onOpen: (i: ContentItem) => void }) {
+function Creatives({
+  items,
+  title,
+  intro,
+  cta,
+  onOpen,
+}: {
+  items: ContentItem[];
+  title: string;
+  intro?: string | undefined;
+  cta?: { label: string; url: string } | undefined;
+  onOpen: (i: ContentItem) => void;
+}) {
   const single = items.length === 1 ? items[0] : undefined;
   return (
     <section id="content-and-creatives" className="border-t border-line">
@@ -93,15 +160,29 @@ function Creatives({ items, title, intro, cta, onOpen }: { items: ContentItem[];
           <SectionTitle eyebrow="Real work, with original links" title={title} intro={intro} />
           {cta && (
             <Button asChild size="lg">
-              <a href={cta.url} target="_blank" rel="noopener noreferrer">{cta.label} <ArrowUpRight /></a>
+              <a href={cta.url} target="_blank" rel="noopener noreferrer">
+                {cta.label} <ArrowUpRight />
+              </a>
             </Button>
           )}
         </div>
         {single ? (
-          <div className="mt-12"><ContentDetail item={single} compact /></div>
+          <div className="mt-12">
+            <ContentDetail item={single} compact />
+          </div>
         ) : (
-          <div className="mt-12 grid grid-cols-2 gap-x-5 gap-y-12 md:grid-cols-3 lg:grid-cols-4">
-            {items.map((item) => <ContentCard key={item.slug} item={item} onOpen={() => onOpen(item)} />)}
+          <div
+            className={`mt-12 grid grid-cols-2 gap-x-5 gap-y-12 ${
+              items.length >= 4
+                ? "md:grid-cols-3 lg:grid-cols-4"
+                : items.length === 3
+                  ? "md:grid-cols-3"
+                  : ""
+            }`}
+          >
+            {items.map((item) => (
+              <ContentCard key={item.slug} item={item} onOpen={() => onOpen(item)} />
+            ))}
           </div>
         )}
       </div>
@@ -112,7 +193,9 @@ function Creatives({ items, title, intro, cta, onOpen }: { items: ContentItem[];
 function CaseStudyPage() {
   const { cs } = Route.useLoaderData();
   const [active, setActive] = useState<ContentItem | null>(null);
-  const brandPieces = cs.creatives ? contentItems.filter((c) => c.brand === cs.creatives?.brand) : [];
+  const brandPieces = cs.creatives
+    ? contentItems.filter((c) => c.brand === cs.creatives?.brand)
+    : [];
   const viral = cs.viralGallery ? brandPieces.filter((p) => p.viral) : [];
   const pieces = cs.viralGallery ? brandPieces.filter((p) => !p.viral) : brandPieces;
   const idx = caseStudies.findIndex((c) => c.slug === cs.slug);
@@ -124,24 +207,50 @@ function CaseStudyPage() {
       {/* HERO */}
       <header className={dark ? "bg-primary text-primary-foreground" : ""}>
         <div className="mx-auto max-w-7xl px-5 pb-16 pt-10 md:px-10 md:pb-24">
-          <Link to="/case-studies" className={`inline-flex items-center gap-2 text-sm font-semibold ${dark ? "text-primary-foreground/80" : "text-primary"}`}>
+          <Link
+            to="/case-studies"
+            className={`inline-flex items-center gap-2 text-sm font-semibold ${dark ? "text-primary-foreground/80" : "text-primary"}`}
+          >
             <ArrowLeft className="h-4 w-4" /> All projects
           </Link>
           <div className="mt-12 grid gap-10 lg:grid-cols-12 lg:items-end">
             <div className={cs.heroStat ? "lg:col-span-7" : "lg:col-span-9"}>
-              <p className={`text-[0.7rem] font-semibold uppercase tracking-[0.22em] ${dark ? "text-primary-foreground/70" : "text-rose"}`}>
+              <p
+                className={`text-[0.7rem] font-semibold uppercase tracking-[0.22em] ${dark ? "text-primary-foreground/70" : "text-rose"}`}
+              >
                 Project {cs.number} · {cs.kind}
               </p>
               <h1 className={`display-lg mt-5 ${dark ? "" : "text-primary"}`}>{cs.headline}</h1>
-              <p className={`mt-6 text-sm font-semibold uppercase tracking-[0.18em] ${dark ? "text-primary-foreground/80" : "text-foreground"}`}>
+              <p
+                className={`mt-6 text-sm font-semibold uppercase tracking-[0.18em] ${dark ? "text-primary-foreground/80" : "text-foreground"}`}
+              >
                 {cs.title} <span className="mx-2 opacity-50">/</span> {cs.industry}
               </p>
-              <p className={`prose-editorial mt-6 ${dark ? "text-primary-foreground/85" : "text-foreground/80"}`}>{cs.summary}</p>
+              <p
+                className={`prose-editorial mt-6 ${dark ? "text-primary-foreground/85" : "text-foreground/80"}`}
+              >
+                {cs.summary}
+              </p>
               {cs.ctas && (
                 <div className="mt-8 flex flex-wrap gap-3">
                   {cs.ctas.map((c, i) => (
-                    <Button key={c.url} asChild size="lg" variant={dark ? (i === 0 ? "onDark" : "outlineOnDark") : i === 0 ? "default" : "outline"}>
-                      <a href={c.url} target="_blank" rel="noopener noreferrer">{c.label} <ArrowUpRight /></a>
+                    <Button
+                      key={c.url}
+                      asChild
+                      size="lg"
+                      variant={
+                        dark
+                          ? i === 0
+                            ? "onDark"
+                            : "outlineOnDark"
+                          : i === 0
+                            ? "default"
+                            : "outline"
+                      }
+                    >
+                      <a href={c.url} target="_blank" rel="noopener noreferrer">
+                        {c.label} <ArrowUpRight />
+                      </a>
                     </Button>
                   ))}
                 </div>
@@ -149,9 +258,13 @@ function CaseStudyPage() {
             </div>
             {cs.heroStat && (
               <div className="lg:col-span-5 lg:text-right">
-                <p className="font-display text-[7rem] leading-[0.85] md:text-[11rem]">{cs.heroStat.value}</p>
+                <p className="font-display text-[7rem] leading-[0.85] md:text-[11rem]">
+                  {cs.heroStat.value}
+                </p>
                 <p className="mt-2 font-display text-2xl">{cs.heroStat.label}</p>
-                {cs.heroStat.note && <p className="mt-2 text-xs text-primary-foreground/65">{cs.heroStat.note}</p>}
+                {cs.heroStat.note && (
+                  <p className="mt-2 text-xs text-primary-foreground/65">{cs.heroStat.note}</p>
+                )}
               </div>
             )}
           </div>
@@ -164,11 +277,27 @@ function CaseStudyPage() {
           <div className="mx-auto max-w-7xl px-5 py-16 md:px-10">
             <p className="eyebrow">{cs.results.title}</p>
             {cs.results.intro && <p className="mt-3 text-cream/75">{cs.results.intro}</p>}
-            <dl className={`mt-8 grid grid-cols-2 gap-px bg-cream/15 ${cs.results.metrics.length >= 5 ? "md:grid-cols-5" : "md:grid-cols-4"}`}>
+            <dl
+              className={`mt-8 grid grid-cols-2 gap-px bg-cream/15 max-md:fill-row-2 ${
+                [
+                  "",
+                  "md:grid-cols-1",
+                  "md:grid-cols-2",
+                  "md:grid-cols-3",
+                  "md:grid-cols-4",
+                  "md:grid-cols-5",
+                ][Math.min(cs.results.metrics.length, 5)]
+              }`}
+            >
               {cs.results.metrics.map((m, i) => (
-                <div key={m.label} className={`bg-ink p-6 ${i === 0 || (cs.results?.metrics.length === 5 && i === 1 && cs.slug.startsWith("anna")) ? "md:bg-primary" : ""}`}>
+                <div
+                  key={m.label}
+                  className={`bg-ink p-6 ${i === 0 || (cs.results?.metrics.length === 5 && i === 1 && cs.slug.startsWith("anna")) ? "md:bg-primary" : ""}`}
+                >
                   <dd className="font-display text-4xl leading-none md:text-5xl">{m.value}</dd>
-                  <dt className="mt-3 text-xs uppercase tracking-[0.16em] text-cream/70">{m.label}</dt>
+                  <dt className="mt-3 text-xs uppercase tracking-[0.16em] text-cream/70">
+                    {m.label}
+                  </dt>
                   {m.note && <p className="mt-1 text-xs text-cream/55">{m.note}</p>}
                 </div>
               ))}
@@ -176,7 +305,13 @@ function CaseStudyPage() {
             <p className="mt-6 max-w-3xl text-sm text-cream/70">{cs.results.note}</p>
             {cs.results.image && (
               <div className="mt-10">
-                <MediaFrame src={cs.results.image.src} alt={cs.results.image.alt} caption={cs.results.image.caption} aspect="aspect-[1900/1046]" imgClassName="object-contain" />
+                <MediaFrame
+                  src={cs.results.image.src}
+                  alt={cs.results.image.alt}
+                  caption={cs.results.image.caption}
+                  aspect="aspect-[1900/1046]"
+                  imgClassName="object-contain"
+                />
               </div>
             )}
           </div>
@@ -200,11 +335,23 @@ function CaseStudyPage() {
         <div className="mt-12 grid gap-10 md:grid-cols-2">
           <div>
             <p className="eyebrow mb-4">Content formats</p>
-            <ul className="flex flex-wrap gap-2">{cs.formats.map((f) => <li key={f} className="border border-line bg-cream px-3 py-1 text-sm">{f}</li>)}</ul>
+            <ul className="flex flex-wrap gap-2">
+              {cs.formats.map((f) => (
+                <li key={f} className="border border-line bg-cream px-3 py-1 text-sm">
+                  {f}
+                </li>
+              ))}
+            </ul>
           </div>
           <div>
             <p className="eyebrow mb-4">My role</p>
-            <ul className="flex flex-wrap gap-2">{cs.responsibilities.map((f) => <li key={f} className="border border-primary/30 px-3 py-1 text-sm text-primary">{f}</li>)}</ul>
+            <ul className="flex flex-wrap gap-2">
+              {cs.responsibilities.map((f) => (
+                <li key={f} className="border border-primary/30 px-3 py-1 text-sm text-primary">
+                  {f}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
@@ -213,7 +360,16 @@ function CaseStudyPage() {
       {cs.images.length > 0 && (
         <section className="mx-auto max-w-7xl px-5 pb-20 md:px-10">
           <div className={`grid gap-6 ${cs.images.length > 1 ? "md:grid-cols-2" : ""}`}>
-            {cs.images.map((img) => <MediaFrame key={img.src} src={img.src} alt={img.alt} caption={img.caption} aspect="aspect-[16/10]" imgClassName="object-top" />)}
+            {cs.images.map((img) => (
+              <MediaFrame
+                key={img.src}
+                src={img.src}
+                alt={img.alt}
+                caption={img.caption}
+                aspect="aspect-[16/10]"
+                imgClassName="object-top"
+              />
+            ))}
           </div>
         </section>
       )}
@@ -225,17 +381,34 @@ function CaseStudyPage() {
             <SectionTitle title={cs.viralGallery.title} intro={cs.viralGallery.intro} dark />
             <div className="mt-12 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-6">
               {viral.map((p) => (
-                <a key={p.slug} href={p.url ?? undefined} target="_blank" rel="noopener noreferrer" className="group block">
+                <a
+                  key={p.slug}
+                  href={p.url ?? undefined}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block"
+                >
                   <div className="aspect-[9/16] overflow-hidden bg-primary-deep">
-                    <img src={p.image.src} alt={p.image.alt} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                    <img
+                      src={p.image.src}
+                      alt={p.image.alt}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
                   </div>
-                  <p className="mt-3 font-display text-4xl leading-none text-primary-foreground">{p.metrics[0]?.value}</p>
+                  <p className="mt-3 font-display text-4xl leading-none text-primary-foreground">
+                    {p.metrics[0]?.value}
+                  </p>
                   <p className="mt-1 line-clamp-2 text-xs text-cream/75">{p.title}</p>
-                  <span className="mt-2 inline-flex items-center gap-1 text-xs font-semibold">Watch <ArrowUpRight className="h-3 w-3" /></span>
+                  <span className="mt-2 inline-flex items-center gap-1 text-xs font-semibold">
+                    Watch <ArrowUpRight className="h-3 w-3" />
+                  </span>
                 </a>
               ))}
             </div>
-            <p className="mt-8 text-xs text-cream/55">View counts as displayed on YouTube. Each one belongs to that Short only.</p>
+            <p className="mt-8 text-xs text-cream/55">
+              View counts as displayed on YouTube. Each one belongs to that Short only.
+            </p>
           </div>
         </section>
       )}
@@ -251,7 +424,11 @@ function CaseStudyPage() {
                 {ch.intro && <p className="mt-5 leading-relaxed text-foreground/80">{ch.intro}</p>}
               </div>
               <div className="lg:col-span-8">
-                <div className={ch.items.length > 1 ? "grid gap-x-10 gap-y-8 sm:grid-cols-2" : ""}>
+                <div
+                  className={
+                    ch.items.length > 1 ? "grid gap-x-10 gap-y-8 sm:grid-cols-2 sm:fill-row-2" : ""
+                  }
+                >
                   {ch.items.map((it) => (
                     <div key={it.title} className="border-t border-line pt-5">
                       <h3 className="font-display text-2xl">{it.title}</h3>
@@ -271,11 +448,17 @@ function CaseStudyPage() {
       {/* MEASUREMENT */}
       {cs.measurement && (
         <section className="mx-auto max-w-7xl px-5 py-20 md:px-10">
-          <SectionTitle eyebrow="Conversion and performance" title={cs.measurement.title} intro={cs.measurement.intro} />
-          <ol className="mt-10 grid grid-cols-1 gap-px bg-line sm:grid-cols-2 lg:grid-cols-5">
+          <SectionTitle
+            eyebrow="Conversion and performance"
+            title={cs.measurement.title}
+            intro={cs.measurement.intro}
+          />
+          <ol className="mt-10 grid grid-cols-1 gap-px bg-line sm:grid-cols-2 sm:fill-row-2 lg:grid-cols-4 lg:fill-row-4">
             {cs.measurement.items.map((m, i) => (
               <li key={m} className="bg-ivory p-5">
-                <span className="font-display text-2xl text-primary/40">{String(i + 1).padStart(2, "0")}</span>
+                <span className="font-display text-2xl text-primary/40">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
                 <p className="mt-2 font-medium">{m}</p>
               </li>
             ))}
@@ -307,7 +490,9 @@ function CaseStudyPage() {
           <div className="mx-auto flex max-w-7xl flex-col gap-4 px-5 py-14 md:flex-row md:items-end md:justify-between md:px-10">
             <div>
               <p className="eyebrow">{cs.budgetReference.label}</p>
-              <p className="mt-3 font-display text-6xl leading-none md:text-7xl">{cs.budgetReference.value}</p>
+              <p className="mt-3 font-display text-6xl leading-none md:text-7xl">
+                {cs.budgetReference.value}
+              </p>
             </div>
             <p className="max-w-md text-sm text-cream/70">{cs.budgetReference.note}</p>
           </div>
@@ -316,7 +501,13 @@ function CaseStudyPage() {
 
       {/* CONTENT & CREATIVES */}
       {cs.creatives && pieces.length > 0 && (
-        <Creatives items={pieces} title={cs.creatives.title} intro={cs.creatives.intro} cta={cs.creatives.cta} onOpen={setActive} />
+        <Creatives
+          items={pieces}
+          title={cs.creatives.title}
+          intro={cs.creatives.intro}
+          cta={cs.creatives.cta}
+          onOpen={setActive}
+        />
       )}
 
       {/* PAGES */}
@@ -327,9 +518,16 @@ function CaseStudyPage() {
             <ul className="mt-10 divide-y divide-line border-y border-line">
               {cs.pages.items.map((p) => (
                 <li key={p.url}>
-                  <a href={p.url} target="_blank" rel="noopener noreferrer" className="group grid gap-1 py-5 md:grid-cols-12 md:items-baseline md:gap-8">
+                  <a
+                    href={p.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group grid gap-1 py-5 md:grid-cols-12 md:items-baseline md:gap-8"
+                  >
                     <span className="eyebrow md:col-span-3">{p.group}</span>
-                    <span className="font-display text-2xl transition-colors group-hover:text-primary md:col-span-8">{p.label}</span>
+                    <span className="font-display text-2xl transition-colors group-hover:text-primary md:col-span-8">
+                      {p.label}
+                    </span>
                     <ArrowUpRight className="hidden h-5 w-5 text-primary md:col-span-1 md:block md:justify-self-end" />
                   </a>
                 </li>
@@ -346,7 +544,9 @@ function CaseStudyPage() {
           <ol className="mt-6 space-y-6">
             {cs.learnings.map((l, i) => (
               <li key={l} className="flex gap-5">
-                <span className="font-display text-3xl leading-none text-primary/40">{String(i + 1).padStart(2, "0")}</span>
+                <span className="font-display text-3xl leading-none text-primary/40">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
                 <p className="font-display text-2xl leading-snug">{l}</p>
               </li>
             ))}
@@ -358,7 +558,12 @@ function CaseStudyPage() {
             <ul className="mt-6 space-y-3">
               {cs.links.map((l) => (
                 <li key={l.label} className="border-b border-line pb-3">
-                  <a href={l.url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between gap-4 font-semibold text-primary">
+                  <a
+                    href={l.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between gap-4 font-semibold text-primary"
+                  >
                     {l.label} <ArrowUpRight className="h-4 w-4" />
                   </a>
                 </li>
@@ -369,11 +574,17 @@ function CaseStudyPage() {
       </section>
 
       {next && (
-        <Link to="/case-studies/$slug" params={{ slug: next.slug }} className="group block border-t border-line bg-cream">
+        <Link
+          to="/case-studies/$slug"
+          params={{ slug: next.slug }}
+          className="group block border-t border-line bg-cream"
+        >
           <div className="mx-auto flex max-w-7xl items-end justify-between gap-6 px-5 py-14 md:px-10">
             <div>
               <p className="eyebrow">Next project</p>
-              <p className="mt-3 font-display text-4xl transition-colors group-hover:text-primary md:text-6xl">{next.title}</p>
+              <p className="mt-3 font-display text-4xl transition-colors group-hover:text-primary md:text-6xl">
+                {next.title}
+              </p>
             </div>
             <ArrowRight className="h-8 w-8 shrink-0 text-primary transition-transform group-hover:translate-x-2" />
           </div>
