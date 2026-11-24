@@ -285,11 +285,13 @@ export function ScrollRing() {
 }
 
 /**
- * A soft ring that trails the pointer and grows into a "View" disc over
- * images and cards. The normal cursor stays visible underneath.
+ * Custom cursor: a precise dot exactly at the pointer plus a smaller textured
+ * ring that trails it. The system cursor is hidden while this is active
+ * (desktop with a mouse, motion allowed); text fields keep the text caret.
  */
 export function CursorFollower() {
   const ring = useRef<HTMLDivElement>(null);
+  const dot = useRef<HTMLDivElement>(null);
   const [enabled, setEnabled] = useState(false);
 
   useEffect(() => {
@@ -299,46 +301,74 @@ export function CursorFollower() {
 
   useEffect(() => {
     if (!enabled) return;
-    const el = ring.current!;
+    const r = ring.current!;
+    const d = dot.current!;
+    const root = document.documentElement;
     const supportsHas = CSS.supports("selector(:has(*))");
     let x = -100,
       y = -100,
       cx = -100,
       cy = -100,
-      frame = 0;
+      frame = 0,
+      seen = false;
     const loop = () => {
-      cx += (x - cx) * 0.2;
-      cy += (y - cy) * 0.2;
-      el.style.transform = `translate3d(${cx}px, ${cy}px, 0)`;
+      cx += (x - cx) * 0.22;
+      cy += (y - cy) * 0.22;
+      r.style.transform = `translate3d(${cx}px, ${cy}px, 0)`;
       frame = requestAnimationFrame(loop);
     };
+    const setState = (state: string) => {
+      r.dataset["state"] = state;
+      d.dataset["state"] = state;
+    };
     const onMove = (e: PointerEvent) => {
+      if (e.pointerType !== "mouse") return;
       x = e.clientX;
       y = e.clientY;
+      d.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+      if (!seen) {
+        seen = true;
+        cx = x;
+        cy = y;
+        root.classList.add("custom-cursor");
+      }
       const t = e.target as HTMLElement | null;
-      const link = t?.closest?.("a, button, [role=button], input, select, textarea, label");
+      const text = t?.closest?.("input, textarea, select, [contenteditable=true]");
+      const link = t?.closest?.("a, button, [role=button], label, summary");
       const view = t?.closest?.(
         supportsHas ? "a:has(img), [data-cursor=view]" : "[data-cursor=view]",
       );
-      el.dataset["state"] = view ? "view" : link ? "link" : "idle";
-      el.dataset["dark"] = t?.closest?.(".bg-primary, .bg-ink, .bg-primary-deep") ? "1" : "0";
+      setState(text ? "text" : view ? "view" : link ? "link" : "idle");
+      const dark = t?.closest?.(".bg-primary, .bg-ink, .bg-primary-deep") ? "1" : "0";
+      r.dataset["dark"] = dark;
+      d.dataset["dark"] = dark;
     };
-    const onLeave = () => (el.dataset["state"] = "hidden");
+    const onLeave = () => setState("hidden");
+    const onDown = () => r.classList.add("is-down");
+    const onUp = () => r.classList.remove("is-down");
     frame = requestAnimationFrame(loop);
     window.addEventListener("pointermove", onMove, { passive: true });
-    document.documentElement.addEventListener("pointerleave", onLeave);
+    window.addEventListener("pointerdown", onDown, { passive: true });
+    window.addEventListener("pointerup", onUp, { passive: true });
+    root.addEventListener("pointerleave", onLeave);
     return () => {
       cancelAnimationFrame(frame);
+      root.classList.remove("custom-cursor");
       window.removeEventListener("pointermove", onMove);
-      document.documentElement.removeEventListener("pointerleave", onLeave);
+      window.removeEventListener("pointerdown", onDown);
+      window.removeEventListener("pointerup", onUp);
+      root.removeEventListener("pointerleave", onLeave);
     };
   }, [enabled]);
 
   if (!enabled) return null;
   return (
-    <div ref={ring} className="cursor-ring" data-state="idle" aria-hidden>
-      <span>View</span>
-    </div>
+    <>
+      <div ref={ring} className="cursor-ring" data-state="hidden" aria-hidden>
+        <span>View</span>
+      </div>
+      <div ref={dot} className="cursor-dot" data-state="hidden" aria-hidden />
+    </>
   );
 }
 

@@ -415,8 +415,16 @@
   z-index: 1;
 }
 
-/* Pointer follower */
-.cursor-ring {
+/* Custom cursor: precise dot + trailing textured ring */
+html.custom-cursor,
+html.custom-cursor * {
+  cursor: none !important;
+}
+html.custom-cursor :is(input, textarea, select, [contenteditable="true"]) {
+  cursor: text !important;
+}
+.cursor-ring,
+.cursor-dot {
   position: fixed;
   left: 0;
   top: 0;
@@ -424,6 +432,20 @@
   pointer-events: none;
   width: 0;
   height: 0;
+}
+.cursor-dot::before {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  translate: -50% -50%;
+  border-radius: 9999px;
+  background: var(--burgundy);
+  box-shadow: 0 0 0 1.5px oklch(0.971 0.009 84.6 / 85%);
+  transition:
+    scale 0.3s var(--ease-out-expo),
+    opacity 0.2s,
+    background 0.3s;
 }
 .cursor-ring::before,
 .cursor-ring span {
@@ -433,25 +455,36 @@
   translate: -50% -50%;
   border-radius: 9999px;
 }
+/* The ring: a fine double hairline with a grain-filled, slightly frosted core */
 .cursor-ring::before {
   content: "";
-  width: 34px;
-  height: 34px;
-  border: 1.5px solid var(--burgundy);
-  opacity: 0.55;
+  width: 24px;
+  height: 24px;
+  border: 1px solid oklch(0.339 0.137 28.9 / 75%);
+  outline: 1px solid oklch(0.339 0.137 28.9 / 18%);
+  outline-offset: 3px;
+  background-color: oklch(0.339 0.137 28.9 / 6%);
+  background-image: var(--texture);
+  background-size: 120px;
   transition:
     width 0.45s var(--ease-out-expo),
     height 0.45s var(--ease-out-expo),
-    background 0.3s,
+    outline-offset 0.45s var(--ease-out-expo),
+    background-color 0.3s,
+    border-color 0.3s,
+    outline-color 0.3s,
     opacity 0.3s,
-    border-color 0.3s;
+    scale 0.2s;
+}
+.cursor-ring.is-down::before {
+  scale: 0.82;
 }
 .cursor-ring span {
   display: grid;
   place-items: center;
-  width: 84px;
-  height: 84px;
-  font: 600 0.68rem/1 var(--font-sans);
+  width: 64px;
+  height: 64px;
+  font: 600 0.6rem/1 var(--font-sans);
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--cream);
@@ -462,31 +495,49 @@
     scale 0.45s var(--ease-out-expo);
 }
 .cursor-ring[data-state="link"]::before {
-  width: 54px;
-  height: 54px;
-  background: oklch(0.339 0.137 28.9 / 10%);
+  width: 40px;
+  height: 40px;
+  outline-offset: 5px;
+  background-color: oklch(0.339 0.137 28.9 / 12%);
+}
+.cursor-dot[data-state="link"]::before {
+  scale: 0.6;
 }
 .cursor-ring[data-state="view"]::before {
-  width: 84px;
-  height: 84px;
-  background: var(--burgundy);
-  opacity: 0.92;
+  width: 64px;
+  height: 64px;
+  outline-offset: 6px;
+  border-color: transparent;
+  background-color: oklch(0.339 0.137 28.9 / 90%);
 }
 .cursor-ring[data-state="view"] span {
   opacity: 1;
   scale: 1;
 }
+.cursor-dot[data-state="view"]::before {
+  opacity: 0;
+}
+.cursor-ring[data-state="text"]::before,
+.cursor-dot[data-state="text"]::before,
+.cursor-ring[data-state="hidden"]::before,
+.cursor-dot[data-state="hidden"]::before {
+  opacity: 0;
+}
+/* On burgundy and charcoal surfaces the cursor flips to cream */
 .cursor-ring[data-dark="1"]::before {
-  border-color: var(--cream);
+  border-color: oklch(0.971 0.009 84.6 / 80%);
+  outline-color: oklch(0.971 0.009 84.6 / 22%);
+  background-color: oklch(0.971 0.009 84.6 / 8%);
+}
+.cursor-dot[data-dark="1"]::before {
+  background: var(--cream);
+  box-shadow: 0 0 0 1.5px oklch(0.339 0.137 28.9 / 70%);
 }
 .cursor-ring[data-dark="1"][data-state="view"]::before {
-  background: var(--cream);
+  background-color: oklch(0.971 0.009 84.6 / 92%);
 }
 .cursor-ring[data-dark="1"][data-state="view"] span {
   color: var(--burgundy);
-}
-.cursor-ring[data-state="hidden"]::before {
-  opacity: 0;
 }
 
 /* Film grain over the whole page: subtle, printed-paper feel */
